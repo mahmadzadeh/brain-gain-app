@@ -1,9 +1,9 @@
 package com.dualnback.util;
 
-import com.dualnback.data.filesystem.dao.DataPoint;
-import com.dualnback.data.filesystem.io.FileIO;
-import com.dualnback.data.filesystem.io.FileIOException;
-import com.dualnback.data.filesystem.util.JSONUtil;
+import com.chart.filesystem.dao.DataPoint;
+import com.chart.filesystem.io.FileIO;
+import com.chart.filesystem.io.FileIOException;
+import com.chart.filesystem.util.JSONUtil;
 
 import org.json.JSONException;
 import org.junit.Test;
@@ -12,7 +12,6 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-import static com.dualnback.data.filesystem.util.JSONUtil.DEFAULT_N_BACK_VERSION;
 import static junit.framework.Assert.assertTrue;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -55,20 +54,6 @@ public class JSONUtilTest {
         assertThat( dataPointList.size() ).isEqualTo( 4 );
     }
 
-    /**
-     * TODO: this seems odd for the parser to set a default value. Will have to be refactored
-     */
-    @Test
-    public void givenNoValidVersionPresentInJsonThenParseSetsToDefaultGameVersion( ) throws FileIOException, JSONException {
-
-        String JSON = readTestFile( "oneDataPointMissingVersion.json" );
-
-        List<DataPoint> dataPointList = JSONUtil.parse( JSON );
-
-        assertThat( dataPointList.size() ).isEqualTo( 1 );
-
-        assertThat( dataPointList.get( 0 ).version() ).isEqualTo( DEFAULT_N_BACK_VERSION );
-    }
 
     private String readTestFile( String testFileName ) throws FileIOException {
         return new FileIO( new File( TEST_RESOURCES_DIR + testFileName ) ).read();

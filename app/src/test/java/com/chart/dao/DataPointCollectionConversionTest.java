@@ -1,16 +1,19 @@
 package com.chart.dao;
 
-import com.dualnback.data.filesystem.dao.ChartData;
-import com.dualnback.data.filesystem.dao.DataDtoConversion;
-import com.dualnback.data.filesystem.dao.DataPoint;
-import com.dualnback.data.filesystem.dao.DataPointCollection;
+import com.chart.filesystem.dao.ChartData;
+import com.chart.filesystem.dao.DataDtoConversion;
+import com.chart.filesystem.dao.DataPoint;
+import com.chart.filesystem.dao.DataPointCollection;
+import com.github.mikephil.charting.data.Entry;
 
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 
 public class DataPointCollectionConversionTest {
@@ -18,26 +21,27 @@ public class DataPointCollectionConversionTest {
     @Test
     public void givenEmptyDataDtoThenConvertToChartDataReturnsEmptyChartData( ) {
 
-        DataPointCollection dataPointCollection = new DataPointCollection( new ArrayList<DataPoint>() );
+        DataPointCollection dataPointCollection = new DataPointCollection( new ArrayList<>() );
 
-        ChartData chartData = DataDtoConversion.convertToChartData( dataPointCollection );
+        List<Entry> chartData = DataDtoConversion.convertToChartData( dataPointCollection );
 
-        assertEquals( 0, chartData.getxVals().size() );
-        assertEquals( 0, chartData.getyVals().size() );
+        assertEquals( 0, chartData.size() );
+        assertEquals( 0, chartData.size() );
     }
 
     @Test
     public void givenDataDtoWithOneDataPointThenConvertToChartDataReturnsChartDataWithOneXAndYValue( ) {
 
         ArrayList<DataPoint> dataPoints = new ArrayList<>();
-        dataPoints.add( new DataPoint( new Date( 1461478244180l ), 14, null ) );
+        dataPoints.add( new DataPoint( new Date( 1461478244180l ), 14 ) );
 
         DataPointCollection dataPointCollection = new DataPointCollection( dataPoints );
 
-        ChartData chartData = DataDtoConversion.convertToChartData( dataPointCollection );
+        List<Entry> chartData  = DataDtoConversion.convertToChartData( dataPointCollection );
 
-        assertEquals( "2016/04/23-23:10:44", chartData.getxVals().get( 0 ) );
-        assertEquals( 14, chartData.getyVals().get( 0 ).getVal(), 0.1 );
+        Entry entry = chartData.get( 0 );
+
+        assertTrue( new Entry(1461478244180f, 14f).equalTo( entry ));
     }
 
 }

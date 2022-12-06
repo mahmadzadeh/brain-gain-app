@@ -18,18 +18,16 @@ import java.util.List;
 import static com.chart.filesystem.dao.DataDtoConversion.convertToChartData;
 
 public class ChartModel {
-    private final File directory;
     private final Dao dao;
     private DataPointCollection dataPointCollection;
 
     public ChartModel( File filesDirectory ) {
-        directory = filesDirectory;
 
-        File file = FileUtil.getDataFile( directory );
+        File file = FileUtil.getDataFile( filesDirectory );
 
         dao = new FileBasedDao( new FileIO( file ) );
 
-        dataPointCollection = DataFileUtil.readAllDataSortedByDate( directory );
+        dataPointCollection = DataFileUtil.readAllDataSortedByDate( filesDirectory );
     }
 
     public void addDataPoint( DataPoint newDataPoint ) {

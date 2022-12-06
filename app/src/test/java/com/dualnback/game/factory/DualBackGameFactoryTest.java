@@ -3,6 +3,7 @@ package com.dualnback.game.factory;
 import android.content.Context;
 
 import com.dualnback.data.location.LocationCollection;
+import com.dualnback.data.sound.Sound;
 import com.dualnback.data.sound.SoundCollection;
 import com.dualnback.game.DualBackGame;
 import com.dualnback.game.NBackVersion;
@@ -13,6 +14,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
+
+import java.util.Arrays;
+import java.util.Collections;
 
 import static com.dualnback.game.factory.DualBackGameFactory.create;
 import static com.dualnback.ui.mainscreen.MainActivity.EXPECTED_LOC_MATCHES;
@@ -30,6 +34,9 @@ public class DualBackGameFactoryTest {
     @Mock
     private MainScreenView mockSwappableImage;
 
+    @Mock
+    private Sound mockSound;
+
 
     /**
      * two instances of DualBackGame share the same game trial collection!
@@ -45,7 +52,7 @@ public class DualBackGameFactoryTest {
                 .withExpectedSoundMatches( EXPECTED_SOUND_MATCHES )
                 .withExpectedLocationMatches( EXPECTED_LOC_MATCHES )
                 .withLocationCollection( new LocationCollection() )
-                .withSoundCollection( new SoundCollection( SoundCollectionFactory.instance( mockContext ) ) );
+                .withSoundCollection( new SoundCollection( Arrays.asList(mockSound)) );
 
         DualBackGame dualBackGame = create( parameters );
 

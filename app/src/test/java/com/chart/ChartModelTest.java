@@ -1,14 +1,15 @@
-package com.dualnback.model;
+package com.chart;
 
-import com.dualnback.data.filesystem.dao.DataPoint;
-import com.dualnback.game.NBackVersion;
-import com.dualnback.ui.chartscreen.ChartModel;
+import com.chart.filesystem.dao.DataPoint;
+import com.chart.ui.ChartModel;
 
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.File;
 import java.util.Date;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class ChartModelTest {
@@ -23,18 +24,18 @@ public class ChartModelTest {
 
     @Test
     public void getDataPoints( ) {
-        assertThat( chartModel.getDataPoints().size() ).isEqualTo( 2 );
+        assertThat( chartModel.chartData().size() ).isEqualTo( 0 );
     }
 
     @Test
     public void addingSingleDataPoint( ) {
-        DataPoint dataPoint = new DataPoint( new Date(), 30, NBackVersion.TwoBack );
+        DataPoint dataPoint = new DataPoint( new Date(), 30 );
 
-        assertThat( chartModel.getDataPoints().size() ).isEqualTo( 2 );
+        assertThat( chartModel.chartData().size() ).isEqualTo( 0 );
 
         chartModel.addDataPoint( dataPoint );
 
-        assertThat( chartModel.getDataPoints().size() ).isEqualTo( 3 );
+        assertThat( chartModel.chartData().size() ).isEqualTo( 1 );
     }
 
     @Test

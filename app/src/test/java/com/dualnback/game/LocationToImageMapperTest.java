@@ -1,9 +1,11 @@
 package com.dualnback.game;
 
-import com.dualnback.R;
+import com.monkeyladder.R;
 import com.dualnback.data.location.Location;
 
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class LocationToImageMapperTest {
 
