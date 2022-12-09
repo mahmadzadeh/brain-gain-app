@@ -34,7 +34,9 @@ public class JSONUtil {
             Date date = DateUtil.parse( innerDataPointElem.getString( DATE_ELEMENT ) );
             int score = innerDataPointElem.getInt( SCORE_ELEMENT );
 
-            dataPoints.add( new DataPoint( date, score ) );
+            DataPoint dataPoint = new DataPoint( date, score );
+
+            dataPoints.add( dataPoint );
         }
 
         return dataPoints;

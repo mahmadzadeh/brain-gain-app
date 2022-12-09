@@ -12,13 +12,12 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
+import static com.chart.TestFileUtil.readTestFile;
 import static junit.framework.Assert.assertTrue;
 import static org.assertj.core.api.Assertions.assertThat;
 
 
 public class JSONUtilTest {
-
-    private static final String TEST_RESOURCES_DIR = "src/test/resources/";
 
     @Test
     public void givenJSONStringNoDataThenParsReturnsEmptyListOfDataPoints( ) throws FileIOException, JSONException {
@@ -53,11 +52,5 @@ public class JSONUtilTest {
 
         assertThat( dataPointList.size() ).isEqualTo( 4 );
     }
-
-
-    private String readTestFile( String testFileName ) throws FileIOException {
-        return new FileIO( new File( TEST_RESOURCES_DIR + testFileName ) ).read();
-    }
-
 
 }
