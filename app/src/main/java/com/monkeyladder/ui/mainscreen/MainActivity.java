@@ -6,6 +6,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewC
 
     private static final int DELAY_PER_CELL_COUNT_MILLIS = 1000;
     private static final int ONE_TICK_IN_MILLIS = 750;
-    private static final int DELAY_ON_INITIAL_SCREEN_DISPLAY_MILLIS = 1000;
+    private static final int DELAY_ON_INITIAL_SCREEN_DISPLAY_MILLIS = 0;
 
     private static final CellLocationMapping locationMapping = new CellLocationMapping();
     private static final CellDataMapping dataMapping = new CellDataMapping();
@@ -89,6 +90,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewC
                             dataMapping.drawableResourceIdFor( locationData.getData() )
                                     .orElseThrow( ( ) -> new RuntimeException(
                                             "Unable to get the resource for data" + locationData.getData() ) ) );
+                    imageView.setColorFilter( getResources().getColor( R.color.colorPrimaryDark ) );
 
                 } );
     }
@@ -123,6 +125,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewC
 
         int startColor = getResources().getColor( R.color.monkeyLadderCellLight );
         int endColor = getResources().getColor( R.color.colorPrimaryDark );
+        final int transitionDurationMillis = 100;
 
         locationsThatAreSet
                 .stream()
@@ -136,19 +139,20 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewC
 
                     // Hide numbers.
                     imageView.setImageResource( R.drawable.monkey_ladder_transparent );
+                    imageView.clearColorFilter();
 
-                    // Start in the light-blue state and animate to dark-blue over 2 seconds.
+                    // Start in the light-blue state and animate to dark-blue.
                     imageView.setBackgroundResource( R.drawable.monkey_ladder_cell_display );
                     GradientDrawable bg = ( GradientDrawable ) imageView.getBackground().mutate();
 
                     ValueAnimator animator = ValueAnimator.ofObject( new ArgbEvaluator(), startColor, endColor );
-                    animator.setDuration( 1000 );
+                    animator.setDuration( transitionDurationMillis );
                     animator.addUpdateListener( a -> bg.setColor( ( Integer ) a.getAnimatedValue() ) );
                     animator.start();
                 } );
 
         // Only allow input once the transition completes.
-        new Handler( Looper.getMainLooper() ).postDelayed( ( ) -> setReadyToTakeUserInput( true ), 1000 );
+        new Handler( Looper.getMainLooper() ).postDelayed( ( ) -> setReadyToTakeUserInput( true ), transitionDurationMillis );
     }
 
     @Override
@@ -190,6 +194,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewC
         if ( !isReadyForUserInput ) {
             return;
         }
+
+        v.performHapticFeedback( HapticFeedbackConstants.KEYBOARD_TAP );
 
         int id = v.getId();
 
@@ -278,6 +284,9 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewC
         imageView.setVisibility( View.INVISIBLE );
         imageView.setBackgroundResource( R.drawable.monkey_ladder_cell_display );
         imageView.setImageResource( R.drawable.monkey_ladder_transparent );
+        imageView.clearColorFilter();
+        imageView.setEnabled( true );
+        imageView.setAlpha( 1.0f );
     }
 
     private void clearHighlightedCell( Integer resourceId ) {
@@ -286,6 +295,9 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewC
         imageView.setVisibility( View.INVISIBLE );
         imageView.setBackgroundResource( R.drawable.monkey_ladder_cell_display );
         imageView.setImageResource( R.drawable.monkey_ladder_transparent );
+        imageView.clearColorFilter();
+        imageView.setEnabled( true );
+        imageView.setAlpha( 1.0f );
     }
 
     private void highlightSelectedCell( Integer resourceId ) {
@@ -293,6 +305,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewC
 
         imageView.setBackgroundResource( R.drawable.monkey_ladder_cell_active );
         imageView.setImageResource( R.drawable.monkey_ladder_transparent );
+        imageView.setEnabled( false );
+        imageView.setAlpha( 0.35f );
     }
 
     private void delayDisplayingRound( int millis ) {

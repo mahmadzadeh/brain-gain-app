@@ -25,7 +25,12 @@ public class GameSelectionActivity extends AppCompatActivity {
         } else if ( id == R.id.shapeMatchImg ) {
             throw new RuntimeException( "shapeMatchImg is not implemented" );
         } else if ( id == R.id.monkeyLadderImg ) {
-            new com.monkeyladder.ui.mainscreen.MainActivityIntent( this ).startActivity();
+            new CountdownActivityIntent(this)
+                    .setTitle("Monkey Ladder")
+                    .setIconResId(R.drawable.ml_icon)
+                    .setSeconds(5)
+                    .setTargetActivity("com.monkeyladder.ui.mainscreen.MainActivity")
+                    .startActivity();
         } else if ( id == R.id.dualNBackImg ) {
             new CountdownActivityIntent(this)
                     .setTitle("Dual N-Back")

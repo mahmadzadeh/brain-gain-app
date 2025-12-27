@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.monkeyladder.R;
+import com.mainscreen.ui.countdown.CountdownActivityIntent;
 import com.stroop.ui.countdown.CountDownActivityIntent;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,7 +33,12 @@ public class LandingScreenActivity extends AppCompatActivity implements View.OnC
         } else if ( id == R.id.shapeMatchImg ) {
             throw new RuntimeException( "shapeMatchImg is not implemented" );
         } else if ( id == R.id.monkeyLadderImg ) {
-            new com.monkeyladder.ui.mainscreen.MainActivityIntent( this ).startActivity();
+            new CountdownActivityIntent(this)
+                    .setTitle("Monkey Ladder")
+                    .setIconResId(R.drawable.ml_icon)
+                    .setSeconds(3)
+                    .setTargetActivity("com.monkeyladder.ui.mainscreen.MainActivity")
+                    .startActivity();
         } else if ( id == R.id.dualNBackImg ) {
             new com.dualnback.ui.mainscreen.MainActivityIntent( this ).startActivity();
         } else {
