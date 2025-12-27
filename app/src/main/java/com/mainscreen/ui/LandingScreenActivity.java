@@ -2,7 +2,9 @@ package com.mainscreen.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import com.monkeyladder.R;
 import com.mainscreen.ui.countdown.CountdownActivityIntent;
@@ -17,6 +19,23 @@ public class LandingScreenActivity extends AppCompatActivity implements View.OnC
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_landing_screen );
+
+        final ProgressBar progressBar = findViewById( R.id.splashProgress );
+
+        new CountDownTimer( 5000, 50 ) {
+            @Override
+            public void onTick( long millisUntilFinished ) {
+                int progress = (int) ( ( 5000 - millisUntilFinished ) * 100 / 5000 );
+                progressBar.setProgress( progress );
+            }
+
+            @Override
+            public void onFinish() {
+                progressBar.setProgress( 100 );
+                startActivity( new Intent( LandingScreenActivity.this, GameSelectionActivity.class ) );
+                finish();
+            }
+        }.start();
     }
 
     // Used by android:onClick on the landing start button.

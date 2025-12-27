@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Global palette gradient: light at top, darker at bottom -->
+    <!-- Global palette gradient (reversed): light at top, darker at bottom -->
     <item>
         <shape android:shape="rectangle">
             <gradient
@@ -12,18 +12,17 @@
         </shape>
     </item>
 
-    <!-- Subtle extra darkening at bottom to make the direction obvious -->
+    <!-- Extra darkening towards the bottom for the "loading" feel -->
     <item>
         <shape android:shape="rectangle">
             <gradient
                 android:angle="270"
                 android:startColor="@android:color/transparent"
-                android:endColor="@color/colorPrimaryDark"
+                android:endColor="#0B1E38"
                 android:type="linear" />
         </shape>
     </item>
 
-    <!-- Network mesh overlay used across the app -->
     <item android:drawable="@drawable/splash_network_pattern" />
 
 </layer-list>

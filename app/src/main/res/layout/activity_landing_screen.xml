@@ -4,104 +4,137 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/brain_gain_background"
+    android:background="@drawable/splash_background"
     tools:context="com.mainscreen.ui.LandingScreenActivity">
 
-    <ImageView
-        android:id="@+id/landingIcon"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="12dp"
-        android:contentDescription="@string/app_name"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/brain_icon"
-        app:tint="@color/colorPrimaryDark" />
-
-    <ImageView
-        android:id="@+id/landingMenu"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="12dp"
-        android:contentDescription="@string/todo"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_sort_by_size" />
-
-    <ImageView
-        android:id="@+id/landingHero"
-        android:layout_width="0dp"
-        android:layout_height="220dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/brain_gain_logo_border"
-        android:contentDescription="@string/app_name"
-        android:elevation="8dp"
-        android:outlineProvider="background"
-        android:padding="18dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/landingIcon"
-        app:srcCompat="@drawable/brain_gain_logo" />
-
     <TextView
-        android:id="@+id/landingTitle"
+        android:id="@+id/splashTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="88dp"
         android:text="@string/brain_gain"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="28sp"
+        android:textSize="44sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/landingHero" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/splashIconGroup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/splashTitle"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.85">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/splashGearGuide"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.57" />
+
+        <ImageView
+            android:id="@+id/splashBrainIcon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitCenter"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/brain_icon"
+            app:tint="@color/colorPrimaryDark" />
+
+        <ImageView
+            android:id="@+id/splashGear1"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="@null"
+            android:rotation="18"
+            app:layout_constraintBottom_toBottomOf="@id/splashBrainIcon"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toStartOf="@id/splashGearGuide"
+            app:layout_constraintTop_toTopOf="@id/splashBrainIcon"
+            app:layout_constraintVertical_bias="0.22"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.11"
+            app:srcCompat="@drawable/ic_gear"
+            app:tint="@color/colorPrimaryDark" />
+
+        <ImageView
+            android:id="@+id/splashGear2"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="@null"
+            android:rotation="-12"
+            app:layout_constraintBottom_toBottomOf="@id/splashBrainIcon"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toStartOf="@id/splashGearGuide"
+            app:layout_constraintTop_toTopOf="@id/splashBrainIcon"
+            app:layout_constraintVertical_bias="0.47"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.085"
+            app:srcCompat="@drawable/ic_gear"
+            app:tint="@color/colorPrimaryDark" />
+
+        <ImageView
+            android:id="@+id/splashGear3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="@null"
+            android:rotation="28"
+            app:layout_constraintBottom_toBottomOf="@id/splashBrainIcon"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toStartOf="@id/splashGearGuide"
+            app:layout_constraintTop_toTopOf="@id/splashBrainIcon"
+            app:layout_constraintVertical_bias="0.66"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent="0.065"
+            app:srcCompat="@drawable/ic_gear"
+            app:tint="@color/colorPrimaryDark" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:id="@+id/landingSubtitle"
+        android:id="@+id/splashTagline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:gravity="center"
-        android:lineSpacingExtra="2dp"
-        android:text="@string/brain_gain_tagline"
+        android:layout_marginTop="32dp"
+        android:text="@string/splash_tagline"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="14sp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:shadowColor="#800B1E38"
+        android:shadowDx="0"
+        android:shadowDy="2"
+        android:shadowRadius="3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/landingTitle" />
+        app:layout_constraintTop_toBottomOf="@id/splashIconGroup" />
 
-    <View
-        android:id="@+id/landingStartGlow"
-        android:layout_width="130dp"
-        android:layout_height="104dp"
-        android:layout_marginTop="12dp"
-        android:alpha="0.45"
-        android:background="@drawable/go_button_glow"
+    <ProgressBar
+        android:id="@+id/splashProgress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="6dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="28dp"
+        android:indeterminate="false"
+        android:max="100"
+        android:progress="0"
+        android:progressBackgroundTint="#26FFFFFF"
+        android:progressTint="#CCFFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/landingSubtitle" />
-
-    <ImageButton
-        android:id="@+id/landingStartButton"
-        android:layout_width="92dp"
-        android:layout_height="72dp"
-        android:layout_marginTop="18dp"
-        android:background="@drawable/go_button_background"
-        android:contentDescription="@string/start"
-        android:elevation="6dp"
-        android:onClick="onStartClicked"
-        android:padding="0dp"
-        android:scaleType="centerInside"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/landingSubtitle"
-        app:srcCompat="@drawable/go_icon"
-        app:tint="@color/colorPrimaryDark" />
-
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

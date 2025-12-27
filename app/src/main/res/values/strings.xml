@@ -2,6 +2,7 @@
     <string name="app_name">Brain Gain</string>
     <string name="brain_gain">Brain Gain</string>
     <string name="brain_gain_tagline">Quick games.\nReal gains.</string>
+    <string name="splash_tagline">Train Your Mind</string>
     <string name="start">Start</string>
     <string name="title_activity_main">title_activity_main</string>
     <string name="levelHeaderText">Level</string>
@@ -24,7 +25,7 @@
     <string name="scoreText">SCORE</string>
     <string name="_11_12">11:12</string>
     <string name="position">Position</string>
-    <string name="audio">Audio</string>>
+    <string name="audio">Audio</string>
     <string name="clock">11:12</string>
     <string name="scoreZero">0</string>
     <string name="time">TIME</string>
