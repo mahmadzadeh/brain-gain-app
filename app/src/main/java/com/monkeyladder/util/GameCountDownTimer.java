@@ -28,10 +28,17 @@ public class GameCountDownTimer implements DisplayCountDownTimerContract {
     @Override
     public void onTick( long millisUntilFinished ) {
         presenter.setDisplayGameBoardProgress( progressCounter.getNextProgressPercentage() );
+
+        int secondsLeft = ( int ) Math.ceil( millisUntilFinished / 1000.0 );
+        presenter.setDisplayGameBoardCountdownText( String.valueOf( Math.max( 0, secondsLeft ) ) );
     }
 
     @Override
     public void onFinish( ) {
+        // Ensure we always end at 100% so the ring is fully closed.
+        presenter.setDisplayGameBoardProgress( 100 );
+        presenter.setDisplayGameBoardCountdownText( "" );
+
         progressCounter.reset();
         presenter.onDisplayTimerFinish();
     }

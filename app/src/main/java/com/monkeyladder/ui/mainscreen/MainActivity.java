@@ -1,6 +1,11 @@
 package com.monkeyladder.ui.mainscreen;
 
+import android.animation.ArgbEvaluator;
+import android.animation.ValueAnimator;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -40,8 +45,11 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewC
     private final Timer gameUpdateTimer = new Timer( false );
     private MainActivityPresenter presenter = null;
     private ProgressBar progressBar;
+    private TextView countdownText;
     private ImageView resultImage;
-    private ImageView livesImage;
+    private ImageView life1;
+    private ImageView life2;
+    private ImageView life3;
 
     private boolean isReadyForUserInput = false;
 
@@ -64,6 +72,9 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewC
     @Override
     public void displayBoard( List<LocationData> locationsThatAreSet ) {
 
+        // Hide all cells, then show only the numbered ones.
+        clearScreen();
+
         locationsThatAreSet
                 .stream()
                 .forEach( locationData -> {
@@ -72,7 +83,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewC
                             .orElseThrow( ( ) -> new RuntimeException( "" ) );
 
                     ImageView imageView = findViewById( resourceId );
-                    imageView.setBackgroundColor( getResources().getColor( R.color.colorPrimaryDark ) );
+                    imageView.setVisibility( View.VISIBLE );
+                    imageView.setBackgroundResource( R.drawable.monkey_ladder_cell_display );
                     imageView.setImageResource(
                             dataMapping.drawableResourceIdFor( locationData.getData() )
                                     .orElseThrow( ( ) -> new RuntimeException(
@@ -87,6 +99,13 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewC
     }
 
     @Override
+    public void updateDisplayBoardCountdownText( String text ) {
+        if ( countdownText != null ) {
+            countdownText.setText( text );
+        }
+    }
+
+    @Override
     public void clearScreen( ) {
         locationMapping
                 .getMapping()
@@ -94,6 +113,42 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewC
                 .stream()
                 .forEach( resourceId -> clearResource( resourceId ) );
 
+    }
+
+    @Override
+    public void showInputBoard( List<LocationData> locationsThatAreSet ) {
+
+        // Hide all cells, then show only the ones that were numbered.
+        clearScreen();
+
+        int startColor = getResources().getColor( R.color.monkeyLadderCellLight );
+        int endColor = getResources().getColor( R.color.colorPrimaryDark );
+
+        locationsThatAreSet
+                .stream()
+                .forEach( locationData -> {
+                    Integer resourceId = locationMapping
+                            .resourceIdForLocation( locationData.getLocation() )
+                            .orElseThrow( ( ) -> new RuntimeException( "" ) );
+
+                    ImageView imageView = findViewById( resourceId );
+                    imageView.setVisibility( View.VISIBLE );
+
+                    // Hide numbers.
+                    imageView.setImageResource( R.drawable.monkey_ladder_transparent );
+
+                    // Start in the light-blue state and animate to dark-blue over 2 seconds.
+                    imageView.setBackgroundResource( R.drawable.monkey_ladder_cell_display );
+                    GradientDrawable bg = ( GradientDrawable ) imageView.getBackground().mutate();
+
+                    ValueAnimator animator = ValueAnimator.ofObject( new ArgbEvaluator(), startColor, endColor );
+                    animator.setDuration( 1000 );
+                    animator.addUpdateListener( a -> bg.setColor( ( Integer ) a.getAnimatedValue() ) );
+                    animator.start();
+                } );
+
+        // Only allow input once the transition completes.
+        new Handler( Looper.getMainLooper() ).postDelayed( ( ) -> setReadyToTakeUserInput( true ), 1000 );
     }
 
     @Override
@@ -145,7 +200,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewC
         Integer resourceId = locationMapping.resourceIdForLocation( location )
                 .orElseThrow( ( ) -> new IllegalStateException( "Invalid location " + location ) );
 
-        clearHighlightedCell( resourceId );
+        highlightSelectedCell( resourceId );
 
         presenter.addSelectedLocation( location );
     }
@@ -182,27 +237,37 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewC
 
     @Override
     public void updateLivesInUI( PlayerLives lives ) {
+        int visibleLives;
+
         switch ( lives.getHealth() ) {
             case Danger:
-                this.livesImage.setImageResource( R.drawable.monkey_ladder_one_life );
+                visibleLives = 1;
                 break;
             case Warning:
-                this.livesImage.setImageResource( R.drawable.monkey_ladder_two_lives );
+                visibleLives = 2;
                 break;
             case Healthy:
-                this.livesImage.setImageResource( R.drawable.monkey_ladder_three_lives );
+                visibleLives = 3;
                 break;
             default:
                 throw new RuntimeException( "Unable to determine the health image to be used " +
                         "for lives " + lives );
         }
+
+        life1.setVisibility( visibleLives >= 1 ? View.VISIBLE : View.INVISIBLE );
+        life2.setVisibility( visibleLives >= 2 ? View.VISIBLE : View.INVISIBLE );
+        life3.setVisibility( visibleLives >= 3 ? View.VISIBLE : View.INVISIBLE );
     }
 
     private void initUserInterfaceElements( ) {
         progressBar = findViewById( R.id.progressBar );
+        countdownText = findViewById( R.id.countdownText );
         resultImage = findViewById( R.id.userSelectionResult );
-        livesImage = findViewById( R.id.livesImage );
-        livesImage.setImageResource( R.drawable.monkey_ladder_three_lives );
+        life1 = findViewById( R.id.life1 );
+        life2 = findViewById( R.id.life2 );
+        life3 = findViewById( R.id.life3 );
+
+        updateLivesInUI( PlayerLives.getDefaultStartingValue() );
         resultImage.setImageResource( R.drawable.monkey_ladder_expecting_input );
     }
 
@@ -210,14 +275,24 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewC
     private void clearResource( Integer resourceId ) {
         ImageView imageView = findViewById( resourceId );
 
+        imageView.setVisibility( View.INVISIBLE );
+        imageView.setBackgroundResource( R.drawable.monkey_ladder_cell_display );
         imageView.setImageResource( R.drawable.monkey_ladder_transparent );
     }
 
     private void clearHighlightedCell( Integer resourceId ) {
-
         ImageView imageView = findViewById( resourceId );
 
-        imageView.setBackgroundColor( getResources().getColor( R.color.colorPrimary ) );
+        imageView.setVisibility( View.INVISIBLE );
+        imageView.setBackgroundResource( R.drawable.monkey_ladder_cell_display );
+        imageView.setImageResource( R.drawable.monkey_ladder_transparent );
+    }
+
+    private void highlightSelectedCell( Integer resourceId ) {
+        ImageView imageView = findViewById( resourceId );
+
+        imageView.setBackgroundResource( R.drawable.monkey_ladder_cell_active );
+        imageView.setImageResource( R.drawable.monkey_ladder_transparent );
     }
 
     private void delayDisplayingRound( int millis ) {

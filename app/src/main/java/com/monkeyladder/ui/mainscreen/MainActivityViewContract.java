@@ -14,7 +14,11 @@ interface MainActivityViewContract {
 
     void clearScreen( );
 
+    void showInputBoard( List<LocationData> board );
+
     void updateDisplayBoardProgressBar( int progress );
+
+    void updateDisplayBoardCountdownText( String text );
 
     void displayUserSelectionCorrectFeedback( );
 

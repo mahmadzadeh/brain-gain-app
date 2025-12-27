@@ -51,9 +51,16 @@ class MainActivityPresenter implements MainActivityPresenterContract {
     }
 
     @Override
+    public void setDisplayGameBoardCountdownText( String text ) {
+        view.updateDisplayBoardCountdownText( text );
+    }
+
+    @Override
     public void onDisplayTimerFinish( ) {
-        view.clearScreen();
-        view.setReadyToTakeUserInput( true );
+        // Transition the displayed (numbered) cells into the "input" state (no numbers).
+        view.setReadyToTakeUserInput( false );
+        view.updateDisplayBoardCountdownText( "" );
+        view.showInputBoard( model.getCellsThatAreSet() );
     }
 
     @Override
@@ -80,11 +87,6 @@ class MainActivityPresenter implements MainActivityPresenterContract {
         } else {
             startOneRound();
         }
-    }
-
-    @Override
-    public GameState getCurrentGameState( ) {
-        return model.getCurrentGameState();
     }
 
 }

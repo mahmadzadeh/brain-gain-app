@@ -13,9 +13,10 @@ public interface MainActivityPresenterContract {
 
     void setDisplayGameBoardProgress( int formatTime );
 
+    void setDisplayGameBoardCountdownText( String text );
+
     void addSelectedLocation( Location location );
 
     void endOneRound( );
 
-    GameState getCurrentGameState( );
 }

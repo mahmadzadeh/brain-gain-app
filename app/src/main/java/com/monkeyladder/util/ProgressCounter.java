@@ -2,27 +2,22 @@ package com.monkeyladder.util;
 
 public class ProgressCounter {
 
-    private final int duration;
-    private final int oneTick;
     private final int counts;
-    private final int increments;
+    private final double increments;
 
-    private int progress;
+    private double progress;
 
     public ProgressCounter( int duration, int oneTick ) {
 
-        this.duration = duration;
-        this.oneTick = oneTick;
         counts = duration / oneTick;
-        increments = 100 / counts;
+        increments = 100.0 / counts;
         progress = 0;
     }
-
 
     public int getNextProgressPercentage( ) {
         progress += increments;
 
-        return progress;
+        return ( int ) Math.min( 100, Math.round( progress ) );
     }
 
     public void reset( ) {
