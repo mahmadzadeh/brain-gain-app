@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layoutHolder"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:baselineAligned="false">
+
+    <LinearLayout
+        android:id="@+id/left_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight=".5"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/left_layout_top_left"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:background="@color/colorPrimary">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/gridMarginRight"
+                android:layout_marginTop="@dimen/gridMarginTop"
+                android:layout_marginEnd="@dimen/gridMarginRight"
+                android:layout_marginBottom="@dimen/gridMarginBottom"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="20dp">
+
+                    <ImageView
+                        android:id="@+id/text_00"
+
+                        android:layout_width="20dp"
+                        android:layout_height="50dp"
+                        android:layout_margin="2dp"
+                        android:layout_marginRight="1dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/monkey_ladder_nothing"
+                        android:contentDescription="TODO"
+                        android:onClick="onClick"
+                        android:scaleType="fitXY" />
+
+                    <ImageView
+                        android:id="@+id/text_01"
+                        android:layout_width="20dp"
+                        android:layout_height="50dp"
+
+                        android:layout_margin="2dp"
+                        android:layout_marginRight="1dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/monkey_ladder_nothing"
+                        android:onClick="onClick"
+                        android:scaleType="fitXY" />
+
+                    <ImageView
+                        android:id="@+id/text_02"
+                        android:layout_width="20dp"
+                        android:layout_height="50dp"
+
+                        android:layout_margin="2dp"
+                        android:layout_marginRight="1dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/monkey_ladder_nothing"
+                        android:onClick="onClick"
+                        android:scaleType="fitXY" />
+
+                    <ImageView
+                        android:id="@+id/text_03"
+                        android:layout_width="20dp"
+                        android:layout_height="50dp"
+
+                        android:layout_margin="2dp"
+                        android:layout_marginRight="1dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/monkey_ladder_nothing"
+                        android:onClick="onClick"
+                        android:scaleType="fitXY" />
+
+                    <ImageView
+                        android:id="@+id/text_04"
+                        android:layout_width="20dp"
+                        android:layout_height="50dp"
+
+                        android:layout_margin="2dp"
+                        android:layout_marginRight="1dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/monkey_ladder_nothing"
+                        android:onClick="onClick"
+                        android:scaleType="fitXY" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/text_10"
+                        android:layout_width="20dp"
+                        android:layout_height="50dp"
+
+                        android:layout_margin="2dp"
+                        android:layout_marginRight="1dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/monkey_ladder_nothing"
+                        android:contentDescription="TODO"
+                        android:onClick="onClick"
+                        android:scaleType="fitXY" />
+
+                    <ImageView
+                        android:id="@+id/text_11"
+                        android:layout_width="20dp"
+                        android:layout_height="50dp"
+
+                        android:layout_margin="2dp"
+                        android:layout_marginRight="1dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/monkey_ladder_nothing"
+                        android:onClick="onClick"
+                        android:scaleType="fitXY" />
+
+                    <ImageView
+                        android:id="@+id/text_12"
+                        android:layout_width="20dp"
+                        android:layout_height="50dp"
+
+                        android:layout_margin="2dp"
+                        android:layout_marginRight="1dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/monkey_ladder_nothing"
+                        android:onClick="onClick"
+                        android:scaleType="fitXY" />
+
+                    <ImageView
+                        android:id="@+id/text_13"
+                        android:layout_width="20dp"
+                        android:layout_height="50dp"
+
+                        android:layout_margin="2dp"
+                        android:layout_marginRight="1dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/monkey_ladder_nothing"
+                        android:onClick="onClick"
+                        android:scaleType="fitXY" />
+
+                    <ImageView
+                        android:id="@+id/text_14"
+                        android:layout_width="20dp"
+                        android:layout_height="50dp"
+
+                        android:layout_margin="2dp"
+                        android:layout_marginRight="1dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/monkey_ladder_nothing"
+                        android:onClick="onClick"
+                        android:scaleType="fitXY" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/text_20"
+                        android:layout_width="20dp"
+                        android:layout_height="50dp"
+
+                        android:layout_margin="2dp"
+                        android:layout_marginRight="1dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/monkey_ladder_nothing"
+                        android:contentDescription="TODO"
+                        android:onClick="onClick"
+                        android:scaleType="fitXY" />
+
+                    <ImageView
+                        android:id="@+id/text_21"
+                        android:layout_width="20dp"
+                        android:layout_height="50dp"
+
+                        android:layout_margin="2dp"
+                        android:layout_marginRight="1dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/monkey_ladder_nothing"
+                        android:onClick="onClick"
+                        android:scaleType="fitXY" />
+
+                    <ImageView
+                        android:id="@+id/text_22"
+                        android:layout_width="20dp"
+                        android:layout_height="50dp"
+
+                        android:layout_margin="2dp"
+                        android:layout_marginRight="1dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/monkey_ladder_nothing"
+                        android:onClick="onClick"
+                        android:scaleType="fitXY" />
+
+                    <ImageView
+                        android:id="@+id/text_23"
+                        android:layout_width="20dp"
+                        android:layout_height="50dp"
+
+                        android:layout_margin="2dp"
+                        android:layout_marginRight="1dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/monkey_ladder_nothing"
+                        android:onClick="onClick"
+                        android:scaleType="fitXY" />
+
+                    <ImageView
+                        android:id="@+id/text_24"
+                        android:layout_width="20dp"
+                        android:layout_height="50dp"
+
+                        android:layout_margin="2dp"
+                        android:layout_marginRight="1dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/monkey_ladder_nothing"
+                        android:onClick="onClick"
+                        android:scaleType="fitXY" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/text_30"
+                        android:layout_width="20dp"
+                        android:layout_height="50dp"
+
+                        android:layout_margin="2dp"
+                        android:layout_marginRight="1dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/monkey_ladder_nothing"
+                        android:contentDescription="TODO"
+                        android:onClick="onClick"
+                        android:scaleType="fitXY" />
+
+                    <ImageView
+                        android:id="@+id/text_31"
+                        android:layout_width="20dp"
+                        android:layout_height="50dp"
+
+                        android:layout_margin="2dp"
+                        android:layout_marginRight="1dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/monkey_ladder_nothing"
+                        android:onClick="onClick"
+                        android:scaleType="fitXY" />
+
+                    <ImageView
+                        android:id="@+id/text_32"
+                        android:layout_width="20dp"
+                        android:layout_height="50dp"
+
+                        android:layout_margin="2dp"
+                        android:layout_marginRight="1dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/monkey_ladder_nothing"
+                        android:onClick="onClick"
+                        android:scaleType="fitXY" />
+
+                    <ImageView
+                        android:id="@+id/text_33"
+                        android:layout_width="20dp"
+                        android:layout_height="50dp"
+
+                        android:layout_margin="2dp"
+                        android:layout_marginRight="1dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/monkey_ladder_nothing"
+                        android:onClick="onClick"
+                        android:scaleType="fitXY" />
+
+                    <ImageView
+                        android:id="@+id/text_34"
+                        android:layout_width="20dp"
+                        android:layout_height="50dp"
+                        android:layout_margin="2dp"
+                        android:layout_marginRight="1dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/monkey_ladder_nothing"
+                        android:onClick="onClick"
+                        android:scaleType="fitXY" />
+                </TableRow>
+            </TableLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/rightLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="2.5"
+        android:orientation="vertical"
+        android:scrollbarAlwaysDrawHorizontalTrack="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/left_layout_top_right"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:background="@color/colorPrimary">
+
+            <TextView
+                android:id="@+id/textViewGameName"
+                android:layout_width="137dp"
+                android:layout_height="43dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="55dp"
+                android:gravity="top|bottom|center"
+                android:text="@string/monkeyLadder"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/monkeyLadderTextSize"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <ImageView
+                android:id="@+id/userSelectionResult"
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="32dp"
+                android:gravity="center_horizontal"
+                android:textColor="#FFFFFF"
+                android:textSize="30sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textViewGameName" />
+
+            <!--user lives section-->
+            <ImageView
+                android:id="@+id/livesCircle"
+                android:layout_width="match_parent"
+                android:layout_height="74dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="32dp"
+                android:gravity="center_horizontal"
+                android:src="@drawable/monkey_ladder_round_circle_background"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/userSelectionResult" />
+
+            <ImageView
+                android:id="@+id/livesImage"
+                android:layout_width="match_parent"
+                android:layout_height="74dp"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="15dp"
+                android:src="@drawable/monkey_ladder_one_life"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/userSelectionResult" />
+
+            <ImageView
+                android:id="@+id/scoreCircleImage"
+                android:layout_width="match_parent"
+                android:layout_height="74dp"
+                android:src="@drawable/monkey_ladder_round_circle_background"
+                app:layout_constraintTop_toBottomOf="@+id/livesCircle" />
+
+            <TextView
+                android:id="@+id/textViewScoreText"
+                android:layout_width="match_parent"
+                android:layout_height="74dp"
+                android:layout_marginTop="33dp"
+                android:fontFamily="monospace"
+                android:gravity="top|center"
+                android:text="@string/scoreHeaderText"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/scoreCircleImage"
+                app:layout_constraintTop_toTopOf="@+id/scoreCircleImage" />
+
+            <TextView
+                android:id="@+id/score"
+                android:layout_width="match_parent"
+                android:layout_height="74dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/zeroScore"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/scoreCircleImage"
+                app:layout_constraintTop_toTopOf="@+id/scoreCircleImage" />
+
+            <androidx.core.widget.ContentLoadingProgressBar
+                android:id="@+id/progressBar"
+                style="?android:progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="74dp"
+
+                android:progress="0"
+                android:progressDrawable="@drawable/monkey_ladder_circle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/scoreCircleImage" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- Game name section -->
+    </LinearLayout>
+</LinearLayout>

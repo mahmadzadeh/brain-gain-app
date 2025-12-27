@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/brain_gain_background"
+    tools:context="com.mainscreen.ui.LandingScreenActivity">
+
+    <ImageView
+        android:id="@+id/landingIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/brain_icon"
+        app:tint="@color/colorPrimaryDark" />
+
+    <ImageView
+        android:id="@+id/landingMenu"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        android:contentDescription="@string/todo"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_sort_by_size" />
+
+    <ImageView
+        android:id="@+id/landingHero"
+        android:layout_width="0dp"
+        android:layout_height="220dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/brain_gain_logo_border"
+        android:contentDescription="@string/app_name"
+        android:elevation="8dp"
+        android:outlineProvider="background"
+        android:padding="18dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/landingIcon"
+        app:srcCompat="@drawable/brain_gain_logo" />
+
+    <TextView
+        android:id="@+id/landingTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/brain_gain"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/landingHero" />
+
+    <TextView
+        android:id="@+id/landingSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:lineSpacingExtra="2dp"
+        android:text="@string/brain_gain_tagline"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/landingTitle" />
+
+    <View
+        android:id="@+id/landingStartGlow"
+        android:layout_width="130dp"
+        android:layout_height="104dp"
+        android:layout_marginTop="12dp"
+        android:alpha="0.45"
+        android:background="@drawable/go_button_glow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/landingSubtitle" />
+
+    <ImageButton
+        android:id="@+id/landingStartButton"
+        android:layout_width="92dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="18dp"
+        android:background="@drawable/go_button_background"
+        android:contentDescription="@string/start"
+        android:elevation="6dp"
+        android:onClick="onStartClicked"
+        android:padding="0dp"
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/landingSubtitle"
+        app:srcCompat="@drawable/go_icon"
+        app:tint="@color/colorPrimaryDark" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

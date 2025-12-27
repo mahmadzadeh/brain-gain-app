@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/brain_gain_background"
+    android:fitsSystemWindows="true"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:paddingTop="24dp"
+    android:paddingBottom="48dp">
+
+    <ImageView
+        android:id="@+id/countdownIcon"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:contentDescription="Icon"
+        android:src="@drawable/dnb_icon"
+        app:layout_constraintBottom_toTopOf="@id/countdownTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread_inside" />
+
+    <TextView
+        android:id="@+id/countdownTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Dual N-Back"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/countdownRingContainer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/countdownIcon" />
+
+    <FrameLayout
+        android:id="@+id/countdownRingContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        app:layout_constrainedWidth="true"
+        app:layout_constrainedHeight="true"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintWidth_percent="0.32"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/countdownTitle"
+        app:layout_constraintBottom_toTopOf="@id/countdownSubtitle">
+
+        <ProgressBar
+            android:id="@+id/countdownRing"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:indeterminate="false"
+            android:progress="0"
+            android:progressDrawable="@drawable/countdown_ring" />
+
+        <TextView
+            android:id="@+id/countdownNumber"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="3"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="56sp"
+            android:textStyle="bold" />
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/countdownSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="16dp"
+        android:text="Get ready"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/countdownRingContainer" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

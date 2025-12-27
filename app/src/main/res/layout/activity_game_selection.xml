@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/brain_gain_background"
+    tools:context="com.mainscreen.ui.GameSelectionActivity">
+
+    <ImageView
+        android:id="@+id/selectionIcon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/brain_icon"
+        app:tint="@color/colorPrimaryDark" />
+
+    <ImageView
+        android:id="@+id/selectionMenu"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        android:contentDescription="@string/todo"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_sort_by_size" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/centerGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <!-- Dual N-Back (dnb) -->
+    <FrameLayout
+        android:id="@+id/dualNBackImg"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/game_tile_border"
+        android:clickable="true"
+        android:elevation="6dp"
+        android:focusable="true"
+        android:onClick="onClick"
+        android:outlineProvider="background"
+        app:layout_constraintEnd_toStartOf="@id/centerGuideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="18dp"
+            app:srcCompat="@drawable/dnb_icon" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:gravity="center"
+            android:paddingBottom="10dp"
+            android:text="Dual N Back"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </FrameLayout>
+
+    <!-- Monkey Ladder (ml) -->
+    <FrameLayout
+        android:id="@+id/monkeyLadderImg"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/game_tile_border"
+        android:clickable="true"
+        android:elevation="6dp"
+        android:focusable="true"
+        android:onClick="onClick"
+        android:outlineProvider="background"
+        app:layout_constraintStart_toEndOf="@id/centerGuideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="22dp"
+            app:srcCompat="@drawable/ml_icon" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:gravity="center"
+            android:paddingBottom="10dp"
+            android:text="Monkey Ladder"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </FrameLayout>
+
+    <!-- Stroop (str) -->
+    <FrameLayout
+        android:id="@+id/stroopImg"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/game_tile_border"
+        android:clickable="true"
+        android:elevation="6dp"
+        android:focusable="true"
+        android:onClick="onClick"
+        android:outlineProvider="background"
+        app:layout_constraintEnd_toStartOf="@id/centerGuideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dualNBackImg">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="22dp"
+            app:srcCompat="@drawable/stroop_icon" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:gravity="center"
+            android:paddingBottom="10dp"
+            android:text="Stroop"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </FrameLayout>
+
+    <!-- Shape Match (sm) -->
+    <FrameLayout
+        android:id="@+id/shapeMatchImg"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="22dp"
+        android:background="@drawable/game_tile_border"
+        android:clickable="true"
+        android:elevation="6dp"
+        android:focusable="true"
+        android:onClick="onClick"
+        android:outlineProvider="background"
+        app:layout_constraintStart_toEndOf="@id/centerGuideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/monkeyLadderImg">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="22dp"
+            app:srcCompat="@drawable/sm_icon" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:gravity="center"
+            android:paddingBottom="10dp"
+            android:text="Shape Match"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </FrameLayout>
+
+    <!-- Stats placeholder -->
+    <TextView
+        android:id="@+id/statsBox"
+        android:layout_width="160dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/stats_box_border"
+        android:elevation="8dp"
+        android:gravity="center"
+        android:outlineProvider="background"
+        android:text="stat"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/stroopImg" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

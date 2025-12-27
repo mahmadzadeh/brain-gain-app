@@ -1,0 +1,15 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Hourglass outline (looks cleaner at small sizes) -->
+    <path
+        android:fillColor="#12305A"
+        android:fillType="evenOdd"
+        android:pathData="M6,2h12v3c0,2.4 -1.35,4.5 -3.5,5.8c2.15,1.3 3.5,3.4 3.5,5.8v3H6v-3c0,-2.4 1.35,-4.5 3.5,-5.8C7.35,9.5 6,7.4 6,5V2z
+        M8.8,4.5v0.5c0,1.7 1.4,3.1 3.1,3.1h0.2c1.7,0 3.1,-1.4 3.1,-3.1v-0.5H8.8z
+        M11.9,15.9h-0.2c-1.7,0 -3.1,1.4 -3.1,3.1v0.5h6.6V19c0,-1.7 -1.4,-3.1 -3.1,-3.1z
+        M10.2,9.6h3.6v0.9c0,0.5 -0.2,1 -0.6,1.4l-1.2,1.2l-1.2,-1.2c-0.4,-0.4 -0.6,-0.9 -0.6,-1.4v-0.9z" />
+</vector>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="gridMarginTop">55dp</dimen>
+    <dimen name="gridMarginBottom">55dp</dimen>
+    <dimen name="gridMarginLeft">150dp</dimen>
+    <dimen name="gridMarginRight">150dp</dimen>
+</resources>

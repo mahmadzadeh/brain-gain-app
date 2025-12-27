@@ -23,9 +23,22 @@ public class SoundPlayer {
 
     public void soundFeedbackForUserInput( boolean givenCorrectAnswer ) {
         if ( givenCorrectAnswer ) {
-            ding.start();
+            safeStart( ding );
         } else {
-            buzzer.start();
+            safeStart( buzzer );
+        }
+    }
+
+    private void safeStart( MediaPlayer player ) {
+        if ( player == null ) {
+            return;
+        }
+
+        try {
+            player.seekTo( 0 );
+            player.start();
+        } catch ( IllegalStateException ignored ) {
+            // No-op
         }
     }
 }

@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -46,8 +46,8 @@ public class MainActivity extends AppCompatActivity implements MainScreenView {
 
     private final Timer gameUpdateTimer = new Timer( false );
     private TextView countDownTextView;
-    private Button soundMatchButton;
-    private Button locationMatchButton;
+    private ImageButton soundMatchButton;
+    private ImageButton locationMatchButton;
     private TextView scoreTxt;
     private ImageView positionMatchFeedBackImg;
     private ImageView soundMatchFeedBackImg;

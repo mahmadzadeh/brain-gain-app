@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.monkeyladder">
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.MonkeyLadder">
+        <activity
+            android:name="com.mainscreen.ui.LandingScreenActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:exported="true"
+            android:label="@string/title_activity_landing"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.mainscreen.ui.GameSelectionActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name="com.monkeyladder.ui.mainscreen.MainActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:exported="true"
+            android:label="@string/title_activity_main"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+        <activity
+            android:name=".ui.continuescreen.ContinueScreenActivity"
+            android:label="@string/titleContinueScreen"
+            android:screenOrientation="landscape"></activity>
+        <activity
+            android:name="com.chart.ui.ChartActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/title_activity_chart"
+            android:noHistory="true"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.dualnback.ui.mainscreen.MainActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/title_activity_main"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name="com.mainscreen.ui.countdown.CountdownActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:noHistory="true"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name="com.stroop.ui.countdown.CountDownActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/countdown_title"
+            android:noHistory="true"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name="com.stroop.ui.mainscreen.MainActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/stroop_game"
+            android:noHistory="true"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+    </application>
+
+</manifest>

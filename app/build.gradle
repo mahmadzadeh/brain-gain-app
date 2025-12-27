@@ -3,12 +3,14 @@ plugins {
 }
 
 android {
-    compileSdkVersion 32
+    namespace = "com.monkeyladder"
+
+    compileSdkVersion 34
 
     defaultConfig {
         applicationId "com.monkeyladder"
         minSdkVersion 24
-        targetSdkVersion 32
+        targetSdkVersion 34
         versionCode 1
         versionName "1.0"
 
@@ -27,7 +29,9 @@ android {
         targetCompatibility JavaVersion.VERSION_11
     }
     packagingOptions {
-        exclude 'asm-license.txt'
+        resources {
+            excludes += ['asm-license.txt']
+        }
     }
 }
 
@@ -43,6 +47,6 @@ dependencies {
     implementation 'org.apache.commons:commons-lang3:3.0'
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.json:json:20210307'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }

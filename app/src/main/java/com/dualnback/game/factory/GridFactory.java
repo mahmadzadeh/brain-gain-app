@@ -12,8 +12,8 @@ import static java.util.stream.IntStream.range;
 public class GridFactory {
 
     public static DualBackGrid instance( ) {
-        int onImg = R.mipmap.square_blue;
-        int offImg = R.mipmap.square;
+        int onImg = R.drawable.dnb_cell_on;
+        int offImg = R.drawable.dnb_cell_off;
 
         List<List<Cell>> grid =
                 range( 0, 3 )

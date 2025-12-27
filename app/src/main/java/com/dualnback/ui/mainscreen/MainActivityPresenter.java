@@ -26,8 +26,9 @@ import static com.dualnback.util.NumberFormatterUtil.formatScore;
 public class MainActivityPresenter implements MainViewContract.Presenter {
 
     public static final int TIME_FOR_TEXT_COLOUR_CHANGE = 10;
-    public static final int COUNT_DOWN_WARNING_COLOUR = Color.YELLOW;
-    public static final int TIME_TEXT_NORMAL_COLOUR = Color.WHITE;
+    // Keep DnB within the Brain Gain blue palette.
+    public static final int COUNT_DOWN_WARNING_COLOUR = Color.parseColor( "#12305A" );
+    public static final int TIME_TEXT_NORMAL_COLOUR = Color.parseColor( "#12305A" );
 
     private final MainScreenView mainScreenView;
     private final MainActivityModel model;

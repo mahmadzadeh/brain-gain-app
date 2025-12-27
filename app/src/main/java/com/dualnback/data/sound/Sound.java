@@ -13,7 +13,16 @@ public abstract class Sound {
     abstract int getSoundResource( );
 
     public void playSound( ) {
-        mediaPlayer.start();
+        if ( mediaPlayer == null ) {
+            return;
+        }
+
+        try {
+            mediaPlayer.seekTo( 0 );
+            mediaPlayer.start();
+        } catch ( IllegalStateException ignored ) {
+            // No-op: if the underlying MediaPlayer is not in a valid state, don't crash the game.
+        }
     }
 
     @Override

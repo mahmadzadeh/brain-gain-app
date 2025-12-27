@@ -1,5 +1,6 @@
 package com.mainscreen.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -15,6 +16,11 @@ public class LandingScreenActivity extends AppCompatActivity implements View.OnC
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_landing_screen );
+    }
+
+    // Used by android:onClick on the landing start button.
+    public void onStartClicked( View view ) {
+        startActivity( new Intent( this, GameSelectionActivity.class ) );
     }
 
     @Override
