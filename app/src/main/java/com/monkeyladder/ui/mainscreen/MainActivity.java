@@ -2,6 +2,7 @@ package com.monkeyladder.ui.mainscreen;
 
 import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
+import android.content.Intent;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.chart.ui.ChartActivityIntent;
 import com.monkeyladder.R;
 import com.monkeyladder.game.GameLevel;
 import com.monkeyladder.game.GameState;
@@ -235,10 +235,20 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewC
 
     @Override
     public void onGameEnd( GameState gameState ) {
-        new ChartActivityIntent( this )
-                .addScore( gameState.getScore() )
-                .addDate( new Date() )
-                .startActivity();
+        Date date = new Date();
+
+        Intent continueIntent = new Intent( this, com.mainscreen.ui.continuescreen.ContinueActivity.class );
+        continueIntent.putExtra( com.mainscreen.ui.continuescreen.ContinueActivity.EXTRA_TITLE, "Monkey Ladder" );
+        continueIntent.putExtra( com.mainscreen.ui.continuescreen.ContinueActivity.EXTRA_ICON_RES_ID, R.drawable.ml_icon );
+        continueIntent.putExtra( com.mainscreen.ui.continuescreen.ContinueActivity.EXTRA_SCORE_TEXT, "Score " + gameState.getScore() );
+        continueIntent.putExtra( com.mainscreen.ui.continuescreen.ContinueActivity.EXTRA_REPLAY_ACTIVITY, "com.monkeyladder.ui.mainscreen.MainActivity" );
+
+        continueIntent.putExtra( com.mainscreen.ui.continuescreen.ContinueActivity.EXTRA_SHOW_STATS, true );
+        continueIntent.putExtra( com.chart.ui.ChartActivityIntent.FINAL_SCORE, gameState.getScore() );
+        continueIntent.putExtra( com.chart.ui.ChartActivityIntent.DATE, com.util.DateUtil.format( date ) );
+
+        startActivity( continueIntent );
+        finish();
     }
 
     @Override

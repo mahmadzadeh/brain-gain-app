@@ -60,6 +60,10 @@
             android:noHistory="true"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name="com.mainscreen.ui.continuescreen.ContinueActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.stroop.ui.countdown.CountDownActivity"
             android:configChanges="orientation|keyboardHidden"

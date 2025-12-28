@@ -17,7 +17,7 @@ import com.dualnback.data.sound.SoundCollection;
 import com.dualnback.game.NBackVersion;
 import com.dualnback.game.factory.GameParameters;
 import com.dualnback.game.factory.SoundCollectionFactory;
-import com.dualnback.ui.continuescreen.ContinueScreenActivity;
+import com.mainscreen.ui.continuescreen.ContinueActivity;
 import com.monkeyladder.R;
 
 import java.util.Optional;
@@ -165,12 +165,14 @@ public class MainActivity extends AppCompatActivity implements MainScreenView {
     public void onFinish( double currentScore ) {
         setCountDownText( "00:00" );
 
-        Intent countDownIntent = new Intent( this, ContinueScreenActivity.class );
+        Intent continueIntent = new Intent( this, ContinueActivity.class );
 
-        countDownIntent.putExtra( FINAL_SCORE, currentScore );
-        countDownIntent.putExtra( VERSION, version.getTextRepresentation() );
+        continueIntent.putExtra( ContinueActivity.EXTRA_TITLE, version.getTextRepresentation() );
+        continueIntent.putExtra( ContinueActivity.EXTRA_ICON_RES_ID, R.drawable.dnb_icon );
+        continueIntent.putExtra( ContinueActivity.EXTRA_SCORE_TEXT, "Score " + com.dualnback.util.NumberFormatterUtil.formatScore( currentScore ) );
+        continueIntent.putExtra( ContinueActivity.EXTRA_REPLAY_ACTIVITY, "com.dualnback.ui.startscreen.StartScreenActivity" );
 
-        startActivity( countDownIntent );
+        startActivity( continueIntent );
     }
 
     @Override
