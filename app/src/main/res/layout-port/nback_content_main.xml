@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layoutHolder"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/brain_gain_background"
+    android:padding="14dp">
+
+    <!-- Header (icon + name) -->
+    <LinearLayout
+        android:id="@+id/topHeader"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/dnbHeaderIcon"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:contentDescription="Dual N-Back"
+            android:src="@drawable/dnb_icon"
+            app:tint="@color/colorPrimaryDark" />
+
+        <TextView
+            android:id="@+id/textViewGameName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:includeFontPadding="false"
+            android:text="Dual N-Back"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <!-- Stats row: Time + Score -->
+    <LinearLayout
+        android:id="@+id/statsRow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topHeader">
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="92dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/dnb_stat_circle_bg"
+            android:elevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp">
+
+                <ImageView
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:contentDescription="Time"
+                    android:src="@drawable/dnb_ic_hourglass"
+                    app:tint="@color/colorPrimaryDark" />
+
+                <TextView
+                    android:id="@+id/textViewCountDownTimer"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/_11_12"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="92dp"
+            android:layout_weight="1"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/dnb_stat_circle_bg"
+            android:elevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp">
+
+                <ImageView
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:contentDescription="Score"
+                    android:src="@drawable/dnb_ic_monitor"
+                    app:tint="@color/colorPrimaryDark" />
+
+                <TextView
+                    android:id="@+id/textViewScore"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/_0"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <!-- Board + feedback (feedback sits OUTSIDE the grid, left/right) -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/boardRow"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginBottom="14dp"
+        app:layout_constraintBottom_toTopOf="@id/matchButtonsRow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/statsRow">
+
+        <ImageView
+            android:id="@+id/positionMatchFeedBackImg"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:alpha="0.85"
+            android:src="@drawable/nback_transparent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/boardContainer"
+            app:tint="@color/colorPrimaryDark" />
+
+        <FrameLayout
+            android:id="@+id/boardContainer"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/nback_border"
+            android:elevation="6dp"
+            android:padding="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toStartOf="@id/soundMatchFeedBackImg"
+            app:layout_constraintStart_toEndOf="@id/positionMatchFeedBackImg"
+            app:layout_constraintTop_toTopOf="parent" >
+
+            <GridLayout
+                android:id="@+id/gridLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:columnCount="3"
+                android:rowCount="3">
+
+                <ImageView android:id="@+id/image_00" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_row="0" android:layout_rowWeight="1" android:layout_column="0" android:layout_columnWeight="1" android:layout_marginRight="2dp" android:layout_marginBottom="2dp" android:scaleType="fitXY" android:src="@drawable/dnb_cell_off" />
+                <ImageView android:id="@+id/image_01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_row="0" android:layout_rowWeight="1" android:layout_column="1" android:layout_columnWeight="1" android:layout_marginRight="2dp" android:layout_marginBottom="2dp" android:scaleType="fitXY" android:src="@drawable/dnb_cell_off" />
+                <ImageView android:id="@+id/image_02" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_row="0" android:layout_rowWeight="1" android:layout_column="2" android:layout_columnWeight="1" android:layout_marginBottom="2dp" android:scaleType="fitXY" android:src="@drawable/dnb_cell_off" />
+
+                <ImageView android:id="@+id/image_10" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_row="1" android:layout_rowWeight="1" android:layout_column="0" android:layout_columnWeight="1" android:layout_marginRight="2dp" android:layout_marginBottom="2dp" android:scaleType="fitXY" android:src="@drawable/dnb_cell_off" />
+                <ImageView android:id="@+id/image_11" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_row="1" android:layout_rowWeight="1" android:layout_column="1" android:layout_columnWeight="1" android:layout_marginRight="2dp" android:layout_marginBottom="2dp" android:scaleType="fitXY" android:src="@drawable/dnb_cell_off" />
+                <ImageView android:id="@+id/image_12" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_row="1" android:layout_rowWeight="1" android:layout_column="2" android:layout_columnWeight="1" android:layout_marginBottom="2dp" android:scaleType="fitXY" android:src="@drawable/dnb_cell_off" />
+
+                <ImageView android:id="@+id/image_20" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_row="2" android:layout_rowWeight="1" android:layout_column="0" android:layout_columnWeight="1" android:layout_marginRight="2dp" android:scaleType="fitXY" android:src="@drawable/dnb_cell_off" />
+                <ImageView android:id="@+id/image_21" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_row="2" android:layout_rowWeight="1" android:layout_column="1" android:layout_columnWeight="1" android:layout_marginRight="2dp" android:scaleType="fitXY" android:src="@drawable/dnb_cell_off" />
+                <ImageView android:id="@+id/image_22" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_row="2" android:layout_rowWeight="1" android:layout_column="2" android:layout_columnWeight="1" android:cropToPadding="false" android:scaleType="fitXY" android:src="@drawable/dnb_cell_off" />
+            </GridLayout>
+
+        </FrameLayout>
+
+        <ImageView
+            android:id="@+id/soundMatchFeedBackImg"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:alpha="0.85"
+            android:src="@drawable/nback_transparent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/boardContainer"
+            app:tint="@color/colorPrimaryDark" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Input buttons (bottom) -->
+    <LinearLayout
+        android:id="@+id/matchButtonsRow"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingBottom="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="10dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/positionMatchButton"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@drawable/dnb_action_button_bg"
+                android:contentDescription="@string/positionMatch"
+                android:padding="6dp"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/dnb_ic_location" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Location"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="10dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/soundMatchButton"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:background="@drawable/dnb_action_button_bg"
+                android:contentDescription="@string/soundMatch"
+                android:padding="6dp"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/dnb_ic_music" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Sound"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
