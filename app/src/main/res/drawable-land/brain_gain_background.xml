@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Same gradient as portrait -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="270"
+                android:startColor="#9BBEE0"
+                android:endColor="#5E84B5"
+                android:type="linear" />
+        </shape>
+    </item>
+
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="270"
+                android:startColor="@android:color/transparent"
+                android:endColor="@color/colorPrimaryDark"
+                android:type="linear" />
+        </shape>
+    </item>
+
+    <!-- In landscape: don't scale the mesh (it looks stretched); place multiple meshes so it fills wide screens. -->
+    <item
+        android:width="360dp"
+        android:height="640dp"
+        android:gravity="left|center_vertical"
+        android:drawable="@drawable/splash_network_pattern" />
+
+    <item
+        android:width="360dp"
+        android:height="640dp"
+        android:gravity="center"
+        android:drawable="@drawable/splash_network_pattern" />
+
+    <item
+        android:width="360dp"
+        android:height="640dp"
+        android:gravity="right|center_vertical"
+        android:drawable="@drawable/splash_network_pattern" />
+
+</layer-list>
