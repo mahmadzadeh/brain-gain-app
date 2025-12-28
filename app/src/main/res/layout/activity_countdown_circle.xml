@@ -31,46 +31,42 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="22sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/countdownRingContainer"
+        app:layout_constraintBottom_toTopOf="@id/countdownNumber"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/countdownIcon" />
 
-    <FrameLayout
-        android:id="@+id/countdownRingContainer"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="12dp"
-        app:layout_constrainedWidth="true"
-        app:layout_constrainedHeight="true"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintWidth_percent="0.32"
+    <TextView
+        android:id="@+id/countdownNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:text="3"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="56sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/countdownRing"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/countdownTitle"
-        app:layout_constraintBottom_toTopOf="@id/countdownSubtitle">
+        app:layout_constraintTop_toBottomOf="@id/countdownTitle" />
 
-        <ProgressBar
-            android:id="@+id/countdownRing"
-            style="@android:style/Widget.ProgressBar.Horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:indeterminate="false"
-            android:progress="0"
-            android:progressDrawable="@drawable/countdown_ring" />
-
-        <TextView
-            android:id="@+id/countdownNumber"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="3"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="56sp"
-            android:textStyle="bold" />
-
-    </FrameLayout>
+    <ProgressBar
+        android:id="@+id/countdownRing"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="10dp"
+        android:layout_marginTop="12dp"
+        android:indeterminate="false"
+        android:max="100"
+        android:progress="0"
+        android:progressBackgroundTint="#2612305A"
+        android:progressTint="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/countdownNumber"
+        app:layout_constraintBottom_toTopOf="@id/countdownSubtitle"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent="0.55" />
 
     <TextView
         android:id="@+id/countdownSubtitle"
@@ -84,6 +80,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/countdownRingContainer" />
+        app:layout_constraintTop_toBottomOf="@id/countdownRing" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

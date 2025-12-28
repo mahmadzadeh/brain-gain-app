@@ -111,7 +111,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/splash_tagline"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="@color/colorPrimary"
         android:textSize="18sp"
         android:textStyle="bold"
         android:shadowColor="#800B1E38"
@@ -121,6 +121,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/splashIconGroup" />
+
+    <View
+        android:id="@+id/splashTaglineUnderline"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="2dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="@id/splashTagline"
+        app:layout_constraintStart_toStartOf="@id/splashTagline"
+        app:layout_constraintTop_toBottomOf="@id/splashTagline" />
 
     <ProgressBar
         android:id="@+id/splashProgress"
