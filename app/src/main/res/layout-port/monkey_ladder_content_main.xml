@@ -4,237 +4,164 @@
     android:id="@+id/layoutHolder"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/brain_gain_background">
+    android:background="@drawable/brain_gain_background"
+    android:padding="14dp">
 
-    <!-- Left(80%) / Right(20%) split (match DnB) -->
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/rightPanelGuideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.80" />
-
-    <!-- ===== RIGHT (sidebar) ===== -->
+    <!-- Header (icon + name) -->
     <LinearLayout
-        android:id="@+id/rightSidebar"
+        android:id="@+id/topHeader"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@android:color/transparent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/rightPanelGuideline"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <!-- divider line removed (not in mockup) -->
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:visibility="gone" />
+        <ImageView
+            android:id="@+id/monkeyLadderHeaderIcon"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:contentDescription="Monkey Ladder"
+            android:src="@drawable/ml_icon"
+            app:tint="@color/colorPrimaryDark" />
 
-        <!-- inset panel -->
-        <LinearLayout
-            android:id="@+id/rightPanelContainer"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+        <TextView
+            android:id="@+id/textViewGameName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="18dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="18dp"
-            android:background="@color/colorPrimaryDark"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
-
-            <!-- Header (icon + name) -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingStart="12dp"
-                android:paddingTop="14dp"
-                android:paddingEnd="12dp"
-                android:paddingBottom="14dp">
-
-                <ImageView
-                    android:id="@+id/monkeyLadderHeaderIcon"
-                    android:layout_width="36dp"
-                    android:layout_height="36dp"
-                    android:contentDescription="Monkey Ladder"
-                    android:src="@drawable/ml_icon"
-                    app:tint="@color/monkeyLadderCellLight" />
-
-                <TextView
-                    android:id="@+id/textViewGameName"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_weight="1"
-                    android:includeFontPadding="false"
-                    android:maxLines="2"
-                    android:text="Monkey\nLadder"
-                    android:textColor="@color/monkeyLadderCellLight"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:background="#9BBEE0" />
-
-            <!-- SCORE oval -->
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="14dp"
-                android:layout_marginEnd="12dp"
-                android:layout_weight="1"
-                android:minHeight="84dp"
-                android:background="@drawable/dnb_stat_circle_bg"
-                android:elevation="4dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="8dp"
-                        android:contentDescription="Score"
-                        android:src="@drawable/monkey_ladder_ic_steps" />
-
-                    <Space
-                        android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1" />
-
-                    <TextView
-                        android:id="@+id/score"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="14dp"
-                        android:gravity="center"
-                        android:text="@string/zeroScore"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="22sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-            </FrameLayout>
-
-            <!-- TIMER oval -->
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="14dp"
-                android:layout_marginEnd="12dp"
-                android:layout_weight="1"
-                android:minHeight="84dp"
-                android:background="@drawable/dnb_stat_circle_bg"
-                android:elevation="4dp">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:id="@+id/timerIcon"
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
-                        android:layout_marginTop="10dp"
-                        android:contentDescription="Timer"
-                        android:src="@drawable/dnb_ic_hourglass"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <ProgressBar
-                        android:id="@+id/progressBar"
-                        style="@android:style/Widget.ProgressBar.Horizontal"
-                        android:layout_width="54dp"
-                        android:layout_height="54dp"
-                        android:indeterminate="false"
-                        android:max="100"
-                        android:progress="0"
-                        android:progressDrawable="@drawable/countdown_ring"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/timerIcon"
-                        app:layout_constraintVertical_bias="0.62" />
-
-                    <TextView
-                        android:id="@+id/countdownText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:includeFontPadding="false"
-                        android:text=""
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="@id/progressBar"
-                        app:layout_constraintEnd_toEndOf="@id/progressBar"
-                        app:layout_constraintStart_toStartOf="@id/progressBar"
-                        app:layout_constraintTop_toTopOf="@id/progressBar" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </FrameLayout>
-
-
-
-            <ImageView
-                android:id="@+id/userSelectionResult"
-                android:layout_width="1dp"
-                android:layout_height="1dp"
-                android:visibility="gone" />
-
-        </LinearLayout>
+            android:includeFontPadding="false"
+            android:text="Monkey Ladder"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
-    <View
-        android:id="@+id/rightDivider"
+    <!-- Score + timer row -->
+    <LinearLayout
+        android:id="@+id/statsRow"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!-- ===== LEFT (play area) ===== -->
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/leftPlayArea"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="14dp"
-        android:layout_marginEnd="14dp"
-        android:layout_marginBottom="14dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/rightPanelGuideline"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/topHeader">
 
         <FrameLayout
-            android:id="@+id/boardContainer"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginBottom="12dp"
-            android:background="@android:color/transparent"
-            android:elevation="0dp"
-            android:padding="0dp"
-            app:layout_constraintBottom_toTopOf="@id/livesPanel"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="92dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/dnb_stat_circle_bg"
+            android:elevation="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="6dp"
+                    android:contentDescription="Score"
+                    android:src="@drawable/monkey_ladder_ic_steps" />
+
+                <TextView
+                    android:id="@+id/score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:gravity="center"
+                    android:text="@string/zeroScore"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="92dp"
+            android:layout_weight="1"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/dnb_stat_circle_bg"
+            android:elevation="4dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/timerIcon"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_marginTop="10dp"
+                    android:contentDescription="Timer"
+                    android:src="@drawable/dnb_ic_hourglass"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="54dp"
+                    android:layout_height="54dp"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="0"
+                    android:progressDrawable="@drawable/countdown_ring"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/timerIcon"
+                    app:layout_constraintVertical_bias="0.62" />
+
+                <TextView
+                    android:id="@+id/countdownText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:text=""
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="@id/progressBar"
+                    app:layout_constraintEnd_toEndOf="@id/progressBar"
+                    app:layout_constraintStart_toStartOf="@id/progressBar"
+                    app:layout_constraintTop_toTopOf="@id/progressBar" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/userSelectionResult"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:visibility="gone" />
+
+    <!-- Board -->
+    <FrameLayout
+        android:id="@+id/boardContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginBottom="12dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintBottom_toTopOf="@id/livesPanel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/statsRow"
+        app:layout_constraintDimensionRatio="5:4">
 
         <GridLayout
             android:layout_width="match_parent"
@@ -243,6 +170,7 @@
             android:columnCount="5"
             android:rowCount="4"
             android:useDefaultMargins="false">
+
             <ImageView android:id="@+id/text_00" android:layout_width="0dp" android:layout_height="0dp" android:layout_column="0" android:layout_columnWeight="1" android:layout_row="0" android:layout_rowWeight="1" android:layout_margin="6dp" android:background="@drawable/monkey_ladder_cell_display" android:onClick="onClick" android:scaleType="fitCenter" android:src="@drawable/monkey_ladder_transparent" />
             <ImageView android:id="@+id/text_01" android:layout_width="0dp" android:layout_height="0dp" android:layout_column="1" android:layout_columnWeight="1" android:layout_row="0" android:layout_rowWeight="1" android:layout_margin="6dp" android:background="@drawable/monkey_ladder_cell_display" android:onClick="onClick" android:scaleType="fitCenter" android:src="@drawable/monkey_ladder_transparent" />
             <ImageView android:id="@+id/text_02" android:layout_width="0dp" android:layout_height="0dp" android:layout_column="2" android:layout_columnWeight="1" android:layout_row="0" android:layout_rowWeight="1" android:layout_margin="6dp" android:background="@drawable/monkey_ladder_cell_display" android:onClick="onClick" android:scaleType="fitCenter" android:src="@drawable/monkey_ladder_transparent" />
@@ -269,19 +197,18 @@
 
         </GridLayout>
 
-        </FrameLayout>
+    </FrameLayout>
 
-        <!-- Lives (bottom-left) -->
-        <FrameLayout
-            android:id="@+id/livesPanel"
-            android:layout_width="120dp"
-            android:layout_height="44dp"
-            android:layout_marginStart="0dp"
-            android:layout_marginBottom="0dp"
-            android:background="@drawable/monkey_ladder_lives_panel_bg"
-            android:padding="6dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
+    <!-- Lives (bottom) -->
+    <FrameLayout
+        android:id="@+id/livesPanel"
+        android:layout_width="140dp"
+        android:layout_height="44dp"
+        android:background="@drawable/monkey_ladder_lives_panel_bg"
+        android:padding="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
             android:id="@+id/livesRow"
@@ -298,7 +225,7 @@
                 android:contentDescription="Life 1"
                 android:scaleType="fitCenter"
                 android:src="@drawable/ml_heart"
-                app:tint="@color/colorPrimary" />
+                android:tint="@color/colorPrimary" />
 
             <ImageView
                 android:id="@+id/life2"
@@ -308,7 +235,7 @@
                 android:contentDescription="Life 2"
                 android:scaleType="fitCenter"
                 android:src="@drawable/ml_heart"
-                app:tint="@color/colorPrimary" />
+                android:tint="@color/colorPrimary" />
 
             <ImageView
                 android:id="@+id/life3"
@@ -322,8 +249,6 @@
 
         </LinearLayout>
 
-        </FrameLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

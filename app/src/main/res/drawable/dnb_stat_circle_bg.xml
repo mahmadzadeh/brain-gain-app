@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
-    android:shape="oval">
+    android:shape="rectangle">
 
-    <solid android:color="#C5E0F4" />
-
-    <stroke
-        android:width="2dp"
-        android:color="@color/colorPrimaryDark" />
+    <!-- Translucent like game tiles, but with a "capsule" feel (no stretched ovals) -->
+    <solid android:color="#33FFFFFF" />
+    <stroke android:width="2dp" android:color="@color/colorPrimaryDark" />
+    <corners android:radius="18dp" />
 
 </shape>

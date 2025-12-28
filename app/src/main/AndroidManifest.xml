@@ -33,7 +33,7 @@
             android:configChanges="orientation|keyboardHidden"
             android:exported="true"
             android:label="@string/title_activity_main"
-            android:screenOrientation="landscape"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
@@ -46,7 +46,7 @@
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/title_activity_chart"
             android:noHistory="true"
-            android:screenOrientation="landscape"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name="com.dualnback.ui.mainscreen.MainActivity"
@@ -58,7 +58,7 @@
             android:name="com.mainscreen.ui.countdown.CountdownActivity"
             android:configChanges="orientation|keyboardHidden"
             android:noHistory="true"
-            android:screenOrientation="landscape"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity

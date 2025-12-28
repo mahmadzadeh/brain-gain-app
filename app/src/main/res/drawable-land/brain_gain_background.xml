@@ -41,4 +41,15 @@
         android:gravity="right|center_vertical"
         android:drawable="@drawable/splash_network_pattern" />
 
+    <!-- Fade the mesh out near the top in landscape too -->
+    <item android:height="140dp" android:gravity="top">
+        <shape android:shape="rectangle">
+            <gradient
+                android:angle="270"
+                android:startColor="#9BBEE0"
+                android:endColor="@android:color/transparent"
+                android:type="linear" />
+        </shape>
+    </item>
+
 </layer-list>
