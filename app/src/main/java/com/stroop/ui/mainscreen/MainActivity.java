@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import com.mainscreen.ui.continuescreen.ContinueActivity;
 import com.monkeyladder.R;
+import com.util.DateUtil;
+
+import java.util.Date;
 import com.stroop.GameCountDownTimer;
 import com.stroop.GameObjects;
 import com.stroop.StroopGame;
@@ -94,11 +97,16 @@ public class MainActivity extends AppCompatActivity {
 
         this.coutdownTimerTxt.setText( TIMER_START_TIME );
 
+        Date date = new Date();
+
         Intent continueIntent = new Intent( this, ContinueActivity.class );
         continueIntent.putExtra( ContinueActivity.EXTRA_TITLE, "Stroop" );
         continueIntent.putExtra( ContinueActivity.EXTRA_ICON_RES_ID, R.drawable.stroop_icon );
         continueIntent.putExtra( ContinueActivity.EXTRA_SCORE_TEXT, "Score " + stroopGame.getScore() );
         continueIntent.putExtra( ContinueActivity.EXTRA_REPLAY_ACTIVITY, "com.stroop.ui.mainscreen.MainActivity" );
+        continueIntent.putExtra( ContinueActivity.EXTRA_SHOW_STATS, true );
+        continueIntent.putExtra( com.chart.ui.ChartActivityIntent.FINAL_SCORE, stroopGame.getScore() );
+        continueIntent.putExtra( com.chart.ui.ChartActivityIntent.DATE, DateUtil.format( date ) );
 
         startActivity( continueIntent );
     }

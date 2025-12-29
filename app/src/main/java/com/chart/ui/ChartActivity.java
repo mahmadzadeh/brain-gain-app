@@ -2,6 +2,8 @@ package com.chart.ui;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.chart.filesystem.dao.DataPoint;
 import com.github.mikephil.charting.charts.LineChart;
@@ -35,6 +37,14 @@ public class ChartActivity extends AppCompatActivity implements ChartView {
 
         setContentView( R.layout.monkey_ladder_chart_screen );
 
+        // Set icon and title dynamically
+        ImageView statsIcon = findViewById( R.id.statsIcon );
+        int iconResId = getIntent().getIntExtra( com.mainscreen.ui.continuescreen.ContinueActivity.EXTRA_ICON_RES_ID, R.drawable.monkey_ladder_icon );
+        statsIcon.setImageResource( iconResId );
+
+        TextView statsTitle = findViewById( R.id.statsTitle );
+        statsTitle.setText( "Performance Stats" );
+
         LineChart lineChart = findViewById( R.id.line_chart );
 
         DataPoint lastDataPoint = IntentUtility.extractDatePointFromExtras( getIntent().getExtras() );
@@ -48,14 +58,20 @@ public class ChartActivity extends AppCompatActivity implements ChartView {
 
         continueButton.setOnClickListener( v -> {
             presenter.saveData();
-            StartScreenActivityIntentUtil.backToStartScreen( v, ChartActivity.this );
+            finish();
+            startActivity( new android.content.Intent( this, com.mainscreen.ui.GameSelectionActivity.class ) );
         } );
 
+        String replayActivity = getIntent().getStringExtra( com.mainscreen.ui.continuescreen.ContinueActivity.EXTRA_REPLAY_ACTIVITY );
         playAgainButton.setOnClickListener( v -> {
             presenter.saveData();
             finish();
-            // Start the main activity again
-            startActivity( new android.content.Intent( this, com.monkeyladder.ui.mainscreen.MainActivity.class ) );
+            try {
+                Class<?> activityClass = Class.forName( replayActivity );
+                startActivity( new android.content.Intent( this, activityClass ) );
+            } catch ( ClassNotFoundException e ) {
+                e.printStackTrace();
+            }
         } );
     }
 

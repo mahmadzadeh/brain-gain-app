@@ -7,7 +7,7 @@ import java.util.Date;
 public class DateUtil {
 
     public static final String FORMAT_PATTERN = "yyyy-MM-dd'T'HH:mm:ss";
-    public static final String FORMAT_PATTERN_FOR_CHART_DISPLAY = "yyyy/MM/dd-HH:mm:ss";
+    public static final String FORMAT_PATTERN_FOR_CHART_DISPLAY = "MM/dd HH:mm";
 
     public static Date parse( String date, String format ) {
         return new SimpleDateFormat( format )

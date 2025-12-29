@@ -15,21 +15,21 @@ import java.util.Date;
 import java.util.List;
 
 public class ChartUtil {
-    public static final int GREEN = Color.rgb( 123, 220, 76 );
+    public static final int CHART_COLOR = Color.rgb( 18, 48, 90 ); // colorPrimaryDark #12305A
 
     public static LineDataSet dataSetForYAxis( List<Entry> entries ) {
         LineDataSet dataSet = new LineDataSet( entries, "Data Sets" );
 
         dataSet.enableDashedLine( 10f, 5f, 0f );
         dataSet.enableDashedHighlightLine( 10f, 5f, 0f );
-        dataSet.setColor( GREEN );
-        dataSet.setCircleColor( GREEN );
+        dataSet.setColor( CHART_COLOR );
+        dataSet.setCircleColor( CHART_COLOR );
         dataSet.setLineWidth( 1f );
         dataSet.setCircleRadius( 3f );
         dataSet.setDrawCircleHole( false );
         dataSet.setValueTextSize( 9f );
         dataSet.setDrawFilled( true );
-        dataSet.setFillColor( GREEN );
+        dataSet.setFillColor( CHART_COLOR );
         dataSet.setValueTextColor( Color.WHITE );
 
         return dataSet;
@@ -39,8 +39,7 @@ public class ChartUtil {
 
     public static void setUpChart( LineChart chart, LineData data ) {
         Description desc = new Description();
-        desc.setText( SCORE_DATA_DESC );
-        desc.setTextColor( Color.RED );
+        desc.setEnabled( false );
         chart.setDescription( desc );
 
         chart.getAxisLeft().setTextColor( Color.WHITE );
@@ -52,7 +51,7 @@ public class ChartUtil {
         yAxis.setValueFormatter( new ValueFormatter() {
             @Override
             public String getFormattedValue( float value ) {
-                return DateUtil.format( new Date( ( long ) value ) );
+                return DateUtil.formatForChartUI( new Date( ( long ) value ) );
             }
         } );
     }
