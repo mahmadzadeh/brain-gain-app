@@ -1,0 +1,25 @@
+{
+  "data": [
+    {
+      "datapoint": {
+        "date": "2024-01-15T12:00:00",
+        "score": 75,
+        "version": "Dual 2-Back"
+      }
+    },
+    {
+      "datapoint": {
+        "date": "2024-01-15T13:00:00",
+        "score": 82,
+        "version": "Dual 3-Back"
+      }
+    },
+    {
+      "datapoint": {
+        "date": "2024-01-15T14:00:00",
+        "score": 91,
+        "version": "Dual 4-Back"
+      }
+    }
+  ]
+}

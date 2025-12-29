@@ -4,12 +4,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dualnback.data.filesystem.dao.DataPoint;
+import com.dualnback.data.filesystem.dao.DataPointCollection;
+import com.dualnback.data.filesystem.dao.FileBasedDao;
+import com.dualnback.data.filesystem.io.FileIO;
+import com.dualnback.data.filesystem.util.FileUtil;
 import com.dualnback.data.location.LocationCollection;
 import com.dualnback.data.settings.ApplicationConfig;
 import com.dualnback.data.settings.ConfigReader;
@@ -20,6 +25,7 @@ import com.dualnback.game.factory.SoundCollectionFactory;
 import com.mainscreen.ui.continuescreen.ContinueActivity;
 import com.monkeyladder.R;
 
+import java.util.Date;
 import java.util.Optional;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -29,6 +35,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import static com.dualnback.data.filesystem.dao.DataFileUtil.readAllData;
 import static com.dualnback.game.VersionSelection.currentLevel;
 import static com.dualnback.ui.mainscreen.MainActivityPresenter.TIME_TEXT_NORMAL_COLOUR;
+import static com.dualnback.util.DateUtil.*;
 import static com.monkeyladder.R.drawable.nback_checkmark;
 import static com.monkeyladder.R.drawable.nback_xmark;
 
@@ -61,8 +68,14 @@ public class MainActivity extends AppCompatActivity implements MainScreenView {
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate( savedInstanceState );
 
+        Log.d("DualNBack", "=== onCreate START ===");
+        Log.d("DualNBack", "Calling getCurrentVersion with thresholds: upgrade=" + MIN_REQUIRED_SC0RE_TO_GO_TO_NEXT_LVL + ", maintain=" + MIN_REQUIRED_SC0RE_TO_MAINTAIN_CURRENT_LVL);
+
         version = getCurrentVersion( MIN_REQUIRED_SC0RE_TO_GO_TO_NEXT_LVL,
                 MIN_REQUIRED_SC0RE_TO_MAINTAIN_CURRENT_LVL );
+
+        Log.d("DualNBack", "Selected version: " + version.getTextRepresentation());
+        Log.d("DualNBack", "=== onCreate END ===");
 
         if ( presenter == null ) {
             presenter = new MainActivityPresenter( this,
@@ -163,16 +176,45 @@ public class MainActivity extends AppCompatActivity implements MainScreenView {
     }
 
     public void onFinish( double currentScore ) {
+        Log.d("DualNBack", "=== GAME FINISHED ===");
+        Log.d("DualNBack", "Final score: " + currentScore + ", version: " + version.getTextRepresentation());
+
         setCountDownText( "00:00" );
+
+        Date date = new Date();
+
+        // Save game result with version info for level adjustment
+        saveGameResult( date, (int) currentScore, version );
 
         Intent continueIntent = new Intent( this, ContinueActivity.class );
 
         continueIntent.putExtra( ContinueActivity.EXTRA_TITLE, version.getTextRepresentation() );
         continueIntent.putExtra( ContinueActivity.EXTRA_ICON_RES_ID, R.drawable.dual_n_back_main_icon );
         continueIntent.putExtra( ContinueActivity.EXTRA_SCORE_TEXT, "Score " + com.dualnback.util.NumberFormatterUtil.formatScore( currentScore ) );
-        continueIntent.putExtra( ContinueActivity.EXTRA_REPLAY_ACTIVITY, "com.dualnback.ui.startscreen.StartScreenActivity" );
+        continueIntent.putExtra( ContinueActivity.EXTRA_REPLAY_ACTIVITY, "com.dualnback.ui.mainscreen.MainActivity" );
+        continueIntent.putExtra( ContinueActivity.EXTRA_SHOW_STATS, true );
+        continueIntent.putExtra( com.chart.ui.ChartActivityIntent.FINAL_SCORE, (int) currentScore );
+        continueIntent.putExtra( com.chart.ui.ChartActivityIntent.DATE, format( date ) );
 
         startActivity( continueIntent );
+    }
+
+    private void saveGameResult( Date date, int score, NBackVersion version ) {
+        Log.d("DualNBack", "=== SAVING GAME RESULT ===");
+        Log.d("DualNBack", "Saving: date=" + date + ", score=" + score + ", version=" + version.getTextRepresentation());
+
+        DataPoint newDataPoint = new DataPoint( date, score, version );
+        DataPointCollection existingData = readAllData( getFilesDir() );
+        Log.d("DualNBack", "Existing data before adding: " + existingData);
+
+        DataPointCollection updatedData = existingData.addDataPoint( newDataPoint );
+        Log.d("DualNBack", "Updated data after adding: " + updatedData);
+
+        new FileBasedDao(
+            new FileIO(FileUtil.getDataFile( getFilesDir() ))
+        ).write( updatedData );
+
+        Log.d("DualNBack", "Save completed successfully");
     }
 
     @Override
@@ -198,8 +240,23 @@ public class MainActivity extends AppCompatActivity implements MainScreenView {
     }
 
     private NBackVersion getCurrentVersion( int minScoreToUpgrade, int minScoreToMaintain ) {
-        Optional<DataPoint> lastDataPoint = readAllData( this.getFilesDir() ).getLastDataPoint();
+        Log.d("DualNBack", "getCurrentVersion called");
 
-        return currentLevel( lastDataPoint, minScoreToUpgrade, minScoreToMaintain );
+        DataPointCollection allData = readAllData( this.getFilesDir() );
+        Log.d("DualNBack", "All data points: " + allData);
+
+        Optional<DataPoint> lastDataPoint = allData.getLastDataPoint();
+
+        if ( lastDataPoint.isPresent() ) {
+            DataPoint dp = lastDataPoint.get();
+            Log.d("DualNBack", "Last data point found: date=" + dp.date() + ", score=" + dp.score() + ", version=" + dp.version().getTextRepresentation());
+        } else {
+            Log.d("DualNBack", "No last data point found - using default");
+        }
+
+        NBackVersion selectedVersion = currentLevel( lastDataPoint, minScoreToUpgrade, minScoreToMaintain );
+        Log.d("DualNBack", "currentLevel returned: " + selectedVersion.getTextRepresentation());
+
+        return selectedVersion;
     }
 }

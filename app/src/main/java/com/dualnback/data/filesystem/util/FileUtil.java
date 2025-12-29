@@ -15,8 +15,6 @@ public class FileUtil {
 
         createFileIfNotExist( file );
 
-        writeEmptyContent( file );
-
         return file;
 
     }
@@ -25,13 +23,12 @@ public class FileUtil {
         if ( !file.exists() ) {
             try {
                 file.createNewFile();
+                // Only write empty content when file is first created
+                writeEmptyContent( file );
             } catch ( IOException e ) {
                 throw new RuntimeException( "Unable create file " + file.getAbsolutePath() );
             }
         }
-
-
-
     }
 
     private static void writeEmptyContent( File file ) {

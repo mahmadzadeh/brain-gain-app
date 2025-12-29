@@ -1,0 +1,67 @@
+{
+  "data": [
+    {
+      "datapoint": {
+        "date": "2024-01-01T10:00:00",
+        "score": 50,
+        "version": "Dual 1-Back"
+      }
+    },
+    {
+      "datapoint": {
+        "date": "2024-01-02T10:00:00",
+        "score": 60,
+        "version": "Dual 2-Back"
+      }
+    },
+    {
+      "datapoint": {
+        "date": "2024-01-03T10:00:00",
+        "score": 70,
+        "version": "Dual 3-Back"
+      }
+    },
+    {
+      "datapoint": {
+        "date": "2024-01-04T10:00:00",
+        "score": 80,
+        "version": "Dual 4-Back"
+      }
+    },
+    {
+      "datapoint": {
+        "date": "2024-01-05T10:00:00",
+        "score": 85,
+        "version": "Dual 5-Back"
+      }
+    },
+    {
+      "datapoint": {
+        "date": "2024-01-06T10:00:00",
+        "score": 90,
+        "version": "Dual 6-Back"
+      }
+    },
+    {
+      "datapoint": {
+        "date": "2024-01-07T10:00:00",
+        "score": 92,
+        "version": "Dual 7-Back"
+      }
+    },
+    {
+      "datapoint": {
+        "date": "2024-01-08T10:00:00",
+        "score": 95,
+        "version": "Dual 8-Back"
+      }
+    },
+    {
+      "datapoint": {
+        "date": "2024-01-09T10:00:00",
+        "score": 98,
+        "version": "Dual 9-Back"
+      }
+    }
+  ]
+}

@@ -62,6 +62,7 @@ public class FileIO implements IO {
             stream = new FileOutputStream( file );
 
             stream.write( data.getBytes() );
+            stream.flush(); // Ensure data is written immediately
 
         } catch ( FileNotFoundException e ) {
 
@@ -73,10 +74,12 @@ public class FileIO implements IO {
 
         } finally {
 
-            try {
-                stream.close();
-            } catch ( IOException e ) {
-                throw new FileIOException( "Unable to close (after writing) file " + file, e );
+            if ( stream != null ) {
+                try {
+                    stream.close();
+                } catch ( IOException e ) {
+                    throw new FileIOException( "Unable to close (after writing) file " + file, e );
+                }
             }
         }
     }

@@ -40,7 +40,7 @@ public class GameState {
             // if next level up is empty optional then they have reached the last level
             level = level.nextLevelUp().orElse( GameLevel.LevelSixteen );
         } else {
-            lives = PlayerLives.fromLifeCount( --lives.lifeCount );
+            lives = PlayerLives.fromLifeCount( lives.lifeCount - 1 );
             score -= level.cellCount();
             level = level.previousLevelDown().orElse( GameLevel.LevelOne );
         }

@@ -53,7 +53,7 @@ public class IntentUtilityTest {
         String key = "key";
         String defaultValue = "default";
 
-        when( mockBundle.get( key ) ).thenReturn( null );
+        // No stubbing needed - bundle is null
 
         String actual = extractFromExtrasWithDefault( null, key, defaultValue );
 

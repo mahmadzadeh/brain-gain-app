@@ -26,7 +26,7 @@ public enum PlayerLives {
         }
     };
 
-    int lifeCount;
+    final int lifeCount;
 
     PlayerLives( int i ) {
         lifeCount = i;

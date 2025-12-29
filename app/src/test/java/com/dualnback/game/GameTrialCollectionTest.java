@@ -8,7 +8,6 @@ import com.dualnback.data.sound.KSound;
 import com.dualnback.data.sound.SSound;
 import com.dualnback.data.util.random.RandomTrialGenerator;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -22,7 +21,6 @@ import static com.dualnback.game.UserInput.NoInput;
 import static com.dualnback.game.UserInput.SoundMatch;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class GameTrialCollectionTest {
@@ -35,15 +33,6 @@ public class GameTrialCollectionTest {
 
     @Mock
     RandomTrialGenerator randomTrialGenerator;
-
-
-    @Before
-    public void setUp( ) {
-        when( randomTrialGenerator.nextTrial() )
-                .thenReturn( new Trial( new Location( 0, 0 ), sSound ) )
-                .thenReturn( new Trial( new Location( 1, 1 ), sSound ) )
-                .thenReturn( new Trial( new Location( 2, 2 ), sSound ) );
-    }
 
     @Test
     public void canCreateTrialCollection( ) {
