@@ -1,4 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/layoutHolder"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -93,15 +94,24 @@
                     android:layout_weight="1"
                     android:orientation="vertical">
 
-                    <Button
+                    <FrameLayout
                         android:id="@+id/leftButton"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/stroop_roundbutton"
-                        android:elegantTextHeight="false"
-                        android:text="RED"
-                        android:textColor="#FF0000"
-                        android:textStyle="bold|italic" />
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:contentDescription="Left Color Button">
+
+                        <TextView
+                            android:id="@+id/leftButtonText"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="RED"
+                            android:textColor="#FF0000"
+                            android:textStyle="bold|italic" />
+                    </FrameLayout>
                 </LinearLayout>
 
                 <LinearLayout
@@ -131,14 +141,24 @@
                     android:layout_weight="1"
                     android:orientation="vertical">
 
-                    <Button
+                    <FrameLayout
                         android:id="@+id/rightButton"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/stroop_roundbutton"
-                        android:text="BLUE"
-                        android:textColor="#16A3F1"
-                        android:textStyle="bold|italic" />
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:contentDescription="Right Color Button">
+
+                        <TextView
+                            android:id="@+id/rightButtonText"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="BLUE"
+                            android:textColor="#16A3F1"
+                            android:textStyle="bold|italic" />
+                    </FrameLayout>
                 </LinearLayout>
 
                 <LinearLayout

@@ -76,7 +76,7 @@
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/stroop_game"
             android:noHistory="true"
-            android:screenOrientation="landscape"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

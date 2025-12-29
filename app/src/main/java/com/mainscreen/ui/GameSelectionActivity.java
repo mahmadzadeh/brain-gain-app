@@ -5,7 +5,6 @@ import android.view.View;
 
 import com.monkeyladder.R;
 import com.mainscreen.ui.countdown.CountdownActivityIntent;
-import com.stroop.ui.countdown.CountDownActivityIntent;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,7 +20,12 @@ public class GameSelectionActivity extends AppCompatActivity {
 
         int id = v.getId();
         if ( id == R.id.stroopImg ) {
-            new CountDownActivityIntent( this ).startActivity();
+            new CountdownActivityIntent(this)
+                    .setTitle("Stroop")
+                    .setIconResId(R.drawable.stroop_icon)
+                    .setSeconds(5)
+                    .setTargetActivity("com.stroop.ui.mainscreen.MainActivity")
+                    .startActivity();
         } else if ( id == R.id.shapeMatchImg ) {
             throw new RuntimeException( "shapeMatchImg is not implemented" );
         } else if ( id == R.id.monkeyLadderImg ) {

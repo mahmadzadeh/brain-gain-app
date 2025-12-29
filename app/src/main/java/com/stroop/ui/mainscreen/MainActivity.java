@@ -4,10 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.widget.Button;
+import android.view.View;
 import android.widget.TextView;
 
-import com.dualnback.ui.continuescreen.ContinueScreenActivity;
+import com.mainscreen.ui.continuescreen.ContinueActivity;
 import com.monkeyladder.R;
 import com.stroop.GameCountDownTimer;
 import com.stroop.GameObjects;
@@ -34,8 +34,10 @@ public class MainActivity extends AppCompatActivity {
     private TextView coutdownTimerTxt;
     private TextView scoreTxt;
     private TextView gameText;
-    private Button leftButton;
-    private Button rightButton;
+    private View leftButton;
+    private View rightButton;
+    private TextView leftButtonText;
+    private TextView rightButtonText;
     private SoundPlayer soundPlayer;
 
     private GameCountDownTimer timer;
@@ -49,8 +51,10 @@ public class MainActivity extends AppCompatActivity {
         coutdownTimerTxt = ( TextView ) findViewById( R.id.textViewCountDownTImer );
         gameText = ( TextView ) findViewById( R.id.textViewGameText );
         scoreTxt = ( TextView ) findViewById( R.id.textViewScore );
-        leftButton = ( Button ) findViewById( R.id.leftButton );
-        rightButton = ( Button ) findViewById( R.id.rightButton );
+        leftButton = findViewById( R.id.leftButton );
+        rightButton = findViewById( R.id.rightButton );
+        leftButtonText = findViewById( R.id.leftButtonText );
+        rightButtonText = findViewById( R.id.rightButtonText );
         soundPlayer = new SoundPlayer( this );
 
         timer = new GameCountDownTimer( this, ONE_ROUND_IN_MILLIS, COUNT_DOWN_INTERVAL_IN_MILLIS );
@@ -90,11 +94,13 @@ public class MainActivity extends AppCompatActivity {
 
         this.coutdownTimerTxt.setText( TIMER_START_TIME );
 
-        Intent countDownIntent = new Intent( this, ContinueScreenActivity.class );
+        Intent continueIntent = new Intent( this, ContinueActivity.class );
+        continueIntent.putExtra( ContinueActivity.EXTRA_TITLE, "Stroop" );
+        continueIntent.putExtra( ContinueActivity.EXTRA_ICON_RES_ID, R.drawable.stroop_icon );
+        continueIntent.putExtra( ContinueActivity.EXTRA_SCORE_TEXT, "Score " + stroopGame.getScore() );
+        continueIntent.putExtra( ContinueActivity.EXTRA_REPLAY_ACTIVITY, "com.stroop.ui.mainscreen.MainActivity" );
 
-        countDownIntent.putExtra( FINAL_SCORE, stroopGame.getScore() );
-
-        startActivity( countDownIntent );
+        startActivity( continueIntent );
     }
 
     @Override
@@ -119,13 +125,13 @@ public class MainActivity extends AppCompatActivity {
                 ? getResources().getColor( R.color.textRed )
                 : getResources().getColor( R.color.textBlue ) );
 
-        this.leftButton.setText( gameState.getLeftButton().getTextState().toString() );
-        this.leftButton.setTextColor( gameState.getLeftButton().getColourState() == RedColour
+        this.leftButtonText.setText( gameState.getLeftButton().getTextState().toString() );
+        this.leftButtonText.setTextColor( gameState.getLeftButton().getColourState() == RedColour
                 ? getResources().getColor( R.color.textRed )
                 : getResources().getColor( R.color.textBlue ) );
 
-        this.rightButton.setText( gameState.getRightButton().getTextState().toString() );
-        this.rightButton.setTextColor( gameState.getRightButton().getColourState() == RedColour
+        this.rightButtonText.setText( gameState.getRightButton().getTextState().toString() );
+        this.rightButtonText.setTextColor( gameState.getRightButton().getColourState() == RedColour
                 ? getResources().getColor( R.color.textRed )
                 : getResources().getColor( R.color.textBlue ) );
 
