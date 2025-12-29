@@ -23,7 +23,7 @@
             android:layout_width="34dp"
             android:layout_height="34dp"
             android:contentDescription="Monkey Ladder"
-            android:src="@drawable/ml_icon"
+            android:src="@drawable/monkey_ladder_icon"
             app:tint="@color/colorPrimaryDark" />
 
         <TextView
@@ -71,7 +71,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="6dp"
                     android:contentDescription="Score"
-                    android:src="@drawable/monkey_ladder_ic_steps" />
+                    android:src="@drawable/trophy_icon" />
 
                 <TextView
                     android:id="@+id/score"
@@ -104,7 +104,7 @@
                     android:layout_height="26dp"
                     android:layout_marginTop="10dp"
                     android:contentDescription="Timer"
-                    android:src="@drawable/dnb_ic_hourglass"
+                    android:src="@drawable/hour_glass"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />

@@ -59,7 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="18dp"
-            app:srcCompat="@drawable/dnb_icon" />
+            app:srcCompat="@drawable/dual_n_back_main_icon" />
 
         <TextView
             android:layout_width="match_parent"
@@ -92,9 +92,9 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="128dp"
             android:padding="22dp"
-            app:srcCompat="@drawable/ml_icon" />
+            app:srcCompat="@drawable/monkey_ladder_icon" />
 
         <TextView
             android:layout_width="match_parent"

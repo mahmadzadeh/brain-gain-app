@@ -239,7 +239,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewC
 
         Intent continueIntent = new Intent( this, com.mainscreen.ui.continuescreen.ContinueActivity.class );
         continueIntent.putExtra( com.mainscreen.ui.continuescreen.ContinueActivity.EXTRA_TITLE, "Monkey Ladder" );
-        continueIntent.putExtra( com.mainscreen.ui.continuescreen.ContinueActivity.EXTRA_ICON_RES_ID, R.drawable.ml_icon );
+        continueIntent.putExtra( com.mainscreen.ui.continuescreen.ContinueActivity.EXTRA_ICON_RES_ID, R.drawable.monkey_ladder_icon );
         continueIntent.putExtra( com.mainscreen.ui.continuescreen.ContinueActivity.EXTRA_SCORE_TEXT, "Score " + gameState.getScore() );
         continueIntent.putExtra( com.mainscreen.ui.continuescreen.ContinueActivity.EXTRA_REPLAY_ACTIVITY, "com.monkeyladder.ui.mainscreen.MainActivity" );
 

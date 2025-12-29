@@ -15,7 +15,7 @@
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:contentDescription="Icon"
-        android:src="@drawable/dnb_icon"
+        android:src="@drawable/dual_n_back_main_icon"
         app:layout_constraintBottom_toTopOf="@id/countdownTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

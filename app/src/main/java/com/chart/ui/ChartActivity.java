@@ -44,10 +44,18 @@ public class ChartActivity extends AppCompatActivity implements ChartView {
         setData( lineChart );
 
         Button continueButton = findViewById( R.id.chart_continue );
+        Button playAgainButton = findViewById( R.id.statsPlayAgain );
 
         continueButton.setOnClickListener( v -> {
             presenter.saveData();
             StartScreenActivityIntentUtil.backToStartScreen( v, ChartActivity.this );
+        } );
+
+        playAgainButton.setOnClickListener( v -> {
+            presenter.saveData();
+            finish();
+            // Start the main activity again
+            startActivity( new android.content.Intent( this, com.monkeyladder.ui.mainscreen.MainActivity.class ) );
         } );
     }
 

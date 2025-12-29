@@ -27,14 +27,14 @@ public class GameSelectionActivity extends AppCompatActivity {
         } else if ( id == R.id.monkeyLadderImg ) {
             new CountdownActivityIntent(this)
                     .setTitle("Monkey Ladder")
-                    .setIconResId(R.drawable.ml_icon)
+                    .setIconResId(R.drawable.monkey_ladder_icon)
                     .setSeconds(5)
                     .setTargetActivity("com.monkeyladder.ui.mainscreen.MainActivity")
                     .startActivity();
         } else if ( id == R.id.dualNBackImg ) {
             new CountdownActivityIntent(this)
                     .setTitle("Dual N-Back")
-                    .setIconResId(R.drawable.dnb_icon)
+                    .setIconResId(R.drawable.dual_n_back_main_icon)
                     .setSeconds(5)
                     .setTargetActivity("com.dualnback.ui.mainscreen.MainActivity")
                     .startActivity();

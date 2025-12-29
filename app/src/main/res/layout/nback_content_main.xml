@@ -392,7 +392,7 @@
                     android:layout_width="44dp"
                     android:layout_height="44dp"
                     android:contentDescription="Dual N Back"
-                    android:src="@drawable/dnb_icon"
+                    android:src="@drawable/dual_n_back_main_icon"
                     app:tint="@color/colorPrimaryDark" />
 
                 <TextView
@@ -437,7 +437,7 @@
                         android:layout_width="28dp"
                         android:layout_height="28dp"
                         android:contentDescription="Time"
-                        android:src="@drawable/dnb_ic_hourglass"
+                        android:src="@drawable/hour_glass"
                         app:tint="@color/colorPrimaryDark" />
 
                     <TextView
@@ -481,7 +481,7 @@
                         android:layout_width="32dp"
                         android:layout_height="32dp"
                         android:contentDescription="Score"
-                        android:src="@drawable/dnb_ic_monitor"
+                        android:src="@drawable/trophy_icon"
                         app:tint="@color/colorPrimaryDark" />
 
                     <TextView

@@ -54,7 +54,7 @@ public class LandingScreenActivity extends AppCompatActivity implements View.OnC
         } else if ( id == R.id.monkeyLadderImg ) {
             new CountdownActivityIntent(this)
                     .setTitle("Monkey Ladder")
-                    .setIconResId(R.drawable.ml_icon)
+                    .setIconResId(R.drawable.monkey_ladder_icon)
                     .setSeconds(3)
                     .setTargetActivity("com.monkeyladder.ui.mainscreen.MainActivity")
                     .startActivity();

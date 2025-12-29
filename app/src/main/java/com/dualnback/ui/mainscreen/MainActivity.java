@@ -168,7 +168,7 @@ public class MainActivity extends AppCompatActivity implements MainScreenView {
         Intent continueIntent = new Intent( this, ContinueActivity.class );
 
         continueIntent.putExtra( ContinueActivity.EXTRA_TITLE, version.getTextRepresentation() );
-        continueIntent.putExtra( ContinueActivity.EXTRA_ICON_RES_ID, R.drawable.dnb_icon );
+        continueIntent.putExtra( ContinueActivity.EXTRA_ICON_RES_ID, R.drawable.dual_n_back_main_icon );
         continueIntent.putExtra( ContinueActivity.EXTRA_SCORE_TEXT, "Score " + com.dualnback.util.NumberFormatterUtil.formatScore( currentScore ) );
         continueIntent.putExtra( ContinueActivity.EXTRA_REPLAY_ACTIVITY, "com.dualnback.ui.startscreen.StartScreenActivity" );
 
