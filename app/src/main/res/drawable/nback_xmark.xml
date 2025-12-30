@@ -7,13 +7,13 @@
 
     <path
         android:pathData="M6,6 L18,18"
-        android:strokeWidth="3"
+        android:strokeWidth="6"
         android:strokeColor="@color/colorPrimaryDark"
         android:strokeLineCap="round" />
 
     <path
         android:pathData="M18,6 L6,18"
-        android:strokeWidth="3"
+        android:strokeWidth="6"
         android:strokeColor="@color/colorPrimaryDark"
         android:strokeLineCap="round" />
 

@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements MainScreenView {
 
     private MainActivityPresenter presenter;
     private ImageView feedbackImage;
+    private ImageView feedbackWrongImage;
     private TextView scoreText;
     private TextView levelText;
     private TextView timerText;
@@ -50,11 +51,12 @@ public class MainActivity extends AppCompatActivity implements MainScreenView {
 
         // Initialize views
         feedbackImage = findViewById( R.id.feedbackImage );
+        feedbackWrongImage = findViewById( R.id.feedbackWrongImage );
         scoreText = findViewById( R.id.scoreText );
         levelText = findViewById( R.id.levelText );
         timerText = findViewById( R.id.timerText );
-        Button matchButton = findViewById( R.id.matchButton );
-        Button mismatchButton = findViewById( R.id.mismatchButton );
+        ImageButton matchButton = findViewById( R.id.matchButton );
+        ImageButton mismatchButton = findViewById( R.id.mismatchButton );
 
         // Wire up button click handlers
         matchButton.setOnClickListener( v -> presenter.handleMatchButtonClick() );
@@ -132,14 +134,18 @@ public class MainActivity extends AppCompatActivity implements MainScreenView {
     @Override
     public void showFeedback( boolean isCorrect ) {
         if ( isCorrect ) {
+            feedbackWrongImage.setImageResource( R.drawable.nback_transparent );
             feedbackImage.setImageResource( R.drawable.nback_checkmark );
         } else {
-            feedbackImage.setImageResource( R.drawable.nback_xmark );
+            feedbackImage.setImageResource( R.drawable.nback_transparent );
+            feedbackWrongImage.setImageResource( R.drawable.nback_xmark );
         }
-        feedbackImage.setVisibility( View.VISIBLE );
 
-        // Hide feedback after 500ms
-        feedbackImage.postDelayed( () -> feedbackImage.setVisibility( View.INVISIBLE ), 500 );
+        // Match Dual N-Back behavior: swap icon, then revert to transparent after 500ms.
+        feedbackImage.postDelayed( () -> {
+            feedbackImage.setImageResource( R.drawable.nback_transparent );
+            feedbackWrongImage.setImageResource( R.drawable.nback_transparent );
+        }, 500 );
     }
 
     @Override
