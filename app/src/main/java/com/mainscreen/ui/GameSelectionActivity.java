@@ -27,7 +27,12 @@ public class GameSelectionActivity extends AppCompatActivity {
                     .setTargetActivity("com.stroop.ui.mainscreen.MainActivity")
                     .startActivity();
         } else if ( id == R.id.shapeMatchImg ) {
-            throw new RuntimeException( "shapeMatchImg is not implemented" );
+            new CountdownActivityIntent(this)
+                    .setTitle("Shape Match")
+                    .setIconResId(R.drawable.shape_match_icon)
+                    .setSeconds(5)
+                    .setTargetActivity("com.shapematch.ui.mainscreen.MainActivity")
+                    .startActivity();
         } else if ( id == R.id.monkeyLadderImg ) {
             new CountdownActivityIntent(this)
                     .setTitle("Monkey Ladder")

@@ -82,4 +82,5 @@
     <string name="recent_performance">Recent performance</string>
     <string name="recent_performance_placeholder">Coming soon</string>
     <string name="stroop_game">Stroop</string>
+    <string name="shape_match_title">Shape Match</string>
 </resources>

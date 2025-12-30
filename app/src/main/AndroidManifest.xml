@@ -78,6 +78,12 @@
             android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name="com.shapematch.ui.mainscreen.MainActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/shape_match_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>
