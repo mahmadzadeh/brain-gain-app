@@ -1,39 +1,84 @@
 package com.shapematch.ui.mainscreen;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.chart.filesystem.dao.DataPoint;
+import com.chart.filesystem.dao.DataPointCollection;
+import com.chart.filesystem.dao.Dao;
+import com.chart.filesystem.dao.FileBasedDao;
+import com.chart.filesystem.io.FileIO;
+import com.chart.filesystem.util.FileUtil;
+import com.chart.ui.ChartActivityIntent;
+import com.mainscreen.ui.continuescreen.ContinueActivity;
 import com.monkeyladder.R;
+import com.util.DateUtil;
 import com.shapematch.game.Cell;
 import com.shapematch.game.CellGrid;
 import com.shapematch.game.CellGridPair;
 import com.shapematch.game.CellGridUtil;
 import com.shapematch.game.GameLevel;
 
+import java.io.File;
+import java.util.Date;
 import java.util.List;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.widget.ImageViewCompat;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements MainScreenView {
+
+    private MainActivityPresenter presenter;
+    private ImageView feedbackImage;
+    private TextView scoreText;
+    private TextView levelText;
+    private TextView timerText;
 
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_shape_match_main );
 
-        // Generate and display random shapes
-        displayRandomShapes();
+        // Initialize presenter
+        presenter = new MainActivityPresenter( this );
+
+        // Initialize views
+        feedbackImage = findViewById( R.id.feedbackImage );
+        scoreText = findViewById( R.id.scoreText );
+        levelText = findViewById( R.id.levelText );
+        timerText = findViewById( R.id.timerText );
+        Button matchButton = findViewById( R.id.matchButton );
+        Button mismatchButton = findViewById( R.id.mismatchButton );
+
+        // Wire up button click handlers
+        matchButton.setOnClickListener( v -> presenter.handleMatchButtonClick() );
+        mismatchButton.setOnClickListener( v -> presenter.handleMismatchButtonClick() );
+
+        // Display initial game state
+        presenter.displayCurrentState();
     }
 
-    private void displayRandomShapes() {
+    @Override
+    protected void onStart() {
+        super.onStart();
+        presenter.startTimer();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        presenter.pauseTimer();
+    }
+
+    public void displayGrids( CellGridPair gridPair ) {
         try {
-            // Generate grids for level 5 (5 random shapes)
-            android.util.Log.d("ShapeMatch", "Generating grid pair for level 5");
-            CellGridPair gridPair = CellGridUtil.getShapesForLevel( new GameLevel( 5 ) );
-            android.util.Log.d("ShapeMatch", "Grid pair generated successfully");
+            android.util.Log.d("ShapeMatch", "Displaying grids");
 
             // Display left grid
             List<List<Cell>> leftGrid = gridPair.leftGrid().populateGridCells();
@@ -45,9 +90,9 @@ public class MainActivity extends AppCompatActivity {
             android.util.Log.d("ShapeMatch", "Right grid populated with " + rightGrid.size() + " rows");
             displayGrid( rightGrid, "rightCell" );
 
-            android.util.Log.d("ShapeMatch", "Shapes displayed successfully");
+            android.util.Log.d("ShapeMatch", "Grids displayed successfully");
         } catch (Exception e) {
-            android.util.Log.e("ShapeMatch", "Error displaying shapes", e);
+            android.util.Log.e("ShapeMatch", "Error displaying grids", e);
         }
     }
 
@@ -80,5 +125,81 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         android.util.Log.d("ShapeMatch", "Total shapes displayed in " + cellIdPrefix + " grid: " + shapesDisplayed);
+    }
+
+    // MainScreenView interface implementations
+
+    @Override
+    public void showFeedback( boolean isCorrect ) {
+        if ( isCorrect ) {
+            feedbackImage.setImageResource( R.drawable.nback_checkmark );
+        } else {
+            feedbackImage.setImageResource( R.drawable.nback_xmark );
+        }
+        feedbackImage.setVisibility( View.VISIBLE );
+
+        // Hide feedback after 500ms
+        feedbackImage.postDelayed( () -> feedbackImage.setVisibility( View.INVISIBLE ), 500 );
+    }
+
+    @Override
+    public void updateScore( int score ) {
+        scoreText.setText( String.valueOf( score ) );
+    }
+
+    @Override
+    public void updateLevel( int level ) {
+        levelText.setText( String.valueOf( level ) );
+    }
+
+    @Override
+    public void setCountDownText( String text ) {
+        timerText.setText( text );
+    }
+
+    @Override
+    public void onFinish( int finalScore ) {
+        Date date = new Date();
+        saveGameResult(date, finalScore);
+
+        Intent continueIntent = new Intent(this, ContinueActivity.class);
+        continueIntent.putExtra(ContinueActivity.EXTRA_TITLE, "Shape Match");
+        continueIntent.putExtra(ContinueActivity.EXTRA_ICON_RES_ID, R.drawable.shape_match_icon);
+        continueIntent.putExtra(ContinueActivity.EXTRA_SCORE_TEXT, "Score " + finalScore);
+        continueIntent.putExtra(ContinueActivity.EXTRA_REPLAY_ACTIVITY, "com.shapematch.ui.mainscreen.MainActivity");
+        continueIntent.putExtra(ContinueActivity.EXTRA_SHOW_STATS, true);
+        continueIntent.putExtra(ChartActivityIntent.FINAL_SCORE, finalScore);
+        continueIntent.putExtra(ChartActivityIntent.DATE, DateUtil.format(date));
+
+        startActivity(continueIntent);
+        finish();
+    }
+
+    private void saveGameResult(Date date, int score) {
+        DataPoint newDataPoint = new DataPoint(date, score);
+        DataPointCollection existingData = readAllData(getFilesDir());
+
+        existingData.addDataPoint(newDataPoint);
+        DataPointCollection shrunkData = existingData.shrinkDataSize();
+
+        new FileBasedDao(
+            new FileIO(
+                FileUtil.getDataFile(getFilesDir(), "shape_match_scores.json")
+            )
+        ).write(shrunkData);
+    }
+
+    private DataPointCollection readAllData(File filesDir) {
+        Dao dao = new FileBasedDao(
+            new FileIO(
+                FileUtil.getDataFile(filesDir, "shape_match_scores.json")
+            )
+        );
+        return dao.read();
+    }
+
+    @Override
+    public void displayNewGrids( CellGridPair gridPair ) {
+        displayGrids( gridPair );
     }
 }

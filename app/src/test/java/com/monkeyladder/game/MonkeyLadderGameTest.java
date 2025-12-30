@@ -176,7 +176,10 @@ public class MonkeyLadderGameTest {
     }
 
     private OneRoundResult playOneBadFollowUpRound( ) {
-        monkeyLadderGame.reset();
+        // reset() generates a random board; for this test we need deterministic input that is always wrong.
+        GameState currentState = monkeyLadderGame.getCurrentState();
+        Board board = new Board( BoardSize.FourByFive, Arrays.asList( cellToBeSelected_1 ) );
+        monkeyLadderGame = new MonkeyLadderGame( board, currentState.getLevel(), currentState.getLives() );
 
         monkeyLadderGame.addUserSelectedLocation( expectedLocation_2 ); // wrong order are
         monkeyLadderGame.addUserSelectedLocation( expectedLocation_1 );
