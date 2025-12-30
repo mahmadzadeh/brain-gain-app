@@ -10,7 +10,8 @@ public class GameLevel {
     private int shapeCount;
 
     public GameLevel(int shapeCnt) {
-        shapeCount = shapeCnt;
+        // Shape Match level is defined as the number of shapes shown and should never be 0.
+        shapeCount = Math.max(1, shapeCnt);
     }
 
     public GameLevel nextLevel() {

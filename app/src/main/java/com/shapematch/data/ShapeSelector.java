@@ -7,6 +7,7 @@ import com.shapematch.util.random.RandomNumberGenerator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static com.shapematch.util.random.RandomNumberGenerator.next_N_NumbersWithinRange;
@@ -31,7 +32,7 @@ public class ShapeSelector {
     public static List<Shape> select(GameLevel gameLevel) {
         List<Integer> indecies = next_N_NumbersWithinRange(gameLevel.getShapeCount(), shapesIndexRange);
 
-        List<Shape> selectedShapes = new ArrayList<Shape>(gameLevel.getShapeCount());
+        List<Shape> selectedShapes = new ArrayList<>(gameLevel.getShapeCount());
 
         for (Integer index : indecies) {
             selectedShapes.add(shapes.get(index));

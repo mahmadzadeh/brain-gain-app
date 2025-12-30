@@ -166,7 +166,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:gravity="center_horizontal"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:scaleX="0.9"
+                android:scaleY="0.9">
 
                 <!-- Top Grid (6x6) with dark blue border -->
                 <FrameLayout
@@ -185,52 +187,52 @@
                 android:background="@android:color/transparent">
 
                 <!-- Row 0 -->
-                <ImageView android:id="@+id/leftCell_0_0" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/leftCell_0_1" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/leftCell_0_2" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/leftCell_0_3" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/leftCell_0_4" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/leftCell_0_5" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
+                <ImageView android:id="@+id/leftCell_0_0" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/leftCell_0_1" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/leftCell_0_2" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/leftCell_0_3" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/leftCell_0_4" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/leftCell_0_5" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
 
                 <!-- Row 1 -->
-                <ImageView android:id="@+id/leftCell_1_0" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/leftCell_1_1" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/leftCell_1_2" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/leftCell_1_3" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/leftCell_1_4" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/leftCell_1_5" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
+                <ImageView android:id="@+id/leftCell_1_0" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/leftCell_1_1" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/leftCell_1_2" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/leftCell_1_3" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/leftCell_1_4" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/leftCell_1_5" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
 
                 <!-- Row 2 -->
-                <ImageView android:id="@+id/leftCell_2_0" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/leftCell_2_1" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/leftCell_2_2" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/leftCell_2_3" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/leftCell_2_4" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/leftCell_2_5" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
+                <ImageView android:id="@+id/leftCell_2_0" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/leftCell_2_1" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/leftCell_2_2" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/leftCell_2_3" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/leftCell_2_4" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/leftCell_2_5" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
 
                 <!-- Row 3 -->
-                <ImageView android:id="@+id/leftCell_3_0" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/leftCell_3_1" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/leftCell_3_2" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/leftCell_3_3" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/leftCell_3_4" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/leftCell_3_5" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
+                <ImageView android:id="@+id/leftCell_3_0" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/leftCell_3_1" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/leftCell_3_2" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/leftCell_3_3" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/leftCell_3_4" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/leftCell_3_5" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
 
                 <!-- Row 4 -->
-                <ImageView android:id="@+id/leftCell_4_0" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/leftCell_4_1" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/leftCell_4_2" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/leftCell_4_3" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/leftCell_4_4" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/leftCell_4_5" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
+                <ImageView android:id="@+id/leftCell_4_0" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/leftCell_4_1" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/leftCell_4_2" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/leftCell_4_3" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/leftCell_4_4" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/leftCell_4_5" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
 
                 <!-- Row 5 -->
-                <ImageView android:id="@+id/leftCell_5_0" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/leftCell_5_1" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/leftCell_5_2" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/leftCell_5_3" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/leftCell_5_4" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/leftCell_5_5" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
+                <ImageView android:id="@+id/leftCell_5_0" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/leftCell_5_1" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/leftCell_5_2" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/leftCell_5_3" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/leftCell_5_4" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/leftCell_5_5" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
             </GridLayout>
 
         </FrameLayout>
@@ -252,52 +254,52 @@
                 android:background="@android:color/transparent">
 
                 <!-- Row 0 -->
-                <ImageView android:id="@+id/rightCell_0_0" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/rightCell_0_1" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/rightCell_0_2" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/rightCell_0_3" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/rightCell_0_4" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/rightCell_0_5" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
+                <ImageView android:id="@+id/rightCell_0_0" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/rightCell_0_1" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/rightCell_0_2" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/rightCell_0_3" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/rightCell_0_4" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/rightCell_0_5" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
 
                 <!-- Row 1 -->
-                <ImageView android:id="@+id/rightCell_1_0" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/rightCell_1_1" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/rightCell_1_2" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/rightCell_1_3" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/rightCell_1_4" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/rightCell_1_5" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
+                <ImageView android:id="@+id/rightCell_1_0" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/rightCell_1_1" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/rightCell_1_2" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/rightCell_1_3" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/rightCell_1_4" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/rightCell_1_5" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
 
                 <!-- Row 2 -->
-                <ImageView android:id="@+id/rightCell_2_0" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/rightCell_2_1" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/rightCell_2_2" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/rightCell_2_3" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/rightCell_2_4" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/rightCell_2_5" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
+                <ImageView android:id="@+id/rightCell_2_0" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/rightCell_2_1" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/rightCell_2_2" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/rightCell_2_3" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/rightCell_2_4" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/rightCell_2_5" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
 
                 <!-- Row 3 -->
-                <ImageView android:id="@+id/rightCell_3_0" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/rightCell_3_1" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/rightCell_3_2" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/rightCell_3_3" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/rightCell_3_4" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/rightCell_3_5" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
+                <ImageView android:id="@+id/rightCell_3_0" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/rightCell_3_1" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/rightCell_3_2" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/rightCell_3_3" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/rightCell_3_4" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/rightCell_3_5" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
 
                 <!-- Row 4 -->
-                <ImageView android:id="@+id/rightCell_4_0" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/rightCell_4_1" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/rightCell_4_2" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/rightCell_4_3" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/rightCell_4_4" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/rightCell_4_5" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
+                <ImageView android:id="@+id/rightCell_4_0" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/rightCell_4_1" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/rightCell_4_2" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/rightCell_4_3" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/rightCell_4_4" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/rightCell_4_5" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
 
                 <!-- Row 5 -->
-                <ImageView android:id="@+id/rightCell_5_0" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/rightCell_5_1" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/rightCell_5_2" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/rightCell_5_3" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/rightCell_5_4" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
-                <ImageView android:id="@+id/rightCell_5_5" android:layout_width="40dp" android:layout_height="40dp" android:layout_margin="1dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="3dp" />
+                <ImageView android:id="@+id/rightCell_5_0" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/rightCell_5_1" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/rightCell_5_2" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/rightCell_5_3" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/rightCell_5_4" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
+                <ImageView android:id="@+id/rightCell_5_5" android:layout_width="36dp" android:layout_height="36dp" android:layout_margin="0.5dp" android:scaleType="fitCenter" android:background="@drawable/shape_match_cell_bg" android:padding="2dp" />
             </GridLayout>
 
         </FrameLayout>
