@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/brain_gain_background"
@@ -24,7 +25,7 @@
                 android:layout_height="28dp"
                 android:contentDescription="@string/shape_match_title"
                 android:src="@drawable/shape_match_icon"
-                android:tint="@color/colorPrimaryDark" />
+                app:tint="@color/colorPrimaryDark" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -66,7 +67,7 @@
                         android:layout_height="22dp"
                         android:contentDescription="Score"
                         android:src="@drawable/trophy_icon"
-                        android:tint="@color/colorPrimaryDark" />
+                        app:tint="@color/colorPrimaryDark" />
 
                     <TextView
                         android:id="@+id/scoreText"
@@ -102,7 +103,7 @@
                         android:layout_height="22dp"
                         android:contentDescription="Timer"
                         android:src="@drawable/hour_glass"
-                        android:tint="@color/colorPrimaryDark" />
+                        app:tint="@color/colorPrimaryDark" />
 
                     <TextView
                         android:id="@+id/timerText"
@@ -136,8 +137,8 @@
                         android:layout_width="22dp"
                         android:layout_height="22dp"
                         android:contentDescription="Level"
-                        android:src="@drawable/brain_icon"
-                        android:tint="@color/colorPrimaryDark" />
+                        android:src="@drawable/level_icon"
+                        app:tint="@color/colorPrimaryDark" />
 
                     <TextView
                         android:id="@+id/levelText"
@@ -316,7 +317,7 @@
                 android:elevation="10dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/nback_transparent"
-                android:tint="@color/colorPrimaryDark" />
+                app:tint="@color/colorPrimaryDark" />
 
             <ImageView
                 android:id="@+id/feedbackImage"
@@ -328,7 +329,7 @@
                 android:elevation="10dp"
                 android:scaleType="fitCenter"
                 android:src="@drawable/nback_transparent"
-                android:tint="@color/colorPrimaryDark" />
+                app:tint="@color/colorPrimaryDark" />
 
         </FrameLayout>
 

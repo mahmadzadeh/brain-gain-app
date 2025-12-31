@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
-    <solid android:color="#C5E0F4" />
+    <!-- More transparent so the background shows through clearly -->
+    <solid android:color="#33C5E0F4" />
     <corners android:radius="999dp" />
     <stroke android:width="2dp" android:color="@color/colorPrimaryDark" />
 </shape>
