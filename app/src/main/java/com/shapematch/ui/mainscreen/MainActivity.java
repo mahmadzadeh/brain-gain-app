@@ -112,9 +112,9 @@ public class MainActivity extends AppCompatActivity implements MainScreenView {
                     int shapeResourceId = cell.getShapeResourceId();
 
                     if ( shapeResourceId != 0 ) {
-                        // Display raw PNG without any tinting or background
+                        // Display shape with white tint for better visibility
                         imageView.setImageResource( shapeResourceId );
-                        ImageViewCompat.setImageTintList( imageView, null );
+                        ImageViewCompat.setImageTintList( imageView, ColorStateList.valueOf(android.graphics.Color.WHITE) );
                         shapesDisplayed++;
                         android.util.Log.d("ShapeMatch", "Displayed shape at " + cellId + " with resource ID: " + shapeResourceId);
                     } else {
