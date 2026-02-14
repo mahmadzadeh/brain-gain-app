@@ -54,6 +54,13 @@ public class GameSelectionActivity extends AppCompatActivity {
                     .setSeconds(5)
                     .setTargetActivity("com.sudoku.ui.mainscreen.SudokuMainActivity")
                     .startActivity();
+        } else if ( id == R.id.simonSaysImg ) {
+            new CountdownActivityIntent(this)
+                    .setTitle("Simon Says")
+                    .setIconResId(R.drawable.simonsays_icon)
+                    .setSeconds(5)
+                    .setTargetActivity("com.simonsays.ui.mainscreen.SimonSaysMainActivity")
+                    .startActivity();
         } else {
             throw new RuntimeException( "" );
         }

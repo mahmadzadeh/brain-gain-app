@@ -91,6 +91,13 @@
             android:label="@string/sudoku_title"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name="com.simonsays.ui.mainscreen.SimonSaysMainActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/simon_says_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

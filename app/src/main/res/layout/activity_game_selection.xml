@@ -213,9 +213,9 @@
             android:textStyle="bold" />
     </FrameLayout>
 
-    <!-- Stats -->
+    <!-- Simon Says -->
     <FrameLayout
-        android:id="@+id/statsBox"
+        android:id="@+id/simonSaysImg"
         android:layout_width="140dp"
         android:layout_height="140dp"
         android:layout_marginStart="12dp"
@@ -224,10 +224,45 @@
         android:clickable="true"
         android:elevation="6dp"
         android:focusable="true"
+        android:onClick="onClick"
         android:outlineProvider="background"
         app:layout_constraintStart_toEndOf="@id/centerGuideline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/shapeMatchImg">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="22dp"
+            app:srcCompat="@drawable/simonsays_icon" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:gravity="center"
+            android:paddingBottom="10dp"
+            android:text="@string/simon_says_title"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </FrameLayout>
+
+    <!-- Stats -->
+    <FrameLayout
+        android:id="@+id/statsBox"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/game_tile_border"
+        android:clickable="true"
+        android:elevation="6dp"
+        android:focusable="true"
+        android:outlineProvider="background"
+        app:layout_constraintEnd_toStartOf="@id/centerGuideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/sudokuImg">
 
         <!-- Fake bar graph container -->
         <LinearLayout

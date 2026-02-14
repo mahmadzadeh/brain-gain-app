@@ -84,4 +84,5 @@
     <string name="stroop_game">Stroop</string>
     <string name="shape_match_title">Shape Match</string>
     <string name="sudoku_title">Sudoku</string>
+    <string name="simon_says_title">Simon Says</string>
 </resources>
