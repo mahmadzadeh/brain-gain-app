@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- Outer border -->
+    <path
+        android:pathData="M3,3h18v18H3z"
+        android:strokeWidth="2"
+        android:strokeColor="#12305A"
+        android:fillColor="@android:color/transparent" />
+    <!-- Vertical thick lines (3x3 box dividers) -->
+    <path
+        android:pathData="M9,3v18"
+        android:strokeWidth="1.5"
+        android:strokeColor="#12305A" />
+    <path
+        android:pathData="M15,3v18"
+        android:strokeWidth="1.5"
+        android:strokeColor="#12305A" />
+    <!-- Horizontal thick lines -->
+    <path
+        android:pathData="M3,9h18"
+        android:strokeWidth="1.5"
+        android:strokeColor="#12305A" />
+    <path
+        android:pathData="M3,15h18"
+        android:strokeWidth="1.5"
+        android:strokeColor="#12305A" />
+    <!-- Thin grid lines vertical -->
+    <path
+        android:pathData="M5,3v18"
+        android:strokeWidth="0.3"
+        android:strokeColor="#12305A" />
+    <path
+        android:pathData="M7,3v18"
+        android:strokeWidth="0.3"
+        android:strokeColor="#12305A" />
+    <path
+        android:pathData="M11,3v18"
+        android:strokeWidth="0.3"
+        android:strokeColor="#12305A" />
+    <path
+        android:pathData="M13,3v18"
+        android:strokeWidth="0.3"
+        android:strokeColor="#12305A" />
+    <path
+        android:pathData="M17,3v18"
+        android:strokeWidth="0.3"
+        android:strokeColor="#12305A" />
+    <path
+        android:pathData="M19,3v18"
+        android:strokeWidth="0.3"
+        android:strokeColor="#12305A" />
+    <!-- Thin grid lines horizontal -->
+    <path
+        android:pathData="M3,5h18"
+        android:strokeWidth="0.3"
+        android:strokeColor="#12305A" />
+    <path
+        android:pathData="M3,7h18"
+        android:strokeWidth="0.3"
+        android:strokeColor="#12305A" />
+    <path
+        android:pathData="M3,11h18"
+        android:strokeWidth="0.3"
+        android:strokeColor="#12305A" />
+    <path
+        android:pathData="M3,13h18"
+        android:strokeWidth="0.3"
+        android:strokeColor="#12305A" />
+    <path
+        android:pathData="M3,17h18"
+        android:strokeWidth="0.3"
+        android:strokeColor="#12305A" />
+    <path
+        android:pathData="M3,19h18"
+        android:strokeWidth="0.3"
+        android:strokeColor="#12305A" />
+</vector>

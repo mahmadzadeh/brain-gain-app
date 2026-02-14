@@ -84,6 +84,13 @@
             android:label="@string/shape_match_title"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name="com.sudoku.ui.mainscreen.SudokuMainActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/sudoku_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

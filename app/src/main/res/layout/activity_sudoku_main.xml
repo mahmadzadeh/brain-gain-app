@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/brain_gain_background"
+    android:orientation="vertical"
+    android:paddingStart="12dp"
+    android:paddingEnd="12dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="12dp"
+    android:gravity="center_horizontal">
+
+    <!-- Header (icon + name) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingTop="6dp"
+        android:paddingBottom="8dp">
+
+        <ImageView
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:contentDescription="@string/sudoku_title"
+            android:src="@drawable/sudoku_icon"
+            app:tint="@color/colorPrimaryDark" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:includeFontPadding="false"
+            android:text="@string/sudoku_title"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Timer / Moves stat boxes -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/dnb_stat_circle_bg"
+            android:minHeight="78dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:contentDescription="Timer"
+                    android:src="@drawable/hour_glass"
+                    app:tint="@color/colorPrimaryDark" />
+
+                <TextView
+                    android:id="@+id/timerText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:includeFontPadding="false"
+                    android:text="0:00"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/dnb_stat_circle_bg"
+            android:minHeight="78dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:contentDescription="Moves"
+                    android:src="@drawable/level_icon"
+                    app:tint="@color/colorPrimaryDark" />
+
+                <TextView
+                    android:id="@+id/movesText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:includeFontPadding="false"
+                    android:text="0"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <!-- Sudoku Grid (9x9) wrapped in outer border -->
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/sudoku_grid_border"
+        android:padding="1dp">
+
+        <!-- Use a vertical LinearLayout of 3 box-rows, each containing 3 box-columns -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Box Row 0 (rows 0-2) -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- Box (0,0) -->
+                <GridLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:columnCount="3"
+                    android:rowCount="3"
+                    android:background="@drawable/sudoku_grid_border"
+                    android:padding="0.5dp">
+                    <TextView android:id="@+id/cell_0_0" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_0_1" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_0_2" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_1_0" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_1_1" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_1_2" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_2_0" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_2_1" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_2_2" style="@style/SudokuCell" />
+                </GridLayout>
+
+                <!-- Box (0,1) -->
+                <GridLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:columnCount="3"
+                    android:rowCount="3"
+                    android:background="@drawable/sudoku_grid_border"
+                    android:padding="0.5dp">
+                    <TextView android:id="@+id/cell_0_3" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_0_4" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_0_5" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_1_3" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_1_4" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_1_5" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_2_3" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_2_4" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_2_5" style="@style/SudokuCell" />
+                </GridLayout>
+
+                <!-- Box (0,2) -->
+                <GridLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:columnCount="3"
+                    android:rowCount="3"
+                    android:background="@drawable/sudoku_grid_border"
+                    android:padding="0.5dp">
+                    <TextView android:id="@+id/cell_0_6" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_0_7" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_0_8" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_1_6" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_1_7" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_1_8" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_2_6" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_2_7" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_2_8" style="@style/SudokuCell" />
+                </GridLayout>
+            </LinearLayout>
+
+            <!-- Box Row 1 (rows 3-5) -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <GridLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:columnCount="3"
+                    android:rowCount="3"
+                    android:background="@drawable/sudoku_grid_border"
+                    android:padding="0.5dp">
+                    <TextView android:id="@+id/cell_3_0" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_3_1" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_3_2" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_4_0" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_4_1" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_4_2" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_5_0" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_5_1" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_5_2" style="@style/SudokuCell" />
+                </GridLayout>
+
+                <GridLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:columnCount="3"
+                    android:rowCount="3"
+                    android:background="@drawable/sudoku_grid_border"
+                    android:padding="0.5dp">
+                    <TextView android:id="@+id/cell_3_3" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_3_4" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_3_5" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_4_3" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_4_4" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_4_5" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_5_3" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_5_4" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_5_5" style="@style/SudokuCell" />
+                </GridLayout>
+
+                <GridLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:columnCount="3"
+                    android:rowCount="3"
+                    android:background="@drawable/sudoku_grid_border"
+                    android:padding="0.5dp">
+                    <TextView android:id="@+id/cell_3_6" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_3_7" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_3_8" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_4_6" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_4_7" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_4_8" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_5_6" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_5_7" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_5_8" style="@style/SudokuCell" />
+                </GridLayout>
+            </LinearLayout>
+
+            <!-- Box Row 2 (rows 6-8) -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <GridLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:columnCount="3"
+                    android:rowCount="3"
+                    android:background="@drawable/sudoku_grid_border"
+                    android:padding="0.5dp">
+                    <TextView android:id="@+id/cell_6_0" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_6_1" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_6_2" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_7_0" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_7_1" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_7_2" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_8_0" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_8_1" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_8_2" style="@style/SudokuCell" />
+                </GridLayout>
+
+                <GridLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:columnCount="3"
+                    android:rowCount="3"
+                    android:background="@drawable/sudoku_grid_border"
+                    android:padding="0.5dp">
+                    <TextView android:id="@+id/cell_6_3" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_6_4" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_6_5" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_7_3" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_7_4" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_7_5" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_8_3" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_8_4" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_8_5" style="@style/SudokuCell" />
+                </GridLayout>
+
+                <GridLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:columnCount="3"
+                    android:rowCount="3"
+                    android:background="@drawable/sudoku_grid_border"
+                    android:padding="0.5dp">
+                    <TextView android:id="@+id/cell_6_6" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_6_7" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_6_8" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_7_6" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_7_7" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_7_8" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_8_6" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_8_7" style="@style/SudokuCell" />
+                    <TextView android:id="@+id/cell_8_8" style="@style/SudokuCell" />
+                </GridLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- Number Pad -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView android:id="@+id/numPad_1" style="@style/SudokuNumPadButton" android:text="1" />
+        <TextView android:id="@+id/numPad_2" style="@style/SudokuNumPadButton" android:text="2" />
+        <TextView android:id="@+id/numPad_3" style="@style/SudokuNumPadButton" android:text="3" />
+        <TextView android:id="@+id/numPad_4" style="@style/SudokuNumPadButton" android:text="4" />
+        <TextView android:id="@+id/numPad_5" style="@style/SudokuNumPadButton" android:text="5" />
+        <TextView android:id="@+id/numPad_6" style="@style/SudokuNumPadButton" android:text="6" />
+        <TextView android:id="@+id/numPad_7" style="@style/SudokuNumPadButton" android:text="7" />
+        <TextView android:id="@+id/numPad_8" style="@style/SudokuNumPadButton" android:text="8" />
+        <TextView android:id="@+id/numPad_9" style="@style/SudokuNumPadButton" android:text="9" />
+    </LinearLayout>
+
+    <!-- Clear and Undo buttons -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/numPad_clear"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/bg_continue_button_outline"
+            android:gravity="center"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:text="Clear"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/undoButton"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/bg_continue_button_outline"
+            android:gravity="center"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:text="Undo"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</LinearLayout>

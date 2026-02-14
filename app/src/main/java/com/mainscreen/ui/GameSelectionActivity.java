@@ -47,6 +47,13 @@ public class GameSelectionActivity extends AppCompatActivity {
                     .setSeconds(5)
                     .setTargetActivity("com.dualnback.ui.mainscreen.MainActivity")
                     .startActivity();
+        } else if ( id == R.id.sudokuImg ) {
+            new CountdownActivityIntent(this)
+                    .setTitle("Sudoku")
+                    .setIconResId(R.drawable.sudoku_icon)
+                    .setSeconds(5)
+                    .setTargetActivity("com.sudoku.ui.mainscreen.SudokuMainActivity")
+                    .startActivity();
         } else {
             throw new RuntimeException( "" );
         }
