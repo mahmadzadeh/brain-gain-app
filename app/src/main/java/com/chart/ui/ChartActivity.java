@@ -1,28 +1,29 @@
 package com.chart.ui;
 
+import static com.chart.ui.ChartUtil.dataSetForYAxis;
+import static com.chart.ui.ChartUtil.setUpChart;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.chart.filesystem.dao.DataPoint;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.chart.filesystem.dao.GameKey;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.mainscreen.ui.GameSelectionActivity;
+import com.mainscreen.ui.continuescreen.ContinueActivity;
 import com.monkeyladder.R;
-import com.monkeyladder.ui.mainscreen.StartScreenActivityIntentUtil;
-import com.util.IntentUtility;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import static com.chart.ui.ChartUtil.dataSetForYAxis;
-import static com.chart.ui.ChartUtil.setUpChart;
 
 
 public class ChartActivity extends AppCompatActivity implements ChartView {
@@ -33,13 +34,16 @@ public class ChartActivity extends AppCompatActivity implements ChartView {
     protected void onCreate( Bundle savedInstanceState ) {
         super.onCreate( savedInstanceState );
 
-        presenter = new ChartPresenter( this );
+        String gameKeyName = getIntent().getStringExtra( ContinueActivity.EXTRA_GAME_KEY );
+        GameKey gameKey = gameKeyName != null ? GameKey.valueOf( gameKeyName ) : GameKey.DUAL_N_BACK;
+
+        presenter = new ChartPresenter( this, gameKey );
 
         setContentView( R.layout.monkey_ladder_chart_screen );
 
         // Set icon and title dynamically
         ImageView statsIcon = findViewById( R.id.statsIcon );
-        int iconResId = getIntent().getIntExtra( com.mainscreen.ui.continuescreen.ContinueActivity.EXTRA_ICON_RES_ID, R.drawable.monkey_ladder_icon );
+        int iconResId = getIntent().getIntExtra( ContinueActivity.EXTRA_ICON_RES_ID, R.drawable.monkey_ladder_icon );
         statsIcon.setImageResource( iconResId );
 
         TextView statsTitle = findViewById( R.id.statsTitle );
@@ -47,28 +51,22 @@ public class ChartActivity extends AppCompatActivity implements ChartView {
 
         LineChart lineChart = findViewById( R.id.line_chart );
 
-        DataPoint lastDataPoint = IntentUtility.extractDatePointFromExtras( getIntent().getExtras() );
-
-        presenter.addDataPoint( lastDataPoint );
-
         setData( lineChart );
 
         Button continueButton = findViewById( R.id.chart_continue );
         Button playAgainButton = findViewById( R.id.statsPlayAgain );
 
         continueButton.setOnClickListener( v -> {
-            presenter.saveData();
             finish();
-            startActivity( new android.content.Intent( this, com.mainscreen.ui.GameSelectionActivity.class ) );
+            startActivity( new Intent( this, GameSelectionActivity.class ) );
         } );
 
-        String replayActivity = getIntent().getStringExtra( com.mainscreen.ui.continuescreen.ContinueActivity.EXTRA_REPLAY_ACTIVITY );
+        String replayActivity = getIntent().getStringExtra( ContinueActivity.EXTRA_REPLAY_ACTIVITY );
         playAgainButton.setOnClickListener( v -> {
-            presenter.saveData();
             finish();
             try {
                 Class<?> activityClass = Class.forName( replayActivity );
-                startActivity( new android.content.Intent( this, activityClass ) );
+                startActivity( new Intent( this, activityClass ) );
             } catch ( ClassNotFoundException e ) {
                 e.printStackTrace();
             }

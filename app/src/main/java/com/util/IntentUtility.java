@@ -1,5 +1,7 @@
 package com.util;
 
+import static com.monkeyladder.ui.continuescreen.ContinueScreenActivity.FINAL_SCORE;
+
 import android.os.Bundle;
 
 import com.chart.filesystem.dao.DataPoint;
@@ -7,8 +9,6 @@ import com.chart.ui.ChartActivityIntent;
 
 import java.util.Date;
 import java.util.Optional;
-
-import static com.monkeyladder.ui.continuescreen.ContinueScreenActivity.FINAL_SCORE;
 
 
 public class IntentUtility {

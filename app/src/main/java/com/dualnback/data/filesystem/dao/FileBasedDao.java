@@ -1,5 +1,7 @@
 package com.dualnback.data.filesystem.dao;
 
+import static com.dualnback.data.filesystem.util.JSONUtil.parse;
+
 import android.util.Log;
 
 import com.dualnback.data.filesystem.io.FileIO;
@@ -9,8 +11,6 @@ import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.dualnback.data.filesystem.util.JSONUtil.parse;
 
 
 public class FileBasedDao implements Dao {

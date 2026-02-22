@@ -6,11 +6,11 @@ import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.ProgressBar;
 
-import com.monkeyladder.R;
-import com.mainscreen.ui.countdown.CountdownActivityIntent;
-import com.stroop.ui.countdown.CountDownActivityIntent;
-
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.mainscreen.ui.countdown.CountdownActivityIntent;
+import com.monkeyladder.R;
+import com.stroop.ui.countdown.CountDownActivityIntent;
 
 public class LandingScreenActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -22,10 +22,10 @@ public class LandingScreenActivity extends AppCompatActivity implements View.OnC
 
         final ProgressBar progressBar = findViewById( R.id.splashProgress );
 
-        new CountDownTimer( 5000, 50 ) {
+        new CountDownTimer( 3000, 50 ) {
             @Override
             public void onTick( long millisUntilFinished ) {
-                int progress = (int) ( ( 5000 - millisUntilFinished ) * 100 / 5000 );
+                int progress = (int) ( ( 3000 - millisUntilFinished ) * 100 / 3000 );
                 progressBar.setProgress( progress );
             }
 

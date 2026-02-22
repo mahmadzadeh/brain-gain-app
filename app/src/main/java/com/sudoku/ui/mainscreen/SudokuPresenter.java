@@ -3,6 +3,7 @@ package com.sudoku.ui.mainscreen;
 import com.sudoku.game.GameState;
 import com.sudoku.game.Move;
 import com.sudoku.game.SudokuBoard;
+import com.sudoku.game.SudokuSolution;
 import com.sudoku.game.SudokuValidator;
 
 import java.util.ArrayDeque;
@@ -15,6 +16,7 @@ public class SudokuPresenter {
 
     private final SudokuMainViewContract view;
     private final SudokuBoard board;
+    private final SudokuSolution solution;
     private final SudokuValidator validator;
     private final GameState gameState;
     private final Deque<Move> undoStack;
@@ -25,9 +27,11 @@ public class SudokuPresenter {
     private boolean paused;
 
     public SudokuPresenter(SudokuMainViewContract view, SudokuBoard board,
-                           SudokuValidator validator, GameState gameState) {
+                           SudokuSolution solution, SudokuValidator validator,
+                           GameState gameState) {
         this.view = view;
         this.board = board;
+        this.solution = solution;
         this.validator = validator;
         this.gameState = gameState;
         this.undoStack = new ArrayDeque<>();
@@ -91,6 +95,11 @@ public class SudokuPresenter {
         view.updateMoves(gameState.getMoveCount());
 
         refreshConflicts();
+    }
+
+    public void onCheckProgress() {
+        boolean correct = solution.isPartialSolutionCorrect( board );
+        view.flashGridBorder( correct );
     }
 
     public void startTimer() {

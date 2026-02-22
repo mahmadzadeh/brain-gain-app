@@ -1,5 +1,8 @@
 package com.dualnback.util;
 
+import static com.dualnback.ui.mainscreen.MainActivity.FINAL_SCORE;
+import static com.dualnback.ui.mainscreen.MainActivity.VERSION;
+
 import android.os.Bundle;
 
 import com.dualnback.data.filesystem.dao.DataPoint;
@@ -8,9 +11,6 @@ import com.dualnback.ui.continuescreen.ContinueScreenActivity;
 
 import java.util.Date;
 import java.util.Optional;
-
-import static com.dualnback.ui.mainscreen.MainActivity.FINAL_SCORE;
-import static com.dualnback.ui.mainscreen.MainActivity.VERSION;
 
 public class IntentUtility {
 

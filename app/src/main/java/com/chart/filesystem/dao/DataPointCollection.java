@@ -1,5 +1,7 @@
 package com.chart.filesystem.dao;
 
+import static com.chart.filesystem.util.DtoJSONConversion.dataDtoToJSON;
+
 import org.apache.commons.collections4.list.UnmodifiableList;
 import org.json.JSONException;
 
@@ -7,8 +9,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-
-import static com.chart.filesystem.util.DtoJSONConversion.dataDtoToJSON;
 
 public class DataPointCollection {
 

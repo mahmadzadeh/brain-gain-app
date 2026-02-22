@@ -1,5 +1,7 @@
 package com.monkeyladder.util.random;
 
+import static com.monkeyladder.util.random.RandomNumberGenerator.next_N_DistinctRandomIntsWithinRangeInRandomOrder;
+
 import com.monkeyladder.game.Cell;
 import com.monkeyladder.game.CellData;
 import com.monkeyladder.game.GameLevel;
@@ -10,8 +12,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-
-import static com.monkeyladder.util.random.RandomNumberGenerator.next_N_DistinctRandomIntsWithinRangeInRandomOrder;
 
 public class RandomBoardGenerator {
 

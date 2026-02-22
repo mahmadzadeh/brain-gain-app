@@ -1,6 +1,11 @@
 package com.chart.filesystem.util;
 
 
+import static com.chart.filesystem.util.JSONUtil.DATAPOINT_ELEMENT;
+import static com.chart.filesystem.util.JSONUtil.DATA_ELEMENT;
+import static com.chart.filesystem.util.JSONUtil.DATE_ELEMENT;
+import static com.chart.filesystem.util.JSONUtil.SCORE_ELEMENT;
+
 import com.chart.filesystem.dao.DataPoint;
 import com.chart.filesystem.dao.DataPointCollection;
 import com.util.DateUtil;
@@ -8,11 +13,6 @@ import com.util.DateUtil;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import static com.chart.filesystem.util.JSONUtil.DATAPOINT_ELEMENT;
-import static com.chart.filesystem.util.JSONUtil.DATA_ELEMENT;
-import static com.chart.filesystem.util.JSONUtil.DATE_ELEMENT;
-import static com.chart.filesystem.util.JSONUtil.SCORE_ELEMENT;
 
 
 public class DtoJSONConversion {

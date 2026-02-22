@@ -1,6 +1,5 @@
 package com.monkeyladder.ui.mainscreen;
 
-import com.monkeyladder.game.GameState;
 import com.monkeyladder.game.Location;
 
 public interface MainActivityPresenterContract {

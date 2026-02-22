@@ -1,11 +1,11 @@
 package com.dualnback.game;
 
 
+import static com.dualnback.game.NBackVersion.TwoBack;
+
 import com.dualnback.data.filesystem.dao.DataPoint;
 
 import java.util.Optional;
-
-import static com.dualnback.game.NBackVersion.TwoBack;
 
 public class VersionSelection {
 

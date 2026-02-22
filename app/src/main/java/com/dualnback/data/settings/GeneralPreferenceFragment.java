@@ -1,5 +1,7 @@
 package com.dualnback.data.settings;
 
+import static com.dualnback.data.settings.SettingsActivity.sBindPreferenceSummaryToValueListener;
+
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Build;
@@ -11,8 +13,6 @@ import android.preference.PreferenceManager;
 import android.view.MenuItem;
 
 import com.monkeyladder.R;
-
-import static com.dualnback.data.settings.SettingsActivity.sBindPreferenceSummaryToValueListener;
 
 @TargetApi(Build.VERSION_CODES.HONEYCOMB)
 public class GeneralPreferenceFragment extends PreferenceFragment {

@@ -1,13 +1,13 @@
 package com.dualnback.game.factory;
 
+import static java.util.stream.IntStream.range;
+
 import com.dualnback.game.Cell;
 import com.dualnback.game.DualBackGrid;
 import com.monkeyladder.R;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static java.util.stream.IntStream.range;
 
 public class GridFactory {
 

@@ -1,15 +1,15 @@
 package com.dualnback.game;
 
+import static com.dualnback.game.UserInput.LocationMatch;
+import static com.dualnback.game.UserInput.NoInput;
+import static com.dualnback.game.UserInput.SoundMatch;
+import static java.util.stream.IntStream.range;
+
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
-
-import static com.dualnback.game.UserInput.LocationMatch;
-import static com.dualnback.game.UserInput.NoInput;
-import static com.dualnback.game.UserInput.SoundMatch;
-import static java.util.stream.IntStream.range;
 
 public class GameTrialCollection implements Iterator<Trial> {
 

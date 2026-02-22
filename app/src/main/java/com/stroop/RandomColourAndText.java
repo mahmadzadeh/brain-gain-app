@@ -1,14 +1,14 @@
 package com.stroop;
 
 
+import static com.stroop.ui.element.StatefulGameObject.TextState.BlueText;
+import static com.stroop.ui.element.StatefulGameObject.TextState.RedText;
+
 import com.stroop.ui.element.MainText;
 import com.stroop.ui.element.StatefulGameObject.ColourState;
 import com.stroop.ui.element.StatefulGameObject.TextState;
 import com.util.IntegerRange;
 import com.util.RandomNumberGenerator;
-
-import static com.stroop.ui.element.StatefulGameObject.TextState.BlueText;
-import static com.stroop.ui.element.StatefulGameObject.TextState.RedText;
 
 public class RandomColourAndText {
 

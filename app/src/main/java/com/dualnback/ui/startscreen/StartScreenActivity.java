@@ -1,5 +1,8 @@
 package com.dualnback.ui.startscreen;
 
+import static android.widget.ArrayAdapter.createFromResource;
+import static com.dualnback.ui.startscreen.util.ArrayAdapterCopyUtil.copyToRegularArrayList;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,16 +12,13 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.dualnback.data.settings.SettingsActivity;
 import com.dualnback.game.NBackVersion;
 import com.dualnback.ui.mainscreen.MainActivity;
 import com.dualnback.ui.startscreen.util.Pulsator;
 import com.monkeyladder.R;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import static android.widget.ArrayAdapter.createFromResource;
-import static com.dualnback.ui.startscreen.util.ArrayAdapterCopyUtil.copyToRegularArrayList;
 
 public class StartScreenActivity extends AppCompatActivity implements StartScreenView {
 

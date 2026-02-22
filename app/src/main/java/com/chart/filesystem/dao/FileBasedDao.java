@@ -1,5 +1,7 @@
 package com.chart.filesystem.dao;
 
+import static com.chart.filesystem.util.JSONUtil.parse;
+
 import android.util.Log;
 
 import com.chart.filesystem.io.FileIO;
@@ -9,8 +11,6 @@ import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.chart.filesystem.util.JSONUtil.parse;
 
 
 public class FileBasedDao implements Dao {

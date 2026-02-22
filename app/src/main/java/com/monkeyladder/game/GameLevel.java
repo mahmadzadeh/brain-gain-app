@@ -1,15 +1,15 @@
 package com.monkeyladder.game;
 
 
+import static java.util.Optional.empty;
+import static java.util.Optional.of;
+import static java.util.stream.IntStream.range;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
-import static java.util.Optional.empty;
-import static java.util.Optional.of;
-import static java.util.stream.IntStream.range;
 
 public enum GameLevel implements Comparable<GameLevel>{
 

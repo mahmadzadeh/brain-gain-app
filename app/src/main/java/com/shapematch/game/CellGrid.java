@@ -1,5 +1,7 @@
 package com.shapematch.game;
 
+import static com.shapematch.util.IntegerRange.instanceWithinCollectionSize;
+
 import com.shapematch.data.ShapeSelector;
 import com.shapematch.data.shapes.ShapeSlotPair;
 import com.shapematch.util.random.RandomBoolean;
@@ -7,8 +9,6 @@ import com.shapematch.util.random.RandomNumberGenerator;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.shapematch.util.IntegerRange.instanceWithinCollectionSize;
 
 public class CellGrid {
 

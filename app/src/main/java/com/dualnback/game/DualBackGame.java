@@ -1,9 +1,5 @@
 package com.dualnback.game;
 
-import com.dualnback.data.location.Location;
-
-import java.util.Optional;
-
 import static com.dualnback.game.UserInput.LocationMatch;
 import static com.dualnback.game.UserInput.NoInput;
 import static com.dualnback.game.UserInput.SoundMatch;
@@ -11,6 +7,10 @@ import static com.dualnback.game.UserInputEvaluation.CorrectLocation;
 import static com.dualnback.game.UserInputEvaluation.CorrectSound;
 import static com.dualnback.game.UserInputEvaluation.IncorrectLocation;
 import static com.dualnback.game.UserInputEvaluation.IncorrectSound;
+
+import com.dualnback.data.location.Location;
+
+import java.util.Optional;
 
 public class DualBackGame {
 

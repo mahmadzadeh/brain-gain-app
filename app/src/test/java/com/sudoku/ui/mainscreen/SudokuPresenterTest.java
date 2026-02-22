@@ -2,6 +2,7 @@ package com.sudoku.ui.mainscreen;
 
 import com.sudoku.game.GameState;
 import com.sudoku.game.SudokuBoard;
+import com.sudoku.game.SudokuSolution;
 import com.sudoku.game.SudokuValidator;
 
 import org.junit.Before;
@@ -17,6 +18,7 @@ public class SudokuPresenterTest {
 
     private SudokuMainViewContract view;
     private SudokuBoard board;
+    private SudokuSolution solution;
     private SudokuValidator validator;
     private GameState gameState;
     private SudokuPresenter presenter;
@@ -25,9 +27,10 @@ public class SudokuPresenterTest {
     public void setUp() {
         view = mock( SudokuMainViewContract.class );
         board = mock( SudokuBoard.class );
+        solution = mock( SudokuSolution.class );
         validator = mock( SudokuValidator.class );
         gameState = mock( GameState.class );
-        presenter = new SudokuPresenter( view, board, validator, gameState );
+        presenter = new SudokuPresenter( view, board, solution, validator, gameState );
     }
 
     @Test
@@ -287,5 +290,25 @@ public class SudokuPresenterTest {
 
         // clearConflicts called twice: once for the move, once for undo
         verify( view, times( 2 ) ).clearConflicts();
+    }
+
+    // --- Check Progress tests ---
+
+    @Test
+    public void onCheckProgressFlashesGreenWhenCorrect() {
+        when( solution.isPartialSolutionCorrect( board ) ).thenReturn( true );
+
+        presenter.onCheckProgress();
+
+        verify( view ).flashGridBorder( true );
+    }
+
+    @Test
+    public void onCheckProgressFlashesRedWhenIncorrect() {
+        when( solution.isPartialSolutionCorrect( board ) ).thenReturn( false );
+
+        presenter.onCheckProgress();
+
+        verify( view ).flashGridBorder( false );
     }
 }

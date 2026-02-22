@@ -1,11 +1,11 @@
 package com.chart.filesystem.dao;
 
 
+import static com.chart.filesystem.util.DtoJSONConversion.dataPointToJSON;
+
 import org.json.JSONException;
 
 import java.util.Date;
-
-import static com.chart.filesystem.util.DtoJSONConversion.dataPointToJSON;
 
 
 public class DataPoint implements Comparable<DataPoint> {

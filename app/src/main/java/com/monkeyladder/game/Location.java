@@ -1,13 +1,13 @@
 package com.monkeyladder.game;
 
+import static com.monkeyladder.util.random.RandomNumberGenerator.next_N_DistinctRandomIntsWithinRangeInRandomOrder;
+
 import com.monkeyladder.util.IntegerRange;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static com.monkeyladder.util.random.RandomNumberGenerator.next_N_DistinctRandomIntsWithinRangeInRandomOrder;
 
 public enum Location {
     ZeroZero( 0, 0 ),

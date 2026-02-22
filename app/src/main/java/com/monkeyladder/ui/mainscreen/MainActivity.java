@@ -13,6 +13,12 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.chart.filesystem.dao.GameKey;
+import com.chart.filesystem.dao.GameStatsRepository;
+import com.chart.ui.ChartActivityIntent;
+import com.mainscreen.ui.continuescreen.ContinueActivity;
 import com.monkeyladder.R;
 import com.monkeyladder.game.GameLevel;
 import com.monkeyladder.game.GameState;
@@ -23,13 +29,12 @@ import com.monkeyladder.util.CellDataMapping;
 import com.monkeyladder.util.CellLocationMapping;
 import com.monkeyladder.util.LevelBasedTimerParameter;
 import com.monkeyladder.util.LocationData;
+import com.util.DateUtil;
 
 import java.util.Date;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements MainActivityViewContract, View.OnClickListener {
 
@@ -237,15 +242,18 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewC
     public void onGameEnd( GameState gameState ) {
         Date date = new Date();
 
-        Intent continueIntent = new Intent( this, com.mainscreen.ui.continuescreen.ContinueActivity.class );
-        continueIntent.putExtra( com.mainscreen.ui.continuescreen.ContinueActivity.EXTRA_TITLE, "Monkey Ladder" );
-        continueIntent.putExtra( com.mainscreen.ui.continuescreen.ContinueActivity.EXTRA_ICON_RES_ID, R.drawable.monkey_ladder_icon );
-        continueIntent.putExtra( com.mainscreen.ui.continuescreen.ContinueActivity.EXTRA_SCORE_TEXT, "Score " + gameState.getScore() );
-        continueIntent.putExtra( com.mainscreen.ui.continuescreen.ContinueActivity.EXTRA_REPLAY_ACTIVITY, "com.monkeyladder.ui.mainscreen.MainActivity" );
+        Intent continueIntent = new Intent( this, ContinueActivity.class );
+        continueIntent.putExtra( ContinueActivity.EXTRA_TITLE, "Monkey Ladder" );
+        continueIntent.putExtra( ContinueActivity.EXTRA_ICON_RES_ID, R.drawable.monkey_ladder_icon );
+        continueIntent.putExtra( ContinueActivity.EXTRA_SCORE_TEXT, "Score " + gameState.getScore() );
+        continueIntent.putExtra( ContinueActivity.EXTRA_REPLAY_ACTIVITY, "com.monkeyladder.ui.mainscreen.MainActivity" );
 
-        continueIntent.putExtra( com.mainscreen.ui.continuescreen.ContinueActivity.EXTRA_SHOW_STATS, true );
-        continueIntent.putExtra( com.chart.ui.ChartActivityIntent.FINAL_SCORE, gameState.getScore() );
-        continueIntent.putExtra( com.chart.ui.ChartActivityIntent.DATE, com.util.DateUtil.format( date ) );
+        continueIntent.putExtra( ContinueActivity.EXTRA_SHOW_STATS, true );
+        continueIntent.putExtra( ContinueActivity.EXTRA_GAME_KEY, GameKey.MONKEY_LADDER.name() );
+        continueIntent.putExtra( ChartActivityIntent.FINAL_SCORE, gameState.getScore() );
+        continueIntent.putExtra( ChartActivityIntent.DATE, DateUtil.format( date ) );
+
+        GameStatsRepository.create( getFilesDir() ).addScore( GameKey.MONKEY_LADDER, date, gameState.getScore() );
 
         startActivity( continueIntent );
         finish();

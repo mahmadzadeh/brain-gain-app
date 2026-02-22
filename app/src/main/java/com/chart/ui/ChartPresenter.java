@@ -1,6 +1,6 @@
 package com.chart.ui;
 
-import com.chart.filesystem.dao.DataPoint;
+import com.chart.filesystem.dao.GameKey;
 import com.github.mikephil.charting.data.Entry;
 
 import java.util.List;
@@ -9,14 +9,9 @@ public class ChartPresenter implements IChartPresenter {
     private final ChartModel model;
     private final ChartView view;
 
-    public ChartPresenter( ChartView chartView ) {
+    public ChartPresenter( ChartView chartView, GameKey gameKey ) {
         this.view = chartView;
-        this.model = new ChartModel( view.getFilesDirectory() );
-    }
-
-    @Override
-    public void addDataPoint( DataPoint dataPoint ) {
-        this.model.addDataPoint( dataPoint );
+        this.model = new ChartModel( view.getFilesDirectory(), gameKey );
     }
 
     @Override

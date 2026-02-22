@@ -1,6 +1,16 @@
 package com.dualnback.ui.mainscreen;
 
+import static com.dualnback.data.filesystem.dao.DataFileUtil.readAllData;
+import static com.dualnback.game.LocationToImageMapper.map;
+import static com.dualnback.game.VersionSelection.currentLevel;
+import static com.dualnback.ui.mainscreen.MainActivity.COUNT_DOWN_INTERVAL_IN_MILLIS;
+import static com.dualnback.ui.mainscreen.MainActivity.TOTAL_TRIAL_COUNT;
+import static com.dualnback.ui.mainscreen.util.TimerUtil.getOneRoundTime;
+import static com.dualnback.util.NumberFormatterUtil.formatScore;
+
 import android.graphics.Color;
+
+import androidx.annotation.NonNull;
 
 import com.dualnback.data.filesystem.dao.DataPoint;
 import com.dualnback.data.location.Location;
@@ -11,16 +21,6 @@ import com.dualnback.game.factory.GameParameters;
 import com.dualnback.ui.mainscreen.util.GameCountDownTimer;
 
 import java.util.Optional;
-
-import androidx.annotation.NonNull;
-
-import static com.dualnback.data.filesystem.dao.DataFileUtil.readAllData;
-import static com.dualnback.game.LocationToImageMapper.map;
-import static com.dualnback.game.VersionSelection.currentLevel;
-import static com.dualnback.ui.mainscreen.MainActivity.COUNT_DOWN_INTERVAL_IN_MILLIS;
-import static com.dualnback.ui.mainscreen.MainActivity.TOTAL_TRIAL_COUNT;
-import static com.dualnback.ui.mainscreen.util.TimerUtil.getOneRoundTime;
-import static com.dualnback.util.NumberFormatterUtil.formatScore;
 
 
 public class MainActivityPresenter implements MainViewContract.Presenter {

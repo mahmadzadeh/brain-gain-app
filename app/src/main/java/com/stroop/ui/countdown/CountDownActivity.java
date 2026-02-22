@@ -4,14 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.monkeyladder.R;
 import com.stroop.ui.mainscreen.MainActivity;
 import com.util.CountdownImageSwapHandler;
 import com.util.TimerUtil;
 
 import java.util.TimerTask;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 public class CountDownActivity extends AppCompatActivity {
     private final Long TIMER_INTERVAL = 100l;

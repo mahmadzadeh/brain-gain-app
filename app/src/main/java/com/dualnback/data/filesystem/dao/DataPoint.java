@@ -1,12 +1,12 @@
 package com.dualnback.data.filesystem.dao;
 
+import static com.dualnback.data.filesystem.util.DtoJSONConversion.dataPointToJSON;
+
 import com.dualnback.game.NBackVersion;
 
 import org.json.JSONException;
 
 import java.util.Date;
-
-import static com.dualnback.data.filesystem.util.DtoJSONConversion.dataPointToJSON;
 
 
 public class DataPoint implements Comparable<DataPoint> {

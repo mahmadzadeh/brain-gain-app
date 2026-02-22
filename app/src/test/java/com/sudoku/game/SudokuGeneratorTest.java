@@ -12,7 +12,7 @@ public class SudokuGeneratorTest {
     @Test
     public void generateReturnsNonNullBoard() {
         SudokuGenerator generator = new SudokuGenerator();
-        SudokuBoard board = generator.generate();
+        SudokuBoard board = generator.generate().getPuzzle();
         assertNotNull( board );
     }
 
@@ -20,7 +20,7 @@ public class SudokuGeneratorTest {
     public void generatedBoardHasCorrectNumberOfPreFilledCells() {
         SudokuGenerator generator = new SudokuGenerator();
         int preFilledCount = 35;
-        SudokuBoard board = generator.generate( preFilledCount );
+        SudokuBoard board = generator.generate( preFilledCount ).getPuzzle();
 
         int filled = countFilledCells( board );
         assertEquals( preFilledCount, filled );
@@ -29,7 +29,7 @@ public class SudokuGeneratorTest {
     @Test
     public void defaultGenerateHas35PreFilledCells() {
         SudokuGenerator generator = new SudokuGenerator();
-        SudokuBoard board = generator.generate();
+        SudokuBoard board = generator.generate().getPuzzle();
 
         int filled = countFilledCells( board );
         assertEquals( 35, filled );
@@ -39,7 +39,7 @@ public class SudokuGeneratorTest {
     public void generatedBoardHasNoConflicts() {
         SudokuGenerator generator = new SudokuGenerator();
         SudokuValidator validator = new SudokuValidator();
-        SudokuBoard board = generator.generate();
+        SudokuBoard board = generator.generate().getPuzzle();
 
         Set<String> conflicts = validator.findConflicts( board );
         assertTrue( "Generated board should have no conflicts", conflicts.isEmpty() );
@@ -48,7 +48,7 @@ public class SudokuGeneratorTest {
     @Test
     public void generatedBoardValuesAreInValidRange() {
         SudokuGenerator generator = new SudokuGenerator();
-        SudokuBoard board = generator.generate();
+        SudokuBoard board = generator.generate().getPuzzle();
 
         for ( int r = 0; r < SudokuBoard.SIZE; r++ ) {
             for ( int c = 0; c < SudokuBoard.SIZE; c++ ) {
@@ -61,7 +61,7 @@ public class SudokuGeneratorTest {
     @Test
     public void allPreFilledCellsAreMarkedAsFixed() {
         SudokuGenerator generator = new SudokuGenerator();
-        SudokuBoard board = generator.generate();
+        SudokuBoard board = generator.generate().getPuzzle();
 
         for ( int r = 0; r < SudokuBoard.SIZE; r++ ) {
             for ( int c = 0; c < SudokuBoard.SIZE; c++ ) {
@@ -79,7 +79,7 @@ public class SudokuGeneratorTest {
     @Test
     public void eachRowHasNoDuplicatesAmongPreFilledCells() {
         SudokuGenerator generator = new SudokuGenerator();
-        SudokuBoard board = generator.generate();
+        SudokuBoard board = generator.generate().getPuzzle();
 
         for ( int r = 0; r < SudokuBoard.SIZE; r++ ) {
             Set<Integer> seen = new HashSet<>();
@@ -95,7 +95,7 @@ public class SudokuGeneratorTest {
     @Test
     public void eachColumnHasNoDuplicatesAmongPreFilledCells() {
         SudokuGenerator generator = new SudokuGenerator();
-        SudokuBoard board = generator.generate();
+        SudokuBoard board = generator.generate().getPuzzle();
 
         for ( int c = 0; c < SudokuBoard.SIZE; c++ ) {
             Set<Integer> seen = new HashSet<>();
@@ -111,7 +111,7 @@ public class SudokuGeneratorTest {
     @Test
     public void eachBoxHasNoDuplicatesAmongPreFilledCells() {
         SudokuGenerator generator = new SudokuGenerator();
-        SudokuBoard board = generator.generate();
+        SudokuBoard board = generator.generate().getPuzzle();
 
         for ( int boxR = 0; boxR < SudokuBoard.SIZE; boxR += 3 ) {
             for ( int boxC = 0; boxC < SudokuBoard.SIZE; boxC += 3 ) {
@@ -132,8 +132,8 @@ public class SudokuGeneratorTest {
     @Test
     public void multipleGenerationsProduceDifferentBoards() {
         SudokuGenerator generator = new SudokuGenerator();
-        SudokuBoard board1 = generator.generate();
-        SudokuBoard board2 = generator.generate();
+        SudokuBoard board1 = generator.generate().getPuzzle();
+        SudokuBoard board2 = generator.generate().getPuzzle();
 
         boolean different = false;
         for ( int r = 0; r < SudokuBoard.SIZE && !different; r++ ) {
@@ -151,10 +151,35 @@ public class SudokuGeneratorTest {
         SudokuGenerator generator = new SudokuGenerator();
 
         for ( int count : new int[]{ 20, 30, 45, 50 } ) {
-            SudokuBoard board = generator.generate( count );
+            SudokuBoard board = generator.generate( count ).getPuzzle();
             assertEquals( "Expected " + count + " pre-filled cells",
                 count, countFilledCells( board ) );
         }
+    }
+
+    @Test
+    public void generatedSolutionIsComplete() {
+        SudokuGenerator generator = new SudokuGenerator();
+        GeneratedPuzzle generated = generator.generate();
+        SudokuSolution solution = generated.getSolution();
+
+        for ( int r = 0; r < SudokuBoard.SIZE; r++ ) {
+            for ( int c = 0; c < SudokuBoard.SIZE; c++ ) {
+                int val = solution.getValue( r, c );
+                assertTrue( "Solution cell should be 1-9 at (" + r + "," + c + ")",
+                    val >= 1 && val <= 9 );
+            }
+        }
+    }
+
+    @Test
+    public void puzzleMatchesSolution() {
+        SudokuGenerator generator = new SudokuGenerator();
+        GeneratedPuzzle generated = generator.generate();
+        SudokuBoard board = generated.getPuzzle();
+        SudokuSolution solution = generated.getSolution();
+
+        assertTrue( solution.isPartialSolutionCorrect( board ) );
     }
 
     private int countFilledCells( SudokuBoard board ) {

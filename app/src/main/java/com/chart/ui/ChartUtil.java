@@ -9,9 +9,7 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.ValueFormatter;
-import com.util.DateUtil;
 
-import java.util.Date;
 import java.util.List;
 
 public class ChartUtil {
@@ -51,9 +49,10 @@ public class ChartUtil {
         yAxis.setValueFormatter( new ValueFormatter() {
             @Override
             public String getFormattedValue( float value ) {
-                return DateUtil.formatForChartUI( new Date( ( long ) value ) );
+                return String.valueOf( (int) value );
             }
         } );
+        yAxis.setGranularity( 1f );
     }
 
 

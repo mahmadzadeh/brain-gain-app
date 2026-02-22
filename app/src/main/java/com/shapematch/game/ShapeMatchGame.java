@@ -1,8 +1,8 @@
 package com.shapematch.game;
 
+import static com.shapematch.game.CellGridUtil.getShapesForLevel;
 import static com.shapematch.game.GameLevel.initialLevel;
 import static com.shapematch.game.Score.initialScore;
-import static com.shapematch.game.CellGridUtil.getShapesForLevel;
 
 /**
  * Immutable game state - handles all game logic

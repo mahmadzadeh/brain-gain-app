@@ -7,12 +7,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.chart.ui.ChartActivity;
 import com.chart.ui.ChartActivityIntent;
 import com.mainscreen.ui.GameSelectionActivity;
 import com.monkeyladder.R;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 public class ContinueActivity extends AppCompatActivity {
 
@@ -20,6 +20,7 @@ public class ContinueActivity extends AppCompatActivity {
     public static final String EXTRA_SCORE_TEXT = "extra_score_text";
     public static final String EXTRA_ICON_RES_ID = "extra_icon_res_id";
     public static final String EXTRA_REPLAY_ACTIVITY = "extra_replay_activity";
+    public static final String EXTRA_GAME_KEY = "extra_game_key";
 
     public static final String EXTRA_SHOW_STATS = "extra_show_stats";
 

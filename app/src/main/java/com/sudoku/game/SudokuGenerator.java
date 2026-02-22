@@ -18,19 +18,21 @@ public class SudokuGenerator {
 
     /**
      * Generates a puzzle with the given number of pre-filled cells.
+     * Returns the puzzle board and the complete solution.
      */
-    public SudokuBoard generate( int preFilledCells ) {
+    public GeneratedPuzzle generate( int preFilledCells ) {
         SudokuBoard board = new SudokuBoard();
         fillBoard( board, 0, 0 );
+        SudokuSolution solution = new SudokuSolution( board.getCells() );
         removeCells( board, ( SIZE * SIZE ) - preFilledCells );
         board.markAllNonEmptyAsFixed();
-        return board;
+        return new GeneratedPuzzle( board, solution );
     }
 
     /**
      * Generates a puzzle with ~35 pre-filled cells (medium difficulty).
      */
-    public SudokuBoard generate() {
+    public GeneratedPuzzle generate() {
         return generate( 35 );
     }
 

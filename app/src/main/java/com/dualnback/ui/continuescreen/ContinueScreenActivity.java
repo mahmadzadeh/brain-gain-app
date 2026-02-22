@@ -1,19 +1,19 @@
 package com.dualnback.ui.continuescreen;
 
-import android.os.Bundle;
-import android.widget.Button;
-import android.widget.TextView;
-
-import com.dualnback.game.NBackVersion;
-import com.monkeyladder.R;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import static com.dualnback.ui.mainscreen.MainActivity.FINAL_SCORE;
 import static com.dualnback.ui.startscreen.util.StartScreenActivityIntentUtil.backToStartScreen;
 import static com.dualnback.util.IntentUtility.extractFromExtrasWithDefault;
 import static com.dualnback.util.IntentUtility.extractGameVersion;
 import static com.dualnback.util.NumberFormatterUtil.formatScore;
+
+import android.os.Bundle;
+import android.widget.Button;
+import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.dualnback.game.NBackVersion;
+import com.monkeyladder.R;
 
 
 public class ContinueScreenActivity extends AppCompatActivity {

@@ -1,11 +1,11 @@
 package com.dualnback.ui.mainscreen.util;
 
+import static com.dualnback.ui.mainscreen.util.TimerUtil.formatTime;
+import static com.dualnback.ui.mainscreen.util.TimerUtil.isEndOfTrialYet;
+
 import android.os.CountDownTimer;
 
 import com.dualnback.ui.mainscreen.MainViewContract;
-
-import static com.dualnback.ui.mainscreen.util.TimerUtil.formatTime;
-import static com.dualnback.ui.mainscreen.util.TimerUtil.isEndOfTrialYet;
 
 public class GameCountDownTimer implements DownTimerContract {
 

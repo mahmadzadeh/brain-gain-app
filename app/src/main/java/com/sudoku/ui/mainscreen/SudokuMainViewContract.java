@@ -17,4 +17,6 @@ public interface SudokuMainViewContract {
     void updateMoves( int moves );
 
     void onPuzzleSolved( long elapsedSeconds, int moves );
+
+    void flashGridBorder( boolean correct );
 }

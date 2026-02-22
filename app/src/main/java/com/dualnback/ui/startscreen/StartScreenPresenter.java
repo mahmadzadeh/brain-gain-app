@@ -1,12 +1,12 @@
 package com.dualnback.ui.startscreen;
 
+import static com.dualnback.data.filesystem.dao.DataFileUtil.readAllData;
+import static com.dualnback.game.VersionSelection.currentLevel;
+
 import com.dualnback.data.filesystem.dao.DataPoint;
 import com.dualnback.game.NBackVersion;
 
 import java.util.Optional;
-
-import static com.dualnback.data.filesystem.dao.DataFileUtil.readAllData;
-import static com.dualnback.game.VersionSelection.currentLevel;
 
 public class StartScreenPresenter implements IStartScreenPresenter {
 

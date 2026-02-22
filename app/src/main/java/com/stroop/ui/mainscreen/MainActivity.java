@@ -1,5 +1,7 @@
 package com.stroop.ui.mainscreen;
 
+import static com.stroop.ui.element.StatefulGameObject.ColourState.RedColour;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -7,23 +9,23 @@ import android.os.Message;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.chart.filesystem.dao.GameKey;
+import com.chart.filesystem.dao.GameStatsRepository;
+import com.chart.ui.ChartActivityIntent;
 import com.mainscreen.ui.continuescreen.ContinueActivity;
 import com.monkeyladder.R;
-import com.util.DateUtil;
-
-import java.util.Date;
 import com.stroop.GameCountDownTimer;
 import com.stroop.GameObjects;
 import com.stroop.StroopGame;
+import com.util.DateUtil;
 import com.util.RandomBoolean;
 import com.util.SoundPlayer;
 
+import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import static com.stroop.ui.element.StatefulGameObject.ColourState.RedColour;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -105,8 +107,11 @@ public class MainActivity extends AppCompatActivity {
         continueIntent.putExtra( ContinueActivity.EXTRA_SCORE_TEXT, "Score " + stroopGame.getScore() );
         continueIntent.putExtra( ContinueActivity.EXTRA_REPLAY_ACTIVITY, "com.stroop.ui.mainscreen.MainActivity" );
         continueIntent.putExtra( ContinueActivity.EXTRA_SHOW_STATS, true );
-        continueIntent.putExtra( com.chart.ui.ChartActivityIntent.FINAL_SCORE, stroopGame.getScore() );
-        continueIntent.putExtra( com.chart.ui.ChartActivityIntent.DATE, DateUtil.format( date ) );
+        continueIntent.putExtra( ContinueActivity.EXTRA_GAME_KEY, GameKey.STROOP.name() );
+        continueIntent.putExtra( ChartActivityIntent.FINAL_SCORE, stroopGame.getScore() );
+        continueIntent.putExtra( ChartActivityIntent.DATE, DateUtil.format( date ) );
+
+        GameStatsRepository.create( getFilesDir() ).addScore( GameKey.STROOP, date, stroopGame.getScore() );
 
         startActivity( continueIntent );
     }

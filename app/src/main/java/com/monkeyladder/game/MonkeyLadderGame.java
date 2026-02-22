@@ -1,11 +1,11 @@
 package com.monkeyladder.game;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import static com.monkeyladder.game.UserInputEvaluationResult.Correct;
 import static com.monkeyladder.game.UserInputEvaluationResult.Incorrect;
 import static com.monkeyladder.util.random.RandomBoardGenerator.nextTrialForLevel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MonkeyLadderGame {
 

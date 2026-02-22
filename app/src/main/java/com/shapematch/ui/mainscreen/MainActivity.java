@@ -3,34 +3,24 @@ package com.shapematch.ui.mainscreen;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.chart.filesystem.dao.DataPoint;
-import com.chart.filesystem.dao.DataPointCollection;
-import com.chart.filesystem.dao.Dao;
-import com.chart.filesystem.dao.FileBasedDao;
-import com.chart.filesystem.io.FileIO;
-import com.chart.filesystem.util.FileUtil;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.widget.ImageViewCompat;
+
+import com.chart.filesystem.dao.GameKey;
+import com.chart.filesystem.dao.GameStatsRepository;
 import com.chart.ui.ChartActivityIntent;
 import com.mainscreen.ui.continuescreen.ContinueActivity;
 import com.monkeyladder.R;
-import com.util.DateUtil;
 import com.shapematch.game.Cell;
-import com.shapematch.game.CellGrid;
 import com.shapematch.game.CellGridPair;
-import com.shapematch.game.CellGridUtil;
-import com.shapematch.game.GameLevel;
+import com.util.DateUtil;
 
-import java.io.File;
 import java.util.Date;
 import java.util.List;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.core.widget.ImageViewCompat;
 
 public class MainActivity extends AppCompatActivity implements MainScreenView {
 
@@ -174,6 +164,7 @@ public class MainActivity extends AppCompatActivity implements MainScreenView {
         continueIntent.putExtra(ContinueActivity.EXTRA_SCORE_TEXT, "Score " + finalScore);
         continueIntent.putExtra(ContinueActivity.EXTRA_REPLAY_ACTIVITY, "com.shapematch.ui.mainscreen.MainActivity");
         continueIntent.putExtra(ContinueActivity.EXTRA_SHOW_STATS, true);
+        continueIntent.putExtra(ContinueActivity.EXTRA_GAME_KEY, GameKey.SHAPE_MATCH.name());
         continueIntent.putExtra(ChartActivityIntent.FINAL_SCORE, finalScore);
         continueIntent.putExtra(ChartActivityIntent.DATE, DateUtil.format(date));
 
@@ -182,26 +173,7 @@ public class MainActivity extends AppCompatActivity implements MainScreenView {
     }
 
     private void saveGameResult(Date date, int score) {
-        DataPoint newDataPoint = new DataPoint(date, score);
-        DataPointCollection existingData = readAllData(getFilesDir());
-
-        existingData.addDataPoint(newDataPoint);
-        DataPointCollection shrunkData = existingData.shrinkDataSize();
-
-        new FileBasedDao(
-            new FileIO(
-                FileUtil.getDataFile(getFilesDir(), "shape_match_scores.json")
-            )
-        ).write(shrunkData);
-    }
-
-    private DataPointCollection readAllData(File filesDir) {
-        Dao dao = new FileBasedDao(
-            new FileIO(
-                FileUtil.getDataFile(filesDir, "shape_match_scores.json")
-            )
-        );
-        return dao.read();
+        GameStatsRepository.create( getFilesDir() ).addScore( GameKey.SHAPE_MATCH, date, score );
     }
 
     @Override

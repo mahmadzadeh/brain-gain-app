@@ -1,37 +1,38 @@
 package com.sudoku.ui.mainscreen;
 
+import android.animation.ArgbEvaluator;
+import android.animation.ValueAnimator;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
-import com.chart.filesystem.dao.DataPoint;
-import com.chart.filesystem.dao.DataPointCollection;
-import com.chart.filesystem.dao.Dao;
-import com.chart.filesystem.dao.FileBasedDao;
-import com.chart.filesystem.io.FileIO;
-import com.chart.filesystem.util.FileUtil;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.chart.filesystem.dao.GameKey;
+import com.chart.filesystem.dao.GameStatsRepository;
 import com.chart.ui.ChartActivityIntent;
 import com.mainscreen.ui.continuescreen.ContinueActivity;
 import com.monkeyladder.R;
 import com.sudoku.game.GameState;
+import com.sudoku.game.GeneratedPuzzle;
 import com.sudoku.game.SudokuBoard;
 import com.sudoku.game.SudokuGenerator;
 import com.sudoku.game.SudokuValidator;
 import com.util.DateUtil;
 
-import java.io.File;
 import java.util.Date;
 import java.util.Set;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 public class SudokuMainActivity extends AppCompatActivity implements SudokuMainViewContract {
 
     private static final int SIZE = SudokuBoard.SIZE;
-    private static final String SCORES_FILE = "sudoku_scores.json";
 
     private SudokuPresenter presenter;
     private final TextView[][] cellViews = new TextView[SIZE][SIZE];
+    private View gridBorder;
 
     private int previousSelectedRow = -1;
     private int previousSelectedCol = -1;
@@ -41,12 +42,16 @@ public class SudokuMainActivity extends AppCompatActivity implements SudokuMainV
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_sudoku_main );
 
+        gridBorder = findViewById( R.id.gridBorder );
         initCellViews();
         initNumPad();
 
+        GeneratedPuzzle generated = new SudokuGenerator().generate();
+
         presenter = new SudokuPresenter(
             this,
-            new SudokuGenerator().generate(),
+            generated.getPuzzle(),
+            generated.getSolution(),
             new SudokuValidator(),
             new GameState()
         );
@@ -98,6 +103,7 @@ public class SudokuMainActivity extends AppCompatActivity implements SudokuMainV
 
         findViewById( R.id.numPad_clear ).setOnClickListener( v -> presenter.onClearSelected() );
         findViewById( R.id.undoButton ).setOnClickListener( v -> presenter.onUndo() );
+        findViewById( R.id.checkButton ).setOnClickListener( v -> presenter.onCheckProgress() );
     }
 
     // SudokuMainViewContract implementations
@@ -192,11 +198,32 @@ public class SudokuMainActivity extends AppCompatActivity implements SudokuMainV
             continueIntent.putExtra( ContinueActivity.EXTRA_REPLAY_ACTIVITY,
                 "com.sudoku.ui.mainscreen.SudokuMainActivity" );
             continueIntent.putExtra( ContinueActivity.EXTRA_SHOW_STATS, true );
+            continueIntent.putExtra( ContinueActivity.EXTRA_GAME_KEY, GameKey.SUDOKU.name() );
             continueIntent.putExtra( ChartActivityIntent.FINAL_SCORE, score );
             continueIntent.putExtra( ChartActivityIntent.DATE, DateUtil.format( date ) );
 
             startActivity( continueIntent );
             finish();
+        } );
+    }
+
+    @Override
+    public void flashGridBorder( boolean correct ) {
+        runOnUiThread( () -> {
+            int flashColor = correct ? Color.parseColor( "#4CAF50" ) : Color.parseColor( "#F44336" );
+            int normalColor = androidx.core.content.ContextCompat.getColor( this, R.color.colorPrimaryDark );
+
+            // repeatCount = 5 → normal→flash, flash→normal, normal→flash, flash→normal, normal→flash, flash→normal = 3 full flashes
+            ValueAnimator animator = ValueAnimator.ofObject( new ArgbEvaluator(), normalColor, flashColor );
+            animator.setDuration( 300 );
+            animator.setRepeatCount( 5 );
+            animator.setRepeatMode( ValueAnimator.REVERSE );
+            animator.addUpdateListener( animation -> {
+                int color = (int) animation.getAnimatedValue();
+                GradientDrawable border = (GradientDrawable) gridBorder.getBackground();
+                border.setStroke( (int) ( 3 * getResources().getDisplayMetrics().density ), color );
+            } );
+            animator.start();
         } );
     }
 
@@ -207,20 +234,6 @@ public class SudokuMainActivity extends AppCompatActivity implements SudokuMainV
     }
 
     private void saveGameResult( Date date, int score ) {
-        DataPoint newDataPoint = new DataPoint( date, score );
-        DataPointCollection existingData = readAllData( getFilesDir() );
-        existingData.addDataPoint( newDataPoint );
-        DataPointCollection shrunkData = existingData.shrinkDataSize();
-
-        new FileBasedDao(
-            new FileIO( FileUtil.getDataFile( getFilesDir(), SCORES_FILE ) )
-        ).write( shrunkData );
-    }
-
-    private DataPointCollection readAllData( File filesDir ) {
-        Dao dao = new FileBasedDao(
-            new FileIO( FileUtil.getDataFile( filesDir, SCORES_FILE ) )
-        );
-        return dao.read();
+        GameStatsRepository.create( getFilesDir() ).addScore( GameKey.SUDOKU, date, score );
     }
 }

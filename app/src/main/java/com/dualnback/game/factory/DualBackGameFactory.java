@@ -1,5 +1,7 @@
 package com.dualnback.game.factory;
 
+import static com.dualnback.game.factory.TrialListFactory.updateListWithExpectedSoundAndLocationMatch;
+
 import com.dualnback.data.util.random.RandomTrialGenerator;
 import com.dualnback.game.DualBackGame;
 import com.dualnback.game.DualBackGrid;
@@ -7,8 +9,6 @@ import com.dualnback.game.GameTrialCollection;
 import com.dualnback.game.Trial;
 
 import java.util.List;
-
-import static com.dualnback.game.factory.TrialListFactory.updateListWithExpectedSoundAndLocationMatch;
 
 public class DualBackGameFactory {
 

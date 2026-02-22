@@ -1,6 +1,8 @@
 package com.dualnback.data.filesystem.util;
 
 
+import static com.dualnback.game.NBackVersion.fromTextValue;
+
 import com.dualnback.data.filesystem.dao.DataPoint;
 import com.dualnback.game.NBackVersion;
 import com.dualnback.util.DateUtil;
@@ -12,8 +14,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import static com.dualnback.game.NBackVersion.fromTextValue;
 
 public class JSONUtil {
 

@@ -1,5 +1,7 @@
 package com.dualnback.data.filesystem.dao;
 
+import static com.dualnback.data.filesystem.util.DtoJSONConversion.dataDtoToJSON;
+
 import android.util.Log;
 
 import org.apache.commons.collections4.list.UnmodifiableList;
@@ -9,8 +11,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
-
-import static com.dualnback.data.filesystem.util.DtoJSONConversion.dataDtoToJSON;
 
 
 public class DataPointCollection {

@@ -1,11 +1,11 @@
 package com.dualnback.data.filesystem.dao;
 
 
+import static com.dualnback.util.DateUtil.formatForChartUI;
+
 import com.github.mikephil.charting.data.Entry;
 
 import java.util.ArrayList;
-
-import static com.dualnback.util.DateUtil.formatForChartUI;
 
 
 public class DataDtoConversion {

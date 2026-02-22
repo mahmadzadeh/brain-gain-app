@@ -2,11 +2,11 @@ package com.chart.ui;
 
 import android.content.Intent;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.util.DateUtil;
 
 import java.util.Date;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 public class ChartActivityIntent {
 

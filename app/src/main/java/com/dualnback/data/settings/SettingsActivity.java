@@ -9,10 +9,10 @@ import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceFragment;
 import android.view.MenuItem;
 
-import java.util.List;
-
 import androidx.appcompat.app.ActionBar;
 import androidx.core.app.NavUtils;
+
+import java.util.List;
 
 public class SettingsActivity extends GamePreferenceActivity {
 

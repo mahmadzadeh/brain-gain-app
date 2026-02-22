@@ -1,16 +1,26 @@
 package com.shapematch.data;
 
-import com.shapematch.data.shapes.*;
+import static com.shapematch.util.random.RandomNumberGenerator.next_N_NumbersWithinRange;
+
+import com.shapematch.data.shapes.FourSquare;
+import com.shapematch.data.shapes.HollowCircle;
+import com.shapematch.data.shapes.HollowCross;
+import com.shapematch.data.shapes.HollowSquare;
+import com.shapematch.data.shapes.HollowTriangle;
+import com.shapematch.data.shapes.InvertedL;
+import com.shapematch.data.shapes.ReverseL;
+import com.shapematch.data.shapes.Shape;
+import com.shapematch.data.shapes.SolidCircle;
+import com.shapematch.data.shapes.SolidCross;
+import com.shapematch.data.shapes.SolidSquare;
+import com.shapematch.data.shapes.SolidTriangle;
 import com.shapematch.game.GameLevel;
 import com.shapematch.util.IntegerRange;
 import com.shapematch.util.random.RandomNumberGenerator;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
-
-import static com.shapematch.util.random.RandomNumberGenerator.next_N_NumbersWithinRange;
 
 public class ShapeSelector {
 

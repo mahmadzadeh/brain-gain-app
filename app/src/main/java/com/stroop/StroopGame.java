@@ -1,16 +1,16 @@
 package com.stroop;
 
+import static com.stroop.ui.element.StatefulGameObject.ColourState.BlueColour;
+import static com.stroop.ui.element.StatefulGameObject.ColourState.RedColour;
+import static com.stroop.ui.element.StatefulGameObject.TextState.BlueText;
+import static com.stroop.ui.element.StatefulGameObject.TextState.RedText;
+
 import com.stroop.ui.element.LeftButton;
 import com.stroop.ui.element.MainText;
 import com.stroop.ui.element.RightButton;
 import com.stroop.ui.element.StatefulButton;
 import com.stroop.ui.element.StatefulGameObject.ColourState;
 import com.util.RandomBoolean;
-
-import static com.stroop.ui.element.StatefulGameObject.ColourState.BlueColour;
-import static com.stroop.ui.element.StatefulGameObject.ColourState.RedColour;
-import static com.stroop.ui.element.StatefulGameObject.TextState.BlueText;
-import static com.stroop.ui.element.StatefulGameObject.TextState.RedText;
 
 public class StroopGame {
 

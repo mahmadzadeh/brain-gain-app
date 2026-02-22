@@ -1,6 +1,8 @@
 package com.chart.dao;
 
-import com.chart.filesystem.dao.ChartData;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 import com.chart.filesystem.dao.DataDtoConversion;
 import com.chart.filesystem.dao.DataPoint;
 import com.chart.filesystem.dao.DataPointCollection;
@@ -11,9 +13,6 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 
 public class DataPointCollectionConversionTest {
@@ -41,7 +40,7 @@ public class DataPointCollectionConversionTest {
 
         Entry entry = chartData.get( 0 );
 
-        assertTrue( new Entry(1461478244180f, 14f).equalTo( entry ));
+        assertTrue( new Entry( 1f, 14f ).equalTo( entry ) );
     }
 
 }

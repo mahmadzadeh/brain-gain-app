@@ -1,11 +1,11 @@
 package com.dualnback.data.settings;
 
 
-import android.content.Context;
-import android.content.SharedPreferences;
-
 import static android.preference.PreferenceManager.getDefaultSharedPreferences;
 import static com.dualnback.util.NumberFormatterUtil.convertToIntOrDefault;
+
+import android.content.Context;
+import android.content.SharedPreferences;
 
 public class ConfigReader implements IConfigReader {
 

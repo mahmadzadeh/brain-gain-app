@@ -14,7 +14,6 @@
             android:name="com.mainscreen.ui.LandingScreenActivity"
             android:configChanges="orientation|keyboardHidden"
             android:exported="true"
-            android:label="@string/title_activity_landing"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar.Splash">
             <intent-filter>
@@ -93,9 +92,9 @@
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name="com.simonsays.ui.mainscreen.SimonSaysMainActivity"
+            android:name="com.tokensearch.ui.mainscreen.TokenSearchMainActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:label="@string/simon_says_title"
+            android:label="@string/token_search_title"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>

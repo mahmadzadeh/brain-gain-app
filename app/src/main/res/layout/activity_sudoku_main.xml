@@ -121,6 +121,7 @@
 
     <!-- Sudoku Grid (9x9) wrapped in outer border -->
     <FrameLayout
+        android:id="@+id/gridBorder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/sudoku_grid_border"
@@ -372,6 +373,20 @@
             android:paddingStart="24dp"
             android:paddingEnd="24dp"
             android:text="Undo"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/checkButton"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/bg_continue_button_outline"
+            android:gravity="center"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:text="Check"
             android:textColor="#FFFFFF"
             android:textSize="14sp"
             android:textStyle="bold" />

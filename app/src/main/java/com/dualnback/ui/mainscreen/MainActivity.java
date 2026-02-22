@@ -1,5 +1,12 @@
 package com.dualnback.ui.mainscreen;
 
+import static com.dualnback.data.filesystem.dao.DataFileUtil.readAllData;
+import static com.dualnback.game.VersionSelection.currentLevel;
+import static com.dualnback.ui.mainscreen.MainActivityPresenter.TIME_TEXT_NORMAL_COLOUR;
+import static com.dualnback.util.DateUtil.format;
+import static com.monkeyladder.R.drawable.nback_checkmark;
+import static com.monkeyladder.R.drawable.nback_xmark;
+
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +17,11 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.chart.filesystem.dao.GameKey;
+import com.chart.filesystem.dao.GameStatsRepository;
+import com.chart.ui.ChartActivityIntent;
 import com.dualnback.data.filesystem.dao.DataPoint;
 import com.dualnback.data.filesystem.dao.DataPointCollection;
 import com.dualnback.data.filesystem.dao.FileBasedDao;
@@ -29,15 +41,6 @@ import java.util.Date;
 import java.util.Optional;
 import java.util.Timer;
 import java.util.TimerTask;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import static com.dualnback.data.filesystem.dao.DataFileUtil.readAllData;
-import static com.dualnback.game.VersionSelection.currentLevel;
-import static com.dualnback.ui.mainscreen.MainActivityPresenter.TIME_TEXT_NORMAL_COLOUR;
-import static com.dualnback.util.DateUtil.*;
-import static com.monkeyladder.R.drawable.nback_checkmark;
-import static com.monkeyladder.R.drawable.nback_xmark;
 
 public class MainActivity extends AppCompatActivity implements MainScreenView {
 
@@ -193,8 +196,9 @@ public class MainActivity extends AppCompatActivity implements MainScreenView {
         continueIntent.putExtra( ContinueActivity.EXTRA_SCORE_TEXT, "Score " + com.dualnback.util.NumberFormatterUtil.formatScore( currentScore ) );
         continueIntent.putExtra( ContinueActivity.EXTRA_REPLAY_ACTIVITY, "com.dualnback.ui.mainscreen.MainActivity" );
         continueIntent.putExtra( ContinueActivity.EXTRA_SHOW_STATS, true );
-        continueIntent.putExtra( com.chart.ui.ChartActivityIntent.FINAL_SCORE, (int) currentScore );
-        continueIntent.putExtra( com.chart.ui.ChartActivityIntent.DATE, format( date ) );
+        continueIntent.putExtra( ContinueActivity.EXTRA_GAME_KEY, GameKey.DUAL_N_BACK.name() );
+        continueIntent.putExtra( ChartActivityIntent.FINAL_SCORE, (int) currentScore );
+        continueIntent.putExtra( ChartActivityIntent.DATE, format( date ) );
 
         startActivity( continueIntent );
     }
@@ -213,6 +217,9 @@ public class MainActivity extends AppCompatActivity implements MainScreenView {
         new FileBasedDao(
             new FileIO(FileUtil.getDataFile( getFilesDir() ))
         ).write( updatedData );
+
+        // Also save to unified stats file for chart display
+        GameStatsRepository.create( getFilesDir() ).addScore( GameKey.DUAL_N_BACK, date, score );
 
         Log.d("DualNBack", "Save completed successfully");
     }

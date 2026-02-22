@@ -10,9 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import static com.shapematch.game.CellGrid.GRID_COL_CNT;
-import static com.shapematch.game.CellGrid.GRID_ROW_CNT;
-
 public class CellGridUtil {
 
     public static CellGridPair getShapesForLevel(GameLevel currentLvl) {

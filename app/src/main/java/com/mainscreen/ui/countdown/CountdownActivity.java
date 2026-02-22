@@ -7,9 +7,9 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.monkeyladder.R;
-
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.monkeyladder.R;
 
 public class CountdownActivity extends AppCompatActivity {
     public static final String EXTRA_TARGET_ACTIVITY = "extra_target_activity";

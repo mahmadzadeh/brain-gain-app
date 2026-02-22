@@ -41,9 +41,9 @@
     <!-- Dual N-Back (dnb) -->
     <FrameLayout
         android:id="@+id/dualNBackImg"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
-        android:layout_marginTop="80dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="64dp"
         android:layout_marginEnd="12dp"
         android:background="@drawable/game_tile_border"
         android:clickable="true"
@@ -59,6 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="18dp"
+            android:contentDescription="Dual N Back"
             app:srcCompat="@drawable/dual_n_back_main_icon" />
 
         <TextView
@@ -76,10 +77,10 @@
     <!-- Monkey Ladder (ml) -->
     <FrameLayout
         android:id="@+id/monkeyLadderImg"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="64dp"
         android:background="@drawable/game_tile_border"
         android:clickable="true"
         android:elevation="6dp"
@@ -92,8 +93,9 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="128dp"
+            android:layout_height="match_parent"
             android:padding="22dp"
+            android:contentDescription="Monkey Ladder"
             app:srcCompat="@drawable/monkey_ladder_icon" />
 
         <TextView
@@ -111,9 +113,9 @@
     <!-- Stroop (str) -->
     <FrameLayout
         android:id="@+id/stroopImg"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
-        android:layout_marginTop="22dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="12dp"
         android:background="@drawable/game_tile_border"
         android:clickable="true"
@@ -129,6 +131,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="22dp"
+            android:contentDescription="Stroop"
             app:srcCompat="@drawable/stroop_icon" />
 
         <TextView
@@ -146,10 +149,10 @@
     <!-- Shape Match (sm) -->
     <FrameLayout
         android:id="@+id/shapeMatchImg"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/game_tile_border"
         android:clickable="true"
         android:elevation="6dp"
@@ -164,6 +167,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="22dp"
+            android:contentDescription="Shape Match"
             app:srcCompat="@drawable/shape_match_icon" />
 
         <TextView
@@ -181,9 +185,9 @@
     <!-- Sudoku -->
     <FrameLayout
         android:id="@+id/sudokuImg"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
-        android:layout_marginTop="22dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="12dp"
         android:background="@drawable/game_tile_border"
         android:clickable="true"
@@ -199,6 +203,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="22dp"
+            android:contentDescription="@string/sudoku_title"
             app:srcCompat="@drawable/sudoku_icon" />
 
         <TextView
@@ -213,13 +218,13 @@
             android:textStyle="bold" />
     </FrameLayout>
 
-    <!-- Simon Says -->
+    <!-- Token Search -->
     <FrameLayout
         android:id="@+id/simonSaysImg"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/game_tile_border"
         android:clickable="true"
         android:elevation="6dp"
@@ -234,7 +239,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="22dp"
-            app:srcCompat="@drawable/simonsays_icon" />
+            android:contentDescription="@string/token_search_title"
+            app:srcCompat="@drawable/tokensearch_icon" />
 
         <TextView
             android:layout_width="match_parent"
@@ -242,7 +248,7 @@
             android:layout_gravity="bottom"
             android:gravity="center"
             android:paddingBottom="10dp"
-            android:text="@string/simon_says_title"
+            android:text="@string/token_search_title"
             android:textColor="@color/colorPrimaryDark"
             android:textSize="14sp"
             android:textStyle="bold" />
@@ -251,9 +257,9 @@
     <!-- Stats -->
     <FrameLayout
         android:id="@+id/statsBox"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
-        android:layout_marginTop="22dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="12dp"
         android:background="@drawable/game_tile_border"
         android:clickable="true"

@@ -1,13 +1,13 @@
 package com.dualnback.game;
 
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-
 import static java.util.Optional.empty;
 import static java.util.Optional.of;
 import static java.util.stream.IntStream.range;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
 
 public enum NBackVersion {
 
