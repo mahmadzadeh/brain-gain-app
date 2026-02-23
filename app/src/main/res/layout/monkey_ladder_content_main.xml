@@ -84,110 +84,162 @@
                 android:layout_height="2dp"
                 android:background="#9BBEE0" />
 
-            <!-- SCORE oval -->
-            <FrameLayout
+            <!-- Stats row (match Token Search style) -->
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="14dp"
-                android:layout_marginEnd="12dp"
-                android:layout_weight="1"
-                android:minHeight="84dp"
-                android:background="@drawable/dnb_stat_circle_bg"
-                android:elevation="4dp">
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="12dp">
 
-                <LinearLayout
+                <!-- Score box -->
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/dnb_stat_circle_bg"
+                    android:minHeight="68dp">
 
-                    <ImageView
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="8dp"
-                        android:contentDescription="Score"
-                        android:src="@drawable/trophy_icon" />
-
-                    <Space
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="0dp"
-                        android:layout_weight="1" />
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp">
 
-                    <TextView
-                        android:id="@+id/score"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="14dp"
-                        android:gravity="center"
-                        android:text="@string/zeroScore"
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="22sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-            </FrameLayout>
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:contentDescription="@string/scoreHeaderText"
+                            android:src="@drawable/trophy_icon"
+                            app:tint="@color/colorPrimaryDark" />
 
-            <!-- TIMER oval -->
-            <FrameLayout
+                        <TextView
+                            android:id="@+id/score"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="@string/score"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </FrameLayout>
+
+                <!-- Lives box -->
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/dnb_stat_circle_bg"
+                    android:minHeight="68dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:contentDescription="@string/livesHeaderText"
+                            android:src="@drawable/ml_heart"
+                            app:tint="@color/colorPrimaryDark" />
+
+                        <TextView
+                            android:id="@+id/livesText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="3"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </FrameLayout>
+
+                <!-- Level box -->
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/dnb_stat_circle_bg"
+                    android:minHeight="68dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:contentDescription="@string/levelHeaderText"
+                            android:src="@drawable/level_icon"
+                            app:tint="@color/colorPrimaryDark" />
+
+                        <TextView
+                            android:id="@+id/levelText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="1"
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </FrameLayout>
+
+                <!-- Timer box -->
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/dnb_stat_circle_bg"
+                    android:minHeight="68dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp">
+
+                        <ImageView
+                            android:id="@+id/timerIcon"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:contentDescription="Timer"
+                            android:src="@drawable/hour_glass"
+                            app:tint="@color/colorPrimaryDark" />
+
+                        <TextView
+                            android:id="@+id/countdownText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text=""
+                            android:textColor="@color/colorPrimaryDark"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </FrameLayout>
+
+            </LinearLayout>
+
+            <Space
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginStart="12dp"
-                android:layout_marginTop="14dp"
-                android:layout_marginEnd="12dp"
-                android:layout_weight="1"
-                android:minHeight="84dp"
-                android:background="@drawable/dnb_stat_circle_bg"
-                android:elevation="4dp">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <ImageView
-                        android:id="@+id/timerIcon"
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
-                        android:layout_marginTop="10dp"
-                        android:contentDescription="Timer"
-                        android:src="@drawable/hour_glass"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <ProgressBar
-                        android:id="@+id/progressBar"
-                        style="@android:style/Widget.ProgressBar.Horizontal"
-                        android:layout_width="54dp"
-                        android:layout_height="54dp"
-                        android:indeterminate="false"
-                        android:max="100"
-                        android:progress="0"
-                        android:progressDrawable="@drawable/countdown_ring"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/timerIcon"
-                        app:layout_constraintVertical_bias="0.62" />
-
-                    <TextView
-                        android:id="@+id/countdownText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:includeFontPadding="false"
-                        android:text=""
-                        android:textColor="@color/colorPrimaryDark"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="@id/progressBar"
-                        app:layout_constraintEnd_toEndOf="@id/progressBar"
-                        app:layout_constraintStart_toStartOf="@id/progressBar"
-                        app:layout_constraintTop_toTopOf="@id/progressBar" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </FrameLayout>
-
-
+                android:layout_weight="1" />
 
             <ImageView
                 android:id="@+id/userSelectionResult"
@@ -227,11 +279,11 @@
             android:id="@+id/boardContainer"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginBottom="12dp"
+            android:layout_marginBottom="0dp"
             android:background="@android:color/transparent"
             android:elevation="0dp"
             android:padding="0dp"
-            app:layout_constraintBottom_toTopOf="@id/livesPanel"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -268,59 +320,6 @@
             <ImageView android:id="@+id/text_34" android:layout_width="0dp" android:layout_height="0dp" android:layout_column="4" android:layout_columnWeight="1" android:layout_row="3" android:layout_rowWeight="1" android:layout_margin="6dp" android:background="@drawable/monkey_ladder_cell_display" android:onClick="onClick" android:scaleType="fitCenter" android:src="@drawable/monkey_ladder_transparent" />
 
         </GridLayout>
-
-        </FrameLayout>
-
-        <!-- Lives (bottom-left) -->
-        <FrameLayout
-            android:id="@+id/livesPanel"
-            android:layout_width="120dp"
-            android:layout_height="44dp"
-            android:layout_marginStart="0dp"
-            android:layout_marginBottom="0dp"
-            android:background="@drawable/monkey_ladder_lives_panel_bg"
-            android:padding="6dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-        <LinearLayout
-            android:id="@+id/livesRow"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/life1"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:contentDescription="Life 1"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ml_heart"
-                app:tint="@color/colorPrimary" />
-
-            <ImageView
-                android:id="@+id/life2"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:contentDescription="Life 2"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ml_heart"
-                app:tint="@color/colorPrimary" />
-
-            <ImageView
-                android:id="@+id/life3"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:contentDescription="Life 3"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ml_heart"
-                android:tint="@color/colorPrimary" />
-
-        </LinearLayout>
 
         </FrameLayout>
 

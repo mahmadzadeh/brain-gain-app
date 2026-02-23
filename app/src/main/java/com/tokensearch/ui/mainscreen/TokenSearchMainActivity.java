@@ -24,7 +24,6 @@ public class TokenSearchMainActivity extends AppCompatActivity implements TokenS
 
     private TokenSearchPresenter presenter;
     private TokenSearchGridView gameGridView;
-    private TextView statusText;
     private SoundPlayer soundPlayer;
 
     @Override
@@ -33,7 +32,6 @@ public class TokenSearchMainActivity extends AppCompatActivity implements TokenS
         setContentView( R.layout.activity_token_search_main );
 
         gameGridView = findViewById( R.id.gameGridView );
-        statusText = findViewById( R.id.statusText );
         soundPlayer = new SoundPlayer( this );
 
         gameGridView.setBoxClickListener( index -> {
@@ -124,16 +122,6 @@ public class TokenSearchMainActivity extends AppCompatActivity implements TokenS
             TextView levelText = findViewById( R.id.levelText );
             levelText.setText( String.valueOf( level ) );
         } );
-    }
-
-    @Override
-    public void setStatusText( int resId ) {
-        runOnUiThread( () -> statusText.setText( resId ) );
-    }
-
-    @Override
-    public void setStatusText( int resId, Object... formatArgs ) {
-        runOnUiThread( () -> statusText.setText( getString( resId, formatArgs ) ) );
     }
 
     @Override

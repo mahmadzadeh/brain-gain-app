@@ -10,8 +10,6 @@ public interface MainActivityPresenterContract {
 
     void onDisplayTimerFinish( );
 
-    void setDisplayGameBoardProgress( int formatTime );
-
     void setDisplayGameBoardCountdownText( String text );
 
     void addSelectedLocation( Location location );

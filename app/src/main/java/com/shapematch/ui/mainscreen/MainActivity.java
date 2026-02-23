@@ -52,8 +52,23 @@ public class MainActivity extends AppCompatActivity implements MainScreenView {
         matchButton.setOnClickListener( v -> presenter.handleMatchButtonClick() );
         mismatchButton.setOnClickListener( v -> presenter.handleMismatchButtonClick() );
 
+        // Page flip animation setup
+        android.view.View puzzleContainer = findViewById( R.id.puzzleContainer );
+        puzzleContainer.setPivotX( 0 );
+        puzzleContainer.setRotationY( -100f );
+        puzzleContainer.setAlpha( 0.5f );
+        puzzleContainer.setCameraDistance( 8000 * getResources().getDisplayMetrics().density );
+
         // Display initial game state
         presenter.displayCurrentState();
+
+        // Trigger flip animation
+        puzzleContainer.post( () -> puzzleContainer.animate()
+            .rotationY( 0f )
+            .alpha( 1.0f )
+            .setDuration( 1500 )
+            .setInterpolator( new android.view.animation.OvershootInterpolator( 0.7f ) )
+            .start() );
     }
 
     @Override

@@ -46,6 +46,13 @@ public class SudokuMainActivity extends AppCompatActivity implements SudokuMainV
         initCellViews();
         initNumPad();
 
+        // Initialize page flip animation state
+        gridBorder.setPivotX( 0 );
+        gridBorder.setRotationY( -100f );
+        gridBorder.setAlpha( 0.5f );
+        // Increase camera distance for realistic 3D perspective
+        gridBorder.setCameraDistance( 8000 * getResources().getDisplayMetrics().density );
+
         GeneratedPuzzle generated = new SudokuGenerator().generate();
 
         presenter = new SudokuPresenter(
@@ -57,6 +64,14 @@ public class SudokuMainActivity extends AppCompatActivity implements SudokuMainV
         );
 
         presenter.displayBoard();
+
+        // Trigger page flip animation
+        gridBorder.post( () -> gridBorder.animate()
+            .rotationY( 0f )
+            .alpha( 1.0f )
+            .setDuration( 1500 )
+            .setInterpolator( new android.view.animation.OvershootInterpolator( 0.7f ) )
+            .start() );
     }
 
     @Override

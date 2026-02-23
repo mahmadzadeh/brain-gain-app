@@ -14,19 +14,20 @@ public class GameStateTest {
 
         assertEquals( PlayerLives.getDefaultStartingValue(), state.getLives() );
         assertEquals( GameLevel.LevelFour, state.getLevel() );
-        assertEquals( 0 + GameLevel.LevelThree.cellCount(), state.getScore() );
+        assertEquals( GameLevel.LevelThree.cellCount(), state.getScore() );
 
     }
 
     @Test
     public void givenInitialGameStateAndIncorrectUserInput_thenUpdateWillUpdateItBasedOnUserInput( ) {
+        // Initializing at Level 3 means maxLevelCompleted was Level 2
         GameState state = new GameState( PlayerLives.Three, GameLevel.LevelThree, 3 );
 
         state.updateGameStateBasedOnResult( UserInputEvaluationResult.Incorrect );
 
         assertEquals( PlayerLives.Two, state.getLives() );
         assertEquals( GameLevel.LevelTwo, state.getLevel() );
-        assertEquals( 0 , state.getScore() );
+        assertEquals( GameLevel.LevelTwo.cellCount(), state.getScore() );
     }
 
     @Test
@@ -42,7 +43,7 @@ public class GameStateTest {
 
         assertEquals( lastLevel, state.getLevel() );
 
-        assertEquals( 3+lastLevel.cellCount() , state.getScore() );
+        assertEquals( lastLevel.cellCount() , state.getScore() );
     }
 
 }

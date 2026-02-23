@@ -2,11 +2,11 @@ package com.tokensearch.ui.mainscreen;
 
 import android.os.Handler;
 
-import com.monkeyladder.R;
+import com.tokensearch.game.ResultHandler;
 import com.tokensearch.game.SearchResult;
 import com.tokensearch.game.TokenSearchGame;
 
-public class TokenSearchPresenter {
+public class TokenSearchPresenter implements ResultHandler {
 
     private static final long ERROR_DISPLAY_MS = 800;
     private static final long LEVEL_COMPLETE_DELAY_MS = 1200;
@@ -40,16 +40,19 @@ public class TokenSearchPresenter {
         result.handle( this, boxIndex );
     }
 
+    @Override
     public void onTokenFound( int boxIndex ) {
         inputEnabled = false;
         view.revealToken( boxIndex );
         handler.postDelayed( () -> handleTokenFound( boxIndex ), TOKEN_REVEAL_MS );
     }
 
+    @Override
     public void onEmptyBoxTapped() {
         view.notifyEmptySearch();
     }
 
+    @Override
     public void onErrorTapped( int boxIndex ) {
         inputEnabled = false;
         view.showError( boxIndex );
@@ -75,21 +78,18 @@ public class TokenSearchPresenter {
         updateUI();
 
         if ( game.isLevelComplete() ) {
-            view.setStatusText( R.string.token_search_level_complete );
             handler.postDelayed( () -> {
                 game.advanceLevel();
                 showPuzzle();
             }, LEVEL_COMPLETE_DELAY_MS );
         } else {
             inputEnabled = true;
-            view.setStatusText( R.string.token_search_tokens_left, game.tokensRemaining() );
         }
     }
 
     private void showPuzzle() {
         view.showBoxes( game.boxes(), game.gridCols(), game.gridRows() );
         updateUI();
-        view.setStatusText( R.string.token_search_tokens_left, game.tokensRemaining() );
         inputEnabled = true;
     }
 

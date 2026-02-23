@@ -22,10 +22,6 @@ public interface TokenSearchViewContract {
 
     void updateLevel( int level );
 
-    void setStatusText( int resId );
-
-    void setStatusText( int resId, Object... formatArgs );
-
     void onLevelComplete();
 
     void onGameOver( int finalScore );

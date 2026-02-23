@@ -2,8 +2,12 @@ package com.tokensearch.ui.mainscreen;
 
 import android.os.Handler;
 
-import com.monkeyladder.R;
+import com.tokensearch.game.AlreadyFound;
+import com.tokensearch.game.AlreadySearched;
+import com.tokensearch.game.Box;
+import com.tokensearch.game.BoxLayout;
 import com.tokensearch.game.Empty;
+import com.tokensearch.game.SearchResult;
 import com.tokensearch.game.TokenFound;
 import com.tokensearch.game.TokenSearchGame;
 
@@ -64,13 +68,6 @@ public class TokenSearchPresenterTest {
     }
 
     @Test
-    public void startGameSetsStatusText() {
-        presenter.startGame();
-
-        verify( mockView ).setStatusText( R.string.token_search_tokens_left, 3 );
-    }
-
-    @Test
     public void tappingTokenRevealsToken() {
         presenter.startGame();
 
@@ -90,7 +87,6 @@ public class TokenSearchPresenterTest {
         presenter.onBoxTapped( tokenIndex );
 
         verify( mockView ).revealToken( tokenIndex );
-        verify( mockView ).setStatusText( R.string.token_search_tokens_left, 2 );
     }
 
     @Test

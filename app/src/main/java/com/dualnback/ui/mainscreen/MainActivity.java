@@ -97,6 +97,13 @@ public class MainActivity extends AppCompatActivity implements MainScreenView {
 
         initGameUiElements( version );
 
+        // Page flip animation setup
+        View boardContainer = findViewById( R.id.boardContainer );
+        boardContainer.setPivotX( 0 );
+        boardContainer.setRotationY( -100f );
+        boardContainer.setAlpha( 0.5f );
+        boardContainer.setCameraDistance( 8000 * getResources().getDisplayMetrics().density );
+
         countDownTextView = findViewById( R.id.textViewCountDownTimer );
 
         vibrator = ( Vibrator ) getSystemService( Context.VIBRATOR_SERVICE );
@@ -110,6 +117,14 @@ public class MainActivity extends AppCompatActivity implements MainScreenView {
         } );
 
         presenter.startTrial();
+
+        // Trigger flip animation
+        boardContainer.post( () -> boardContainer.animate()
+            .rotationY( 0f )
+            .alpha( 1.0f )
+            .setDuration( 1500 )
+            .setInterpolator( new android.view.animation.OvershootInterpolator( 0.7f ) )
+            .start() );
     }
 
     @Override

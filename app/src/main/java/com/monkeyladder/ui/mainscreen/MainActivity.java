@@ -10,7 +10,6 @@ import android.os.Looper;
 import android.view.HapticFeedbackConstants;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,7 +37,6 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity implements MainActivityViewContract, View.OnClickListener {
 
-    private static final int DELAY_PER_CELL_COUNT_MILLIS = 1000;
     private static final int ONE_TICK_IN_MILLIS = 750;
     private static final int DELAY_ON_INITIAL_SCREEN_DISPLAY_MILLIS = 0;
 
@@ -50,12 +48,10 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewC
     private static final GameLevel STARTING_LEVEL = GameLevel.LevelTwo;
     private final Timer gameUpdateTimer = new Timer( false );
     private MainActivityPresenter presenter = null;
-    private ProgressBar progressBar;
     private TextView countdownText;
     private ImageView resultImage;
-    private ImageView life1;
-    private ImageView life2;
-    private ImageView life3;
+    private TextView livesText;
+    private TextView levelText;
 
     private boolean isReadyForUserInput = false;
 
@@ -98,11 +94,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewC
                     imageView.setColorFilter( getResources().getColor( R.color.colorPrimaryDark ) );
 
                 } );
-    }
-
-    @Override
-    public void updateDisplayBoardProgressBar( int progress ) {
-        progressBar.setProgress( progress );
     }
 
     @Override
@@ -229,8 +220,11 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewC
         TextView scoreText = findViewById( R.id.score );
         scoreText.setText( gameState.getScore() + "" );
 
-        // TODO update lives
-        progressBar.setProgress( 0 );
+        if ( levelText != null ) {
+            levelText.setText( String.valueOf( gameState.getLevel().cellCount() ) );
+        }
+
+        updateLivesInUI( gameState.getLives() );
     }
 
     @Override
@@ -261,35 +255,16 @@ public class MainActivity extends AppCompatActivity implements MainActivityViewC
 
     @Override
     public void updateLivesInUI( PlayerLives lives ) {
-        int visibleLives;
-
-        switch ( lives.getHealth() ) {
-            case Danger:
-                visibleLives = 1;
-                break;
-            case Warning:
-                visibleLives = 2;
-                break;
-            case Healthy:
-                visibleLives = 3;
-                break;
-            default:
-                throw new RuntimeException( "Unable to determine the health image to be used " +
-                        "for lives " + lives );
+        if ( livesText != null ) {
+            livesText.setText( String.valueOf( lives.getLifeCount() ) );
         }
-
-        life1.setVisibility( visibleLives >= 1 ? View.VISIBLE : View.INVISIBLE );
-        life2.setVisibility( visibleLives >= 2 ? View.VISIBLE : View.INVISIBLE );
-        life3.setVisibility( visibleLives >= 3 ? View.VISIBLE : View.INVISIBLE );
     }
 
     private void initUserInterfaceElements( ) {
-        progressBar = findViewById( R.id.progressBar );
         countdownText = findViewById( R.id.countdownText );
         resultImage = findViewById( R.id.userSelectionResult );
-        life1 = findViewById( R.id.life1 );
-        life2 = findViewById( R.id.life2 );
-        life3 = findViewById( R.id.life3 );
+        livesText = findViewById( R.id.livesText );
+        levelText = findViewById( R.id.levelText );
 
         updateLivesInUI( PlayerLives.getDefaultStartingValue() );
         resultImage.setImageResource( R.drawable.monkey_ladder_expecting_input );

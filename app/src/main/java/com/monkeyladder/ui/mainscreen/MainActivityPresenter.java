@@ -46,11 +46,6 @@ class MainActivityPresenter implements MainActivityPresenterContract {
     }
 
     @Override
-    public void setDisplayGameBoardProgress( int progress ) {
-        view.updateDisplayBoardProgressBar( progress );
-    }
-
-    @Override
     public void setDisplayGameBoardCountdownText( String text ) {
         view.updateDisplayBoardCountdownText( text );
     }

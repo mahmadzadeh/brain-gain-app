@@ -16,6 +16,9 @@ import java.util.List;
  */
 public class TokenSearchGridView extends FrameLayout {
 
+    private static final long ENTRANCE_ANIM_DURATION_MS = 250;
+    private static final long ENTRANCE_STAGGER_DELAY_MS = 40;
+
     public interface BoxClickListener {
         void onBoxTapped( int boxIndex );
     }
@@ -54,6 +57,8 @@ public class TokenSearchGridView extends FrameLayout {
         for ( int i = 0; i < boxes.size(); i++ ) {
             Box box = boxes.get( i );
             View boxView = createBoxView( i, boxSize );
+            boxView.setScaleX( 0f );
+            boxView.setScaleY( 0f );
 
             LayoutParams params = new LayoutParams( boxSize, boxSize );
             params.leftMargin = box.col() * cellWidth + padX;
@@ -62,19 +67,50 @@ public class TokenSearchGridView extends FrameLayout {
             boxView.setLayoutParams( params );
             addView( boxView );
             boxViews.add( boxView );
+
+            boxView.animate()
+                .scaleX( 1f )
+                .scaleY( 1f )
+                .setDuration( ENTRANCE_ANIM_DURATION_MS )
+                .setStartDelay( i * ENTRANCE_STAGGER_DELAY_MS )
+                .start();
         }
     }
 
     public void revealToken( int boxIndex ) {
         if ( boxIndex >= 0 && boxIndex < boxViews.size() ) {
-            boxViews.get( boxIndex ).setBackgroundResource( R.drawable.tokensearch_box_token );
+            View view = boxViews.get( boxIndex );
+            view.setBackgroundResource( R.drawable.tokensearch_box_token );
+            animatePop( view );
         }
     }
 
     public void showError( int boxIndex ) {
         if ( boxIndex >= 0 && boxIndex < boxViews.size() ) {
-            boxViews.get( boxIndex ).setBackgroundResource( R.drawable.tokensearch_box_error );
+            View view = boxViews.get( boxIndex );
+            view.setBackgroundResource( R.drawable.tokensearch_box_error );
+            animateShake( view );
         }
+    }
+
+    private void animatePop( View view ) {
+        view.animate()
+            .scaleX( 1.35f )
+            .scaleY( 1.35f )
+            .setDuration( 100 )
+            .withEndAction( () -> view.animate().scaleX( 1f ).scaleY( 1f ).setDuration( 100 ) );
+    }
+
+    private void animateShake( View view ) {
+        view.animate()
+            .translationX( dpToPx( 8 ) )
+            .setDuration( 50 )
+            .withEndAction( () -> view.animate()
+                .translationX( dpToPx( -8 ) )
+                .setDuration( 50 )
+                .withEndAction( () -> view.animate()
+                    .translationX( 0 )
+                    .setDuration( 50 ) ) );
     }
 
     public void hideToken( int boxIndex ) {

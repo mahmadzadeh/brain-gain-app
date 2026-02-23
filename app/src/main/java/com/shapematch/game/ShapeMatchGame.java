@@ -17,19 +17,22 @@ public class ShapeMatchGame {
             getShapesForLevel(GameLevel.initialLevel),
             INITIAL_CORRECT_ANSWERS,
             Score.initialScore,
+            0,
             false);
 
     private final GameLevel currentLevel;
     private final CellGridPair cellGridPair;
     private final int correctAnswers;
     private final Score score;
+    private final int totalCorrectMatches;
     private boolean isGameOver;
 
-    public ShapeMatchGame(GameLevel currentLevel, CellGridPair cellGridPair, int correctAnswers, Score score, boolean isGameOver) {
+    public ShapeMatchGame(GameLevel currentLevel, CellGridPair cellGridPair, int correctAnswers, Score score, int totalCorrectMatches, boolean isGameOver) {
         this.currentLevel = currentLevel;
         this.cellGridPair = cellGridPair;
         this.correctAnswers = correctAnswers;
         this.score = score;
+        this.totalCorrectMatches = totalCorrectMatches;
         this.isGameOver = isGameOver;
     }
 
@@ -47,6 +50,7 @@ public class ShapeMatchGame {
                     getShapesForLevel(level),
                     corrAnswers,
                     score.add(level.points()),
+                    totalCorrectMatches + 1,
                     false);
         } else {
             return new ShapeMatchGame(
@@ -54,6 +58,7 @@ public class ShapeMatchGame {
                     getShapesForLevel(currentLevel),
                     INITIAL_CORRECT_ANSWERS,
                     score.deduct(currentLevel.points()),
+                    totalCorrectMatches,
                     false);
         }
     }
@@ -85,7 +90,7 @@ public class ShapeMatchGame {
     }
 
     public int currentPoints() {
-        return score.points();
+        return totalCorrectMatches;
     }
 
     public boolean isGameOver() {
@@ -97,7 +102,7 @@ public class ShapeMatchGame {
     }
 
     public ShapeMatchGame markGameAsFinished() {
-        return new ShapeMatchGame(currentLevel, cellGridPair, correctAnswers, score, true);
+        return new ShapeMatchGame(currentLevel, cellGridPair, correctAnswers, score, totalCorrectMatches, true);
     }
 
     public ShapeMatchGame reset() {
@@ -106,6 +111,7 @@ public class ShapeMatchGame {
                 getShapesForLevel(initialLevel),
                 0,
                 initialScore,
+                0,
                 false);
     }
 

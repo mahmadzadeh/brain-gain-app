@@ -145,17 +145,6 @@
         </FrameLayout>
     </LinearLayout>
 
-    <!-- Status text -->
-    <TextView
-        android:id="@+id/statusText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:paddingBottom="8dp"
-        android:text="@string/token_search_status_start"
-        android:textColor="#AAFFFFFF"
-        android:textSize="16sp" />
-
     <!-- Game area: custom view for the grid -->
     <com.tokensearch.ui.mainscreen.TokenSearchGridView
         android:id="@+id/gameGridView"
