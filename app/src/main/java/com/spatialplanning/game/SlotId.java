@@ -1,0 +1,16 @@
+package com.spatialplanning.game;
+
+enum SlotId {
+    TOP_LEFT,
+    TOP_RIGHT,
+    MID_LEFT_OUTER,
+    MID_LEFT_INNER,
+    MID_RIGHT_INNER,
+    MID_RIGHT_OUTER,
+    BOTTOM_LEFT_OUTER,
+    BOTTOM_LEFT_MIDDLE,
+    BOTTOM_LEFT_INNER,
+    BOTTOM_RIGHT_INNER,
+    BOTTOM_RIGHT_MIDDLE,
+    BOTTOM_RIGHT_OUTER
+}

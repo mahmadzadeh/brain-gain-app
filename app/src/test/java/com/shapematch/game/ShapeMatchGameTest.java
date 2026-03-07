@@ -41,12 +41,12 @@ public class ShapeMatchGameTest {
 
     @Test
     public void canCreateInstance() {
-        new ShapeMatchGame(levelOne, matchingDisplayShapesPair, 0, new Score(0), 0, false);
+        new ShapeMatchGame(levelOne, matchingDisplayShapesPair, 0, new Score(0), false);
     }
 
     @Test
     public void correctMatchesAreTrackedInScore() {
-        ShapeMatchGame game = new ShapeMatchGame(levelOne, matchingDisplayShapesPair, 0, new Score(0), 0, false);
+        ShapeMatchGame game = new ShapeMatchGame(levelOne, matchingDisplayShapesPair, 0, new Score(0), false);
         ShapeMatchGame nextState = game.evaluateUserInput(UserInput.Match);
         
         assertEquals(1, nextState.currentPoints());
@@ -56,7 +56,7 @@ public class ShapeMatchGameTest {
     public void givenAGameWhenUserSelectsMatchAndLeftAndRightMatchAndFirstConsecutiveCorrectAnswerThenIsUserInputCorrectReturnsGameLogicWithSameLevel() {
         UserInput userInput = UserInput.Match;
 
-        ShapeMatchGame gl = new ShapeMatchGame(levelOne, matchingDisplayShapesPair, 0, new Score(0), 0, false).evaluateUserInput(userInput);
+        ShapeMatchGame gl = new ShapeMatchGame(levelOne, matchingDisplayShapesPair, 0, new Score(0), false).evaluateUserInput(userInput);
 
         assertEquals(gl.currentLevel(), levelOne);
         assertEquals(1, gl.correctAnswers());
@@ -65,7 +65,7 @@ public class ShapeMatchGameTest {
     @Test
     public void givenAGameWhenUserChoosesWronglyThenPointsDeducted() {
         UserInput userInput = UserInput.Mismatch;
-        ShapeMatchGame gl = new ShapeMatchGame(levelOne, matchingDisplayShapesPair, 0, new Score(0), 0, false).evaluateUserInput(userInput);
+        ShapeMatchGame gl = new ShapeMatchGame(levelOne, matchingDisplayShapesPair, 0, new Score(0), false).evaluateUserInput(userInput);
 
         assertEquals(gl.currentLevel(), levelOne);
 
@@ -76,7 +76,7 @@ public class ShapeMatchGameTest {
     public void givenGameWhenUserMakesNConsecutiveCorrectAnswersThenLevelIncreased() {
 
         ShapeMatchGame gl = makeNConsecutiveCorrectGuess(REQUIRED_CORRECT_CONSECUTIVE_ANSWERS,
-                new ShapeMatchGame(levelOne, matchingDisplayShapesPair, 0, new Score(0), 0, false));
+                new ShapeMatchGame(levelOne, matchingDisplayShapesPair, 0, new Score(0), false));
 
         assertEquals(levelTwo, gl.currentLevel());
     }
@@ -85,7 +85,7 @@ public class ShapeMatchGameTest {
     public void giveGameWhenUserMakesFourConsecutiveCorrectGuessesThenLevelIsIncreasedToThree() {
 
         ShapeMatchGame gl = makeNConsecutiveCorrectGuess(REQUIRED_CORRECT_CONSECUTIVE_ANSWERS * 2,
-                new ShapeMatchGame(levelOne, matchingDisplayShapesPair, 0, new Score(0), 0, false));
+                new ShapeMatchGame(levelOne, matchingDisplayShapesPair, 0, new Score(0), false));
 
         assertEquals(levelThree, gl.currentLevel());
     }
@@ -94,7 +94,7 @@ public class ShapeMatchGameTest {
     public void givenGameWhenUserSelectsMismatchAndLeftAndRightMatchThenGameRemainsInCurrentLevel() {
         UserInput userInput = UserInput.Mismatch;
 
-        ShapeMatchGame gl = new ShapeMatchGame(levelOne, matchingDisplayShapesPair, 0, new Score(0), 0, false).evaluateUserInput(userInput);
+        ShapeMatchGame gl = new ShapeMatchGame(levelOne, matchingDisplayShapesPair, 0, new Score(0), false).evaluateUserInput(userInput);
 
         assertEquals(gl.currentLevel(), levelOne);
     }
@@ -104,7 +104,7 @@ public class ShapeMatchGameTest {
         UserInput userInput = UserInput.Match;
 
         ShapeMatchGame gl = makeNConsecutiveCorrectGuess(REQUIRED_CORRECT_CONSECUTIVE_ANSWERS,
-                new ShapeMatchGame(levelOne, matchingDisplayShapesPair, 0, new Score(0), 0, false));
+                new ShapeMatchGame(levelOne, matchingDisplayShapesPair, 0, new Score(0), false));
 
         assertEquals(gl.cellGridPair().leftGrid().getShapeSlotPairCount(), levelTwo.getShapeCount());
         assertEquals(gl.cellGridPair().rightGrid().getShapeSlotPairCount(), levelTwo.getShapeCount());
@@ -113,12 +113,12 @@ public class ShapeMatchGameTest {
     @Test
     public void givenGameWhenGameMarkedAsFinishedThenIsGameOverReturnsTrue() {
         assertTrue(
-                new ShapeMatchGame(levelOne, matchingDisplayShapesPair, 0, new Score(0), 0, false).markGameAsFinished().isGameOver());
+                new ShapeMatchGame(levelOne, matchingDisplayShapesPair, 0, new Score(0), false).markGameAsFinished().isGameOver());
     }
 
     @Test
     public void givenGameWhenResetIsCalledThenNewInstanceOfGameIsReturnedWithInitialState() {
-        ShapeMatchGame newGame = new ShapeMatchGame(new GameLevel(10), matchingDisplayShapesPair, 12, new Score(2222), 5, false).reset();
+        ShapeMatchGame newGame = new ShapeMatchGame(new GameLevel(10), matchingDisplayShapesPair, 12, new Score(2222), false).reset();
 
         assertEquals( 1 , newGame.currentLevel().getShapeCount());
         assertEquals( 1 , newGame.cellGridPair().leftGrid().getShapeSlotPairCount());
@@ -128,14 +128,14 @@ public class ShapeMatchGameTest {
 
     @Test
     public void givenUserInputThatIsCorrectThenIsCorrectGuessReturnsTrue() {
-        ShapeMatchGame gameLogic  = new ShapeMatchGame(new GameLevel(10), matchingDisplayShapesPair, 12, new Score(2222), 0, false);
+        ShapeMatchGame gameLogic  = new ShapeMatchGame(new GameLevel(10), matchingDisplayShapesPair, 12, new Score(2222), false);
 
         assertTrue(gameLogic.isCorrectAnswer(UserInput.Match));
     }
 
     @Test
     public void givenUserInputThatIsNotCorrectThenIsCorrectGuessReturnsFalse() {
-        ShapeMatchGame gameLogic  = new ShapeMatchGame(new GameLevel(10), matchingDisplayShapesPair, 12, new Score(2222), 0, false);
+        ShapeMatchGame gameLogic  = new ShapeMatchGame(new GameLevel(10), matchingDisplayShapesPair, 12, new Score(2222), false);
 
         assertFalse(gameLogic.isCorrectAnswer(UserInput.Mismatch));
     }

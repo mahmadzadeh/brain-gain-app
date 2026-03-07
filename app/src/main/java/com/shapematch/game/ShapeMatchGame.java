@@ -17,22 +17,19 @@ public class ShapeMatchGame {
             getShapesForLevel(GameLevel.initialLevel),
             INITIAL_CORRECT_ANSWERS,
             Score.initialScore,
-            0,
             false);
 
     private final GameLevel currentLevel;
     private final CellGridPair cellGridPair;
     private final int correctAnswers;
     private final Score score;
-    private final int totalCorrectMatches;
     private boolean isGameOver;
 
-    public ShapeMatchGame(GameLevel currentLevel, CellGridPair cellGridPair, int correctAnswers, Score score, int totalCorrectMatches, boolean isGameOver) {
+    public ShapeMatchGame(GameLevel currentLevel, CellGridPair cellGridPair, int correctAnswers, Score score, boolean isGameOver) {
         this.currentLevel = currentLevel;
         this.cellGridPair = cellGridPair;
         this.correctAnswers = correctAnswers;
         this.score = score;
-        this.totalCorrectMatches = totalCorrectMatches;
         this.isGameOver = isGameOver;
     }
 
@@ -43,22 +40,21 @@ public class ShapeMatchGame {
 
     private ShapeMatchGame gameLogicBasedOnUserSelection(Boolean isCorrectAnswer) {
         if (isCorrectAnswer) {
+            Score updatedScore = score.add(currentLevel.points());
             GameLevel level = determineGameLevel();
             int corrAnswers = determineCorrectAnswerCount(level);
             return new ShapeMatchGame(
                     level,
                     getShapesForLevel(level),
                     corrAnswers,
-                    score.add(level.points()),
-                    totalCorrectMatches + 1,
+                    updatedScore,
                     false);
         } else {
             return new ShapeMatchGame(
                     currentLevel,
                     getShapesForLevel(currentLevel),
                     INITIAL_CORRECT_ANSWERS,
-                    score.deduct(currentLevel.points()),
-                    totalCorrectMatches,
+                    score.deduct(1),
                     false);
         }
     }
@@ -90,7 +86,7 @@ public class ShapeMatchGame {
     }
 
     public int currentPoints() {
-        return totalCorrectMatches;
+        return score.points();
     }
 
     public boolean isGameOver() {
@@ -102,7 +98,7 @@ public class ShapeMatchGame {
     }
 
     public ShapeMatchGame markGameAsFinished() {
-        return new ShapeMatchGame(currentLevel, cellGridPair, correctAnswers, score, totalCorrectMatches, true);
+        return new ShapeMatchGame(currentLevel, cellGridPair, correctAnswers, score, true);
     }
 
     public ShapeMatchGame reset() {
@@ -111,7 +107,6 @@ public class ShapeMatchGame {
                 getShapesForLevel(initialLevel),
                 0,
                 initialScore,
-                0,
                 false);
     }
 
