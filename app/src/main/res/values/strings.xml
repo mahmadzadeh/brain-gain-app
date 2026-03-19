@@ -83,6 +83,7 @@
     <string name="recent_performance_placeholder">Coming soon</string>
     <string name="stroop_game">Stroop</string>
     <string name="shape_match_title">Shape Match</string>
+    <string name="spatial_planning_title">Spatial Planning</string>
     <string name="sudoku_title">Sudoku</string>
     <string name="token_search_title">Token Search</string>
     <string name="token_search_level_complete">Level complete!</string>

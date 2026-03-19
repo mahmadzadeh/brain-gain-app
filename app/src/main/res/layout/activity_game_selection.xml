@@ -254,6 +254,42 @@
             android:textStyle="bold" />
     </FrameLayout>
 
+    <!-- Spatial Planning -->
+    <FrameLayout
+        android:id="@+id/spatialPlanningImg"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/game_tile_border"
+        android:clickable="true"
+        android:elevation="6dp"
+        android:focusable="true"
+        android:onClick="onClick"
+        android:outlineProvider="background"
+        app:layout_constraintStart_toEndOf="@id/centerGuideline"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/simonSaysImg">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="22dp"
+            android:contentDescription="@string/spatial_planning_title"
+            app:srcCompat="@drawable/spatial_planning_icon" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:gravity="center"
+            android:paddingBottom="10dp"
+            android:text="@string/spatial_planning_title"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+    </FrameLayout>
+
     <!-- Stats -->
     <FrameLayout
         android:id="@+id/statsBox"

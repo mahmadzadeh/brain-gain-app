@@ -1,7 +1,9 @@
 package com.spatialplanning.game;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.EnumMap;
+import java.util.List;
 import java.util.Map;
 
 public class SpatialTree {
@@ -32,6 +34,36 @@ public class SpatialTree {
 
     public boolean hasBallAt(SlotId slotId) {
         return placements.containsKey(slotId);
+    }
+
+    public int ballAt(SlotId slotId) {
+        if (!placements.containsKey(slotId)) {
+            throw new IllegalStateException("No ball at " + slotId);
+        }
+        return placements.get(slotId);
+    }
+
+    List<SlotId[]> validMoves() {
+        List<SlotId[]> moves = new ArrayList<>();
+        for (SlotId from : SlotId.values()) {
+            if (!canMove(from)) continue;
+            for (SlotId to : SlotId.values()) {
+                if (from == to) continue;
+                if (!placements.containsKey(to) && !isBlockedDestination(to, from)) {
+                    moves.add(new SlotId[]{from, to});
+                }
+            }
+        }
+        return moves;
+    }
+
+    private boolean isBlockedDestination(SlotId to, SlotId excludeFrom) {
+        for (SlotId blocker : BLOCKERS.get(to)) {
+            if (blocker != excludeFrom && placements.containsKey(blocker)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public SpatialTree move(SlotId from, SlotId to) {

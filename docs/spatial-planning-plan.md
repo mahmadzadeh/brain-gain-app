@@ -25,7 +25,7 @@ Add the Spatial Planning puzzle (tree-shaped frame with numbered balls) to the B
                  BOTTOM_LEFT_OUTER          BOTTOM_RIGHT_OUTER
 ```
 
-- Moves follow the branches: outermost slots are always movable; inner slots become movable only after every outward slot on that branch is empty. The same blocker list is used when placing a ball into a slot so we never insert a ball “behind” another one.
+- Moves follow the branches: outermost slots are always movable; inner slots become movable only after every outward slot on that branch is empty. Only adjacent slots (per the layout above) can exchange balls, and the same blocker list is used when placing a ball so we never insert a ball “behind” another one.
 - **Core classes**:
   - `SpatialTree` — holds nodes, validates moves (`canMove`, `move`), detects solved state, tracks move count.
   - `SpatialTreeGenerator` — produces solvable layouts per difficulty (varying branch depth, number of balls, time limits). Use shuffle + solver/backtracking to avoid impossible states.

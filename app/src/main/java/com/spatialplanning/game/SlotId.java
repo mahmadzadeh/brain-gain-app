@@ -1,6 +1,6 @@
 package com.spatialplanning.game;
 
-enum SlotId {
+public enum SlotId {
     TOP_LEFT,
     TOP_RIGHT,
     MID_LEFT_OUTER,

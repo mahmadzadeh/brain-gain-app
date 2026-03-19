@@ -97,6 +97,13 @@
             android:label="@string/token_search_title"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name="com.spatialplanning.ui.mainscreen.MainActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/spatial_planning_title"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

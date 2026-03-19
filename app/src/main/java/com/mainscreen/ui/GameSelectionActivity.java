@@ -61,6 +61,13 @@ public class GameSelectionActivity extends AppCompatActivity {
                     .setSeconds(3)
                     .setTargetActivity("com.tokensearch.ui.mainscreen.TokenSearchMainActivity")
                     .startActivity();
+        } else if ( id == R.id.spatialPlanningImg ) {
+            new CountdownActivityIntent(this)
+                    .setTitle("Spatial Planning")
+                    .setIconResId(R.drawable.spatial_planning_icon)
+                    .setSeconds(3)
+                    .setTargetActivity("com.spatialplanning.ui.mainscreen.MainActivity")
+                    .startActivity();
         } else {
             throw new RuntimeException( "" );
         }

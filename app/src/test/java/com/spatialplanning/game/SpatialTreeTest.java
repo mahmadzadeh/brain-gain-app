@@ -85,10 +85,10 @@ public class SpatialTreeTest {
                 .withPlacement(SlotId.BOTTOM_LEFT_OUTER, 7)
                 .build();
 
-        tree = tree.move(SlotId.BOTTOM_LEFT_OUTER, SlotId.BOTTOM_LEFT_INNER);
+        tree = tree.move(SlotId.BOTTOM_LEFT_OUTER, SlotId.BOTTOM_LEFT_MIDDLE);
 
         assertFalse(tree.hasBallAt(SlotId.BOTTOM_LEFT_OUTER));
-        assertTrue(tree.hasBallAt(SlotId.BOTTOM_LEFT_INNER));
+        assertTrue(tree.hasBallAt(SlotId.BOTTOM_LEFT_MIDDLE));
     }
 
     @Test(expected = IllegalStateException.class)
@@ -117,6 +117,42 @@ public class SpatialTreeTest {
                 .build();
 
         tree.move(SlotId.TOP_LEFT, SlotId.BOTTOM_LEFT_INNER);
+    }
+
+    @Test
+    public void moveToAnyUnblockedEmptySlot() {
+        SpatialTree tree = SpatialTree.builder()
+                .withPlacement(SlotId.TOP_LEFT, 1)
+                .build();
+
+        tree = tree.move(SlotId.TOP_LEFT, SlotId.BOTTOM_LEFT_MIDDLE);
+
+        assertFalse(tree.hasBallAt(SlotId.TOP_LEFT));
+        assertTrue(tree.hasBallAt(SlotId.BOTTOM_LEFT_MIDDLE));
+    }
+
+    @Test
+    public void moveToNonAdjacentUnblockedSlot() {
+        SpatialTree tree = SpatialTree.builder()
+                .withPlacement(SlotId.TOP_LEFT, 1)
+                .build();
+
+        tree = tree.move(SlotId.TOP_LEFT, SlotId.MID_LEFT_INNER);
+
+        assertFalse(tree.hasBallAt(SlotId.TOP_LEFT));
+        assertTrue(tree.hasBallAt(SlotId.MID_LEFT_INNER));
+    }
+
+    @Test
+    public void canMoveAcrossBottomJunction() {
+        SpatialTree tree = SpatialTree.builder()
+                .withPlacement(SlotId.BOTTOM_LEFT_INNER, 4)
+                .build();
+
+        tree = tree.move(SlotId.BOTTOM_LEFT_INNER, SlotId.BOTTOM_RIGHT_INNER);
+
+        assertFalse(tree.hasBallAt(SlotId.BOTTOM_LEFT_INNER));
+        assertTrue(tree.hasBallAt(SlotId.BOTTOM_RIGHT_INNER));
     }
 
     @Test

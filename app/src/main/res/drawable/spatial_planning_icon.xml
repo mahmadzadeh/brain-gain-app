@@ -1,0 +1,65 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="94dp"
+    android:height="94dp"
+    android:viewportWidth="94"
+    android:viewportHeight="94">
+  <!-- Tree trunk (vertical line) -->
+  <path
+      android:pathData="M46,10L46,84"
+      android:strokeWidth="3"
+      android:strokeColor="@color/colorPrimaryDark"/>
+  <!-- Left upper branch -->
+  <path
+      android:pathData="M46,30L20,15"
+      android:strokeWidth="3"
+      android:strokeColor="@color/colorPrimaryDark"/>
+  <!-- Right upper branch -->
+  <path
+      android:pathData="M46,30L72,15"
+      android:strokeWidth="3"
+      android:strokeColor="@color/colorPrimaryDark"/>
+  <!-- Left middle branch -->
+  <path
+      android:pathData="M46,50L14,50"
+      android:strokeWidth="3"
+      android:strokeColor="@color/colorPrimaryDark"/>
+  <!-- Right middle branch -->
+  <path
+      android:pathData="M46,50L78,50"
+      android:strokeWidth="3"
+      android:strokeColor="@color/colorPrimaryDark"/>
+  <!-- Left lower branch -->
+  <path
+      android:pathData="M46,70L20,84"
+      android:strokeWidth="3"
+      android:strokeColor="@color/colorPrimaryDark"/>
+  <!-- Right lower branch -->
+  <path
+      android:pathData="M46,70L72,84"
+      android:strokeWidth="3"
+      android:strokeColor="@color/colorPrimaryDark"/>
+  <!-- Ball at top-left -->
+  <path
+      android:pathData="M20,15m-7,0a7,7 0,1 1,14 0a7,7 0,1 1,-14 0"
+      android:fillColor="@color/colorPrimaryDark"/>
+  <!-- Ball at top-right -->
+  <path
+      android:pathData="M72,15m-7,0a7,7 0,1 1,14 0a7,7 0,1 1,-14 0"
+      android:fillColor="@color/colorPrimaryDark"/>
+  <!-- Ball at mid-left -->
+  <path
+      android:pathData="M14,50m-7,0a7,7 0,1 1,14 0a7,7 0,1 1,-14 0"
+      android:fillColor="@color/colorPrimaryDark"/>
+  <!-- Ball at mid-right -->
+  <path
+      android:pathData="M78,50m-7,0a7,7 0,1 1,14 0a7,7 0,1 1,-14 0"
+      android:fillColor="@color/colorPrimaryDark"/>
+  <!-- Ball at bottom-left -->
+  <path
+      android:pathData="M20,84m-7,0a7,7 0,1 1,14 0a7,7 0,1 1,-14 0"
+      android:fillColor="@color/colorPrimaryDark"/>
+  <!-- Ball at bottom-right -->
+  <path
+      android:pathData="M72,84m-7,0a7,7 0,1 1,14 0a7,7 0,1 1,-14 0"
+      android:fillColor="@color/colorPrimaryDark"/>
+</vector>
