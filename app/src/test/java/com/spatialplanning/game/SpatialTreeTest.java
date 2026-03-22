@@ -80,15 +80,15 @@ public class SpatialTreeTest {
     }
 
     @Test
-    public void movePlacesBallDeeperWhenPathClear() {
+    public void movePlacesBallAcrossPegsWhenPathClear() {
         SpatialTree tree = SpatialTree.builder()
                 .withPlacement(SlotId.BOTTOM_LEFT_OUTER, 7)
                 .build();
 
-        tree = tree.move(SlotId.BOTTOM_LEFT_OUTER, SlotId.BOTTOM_LEFT_MIDDLE);
+        tree = tree.move(SlotId.BOTTOM_LEFT_OUTER, SlotId.TOP_LEFT);
 
         assertFalse(tree.hasBallAt(SlotId.BOTTOM_LEFT_OUTER));
-        assertTrue(tree.hasBallAt(SlotId.BOTTOM_LEFT_MIDDLE));
+        assertTrue(tree.hasBallAt(SlotId.TOP_LEFT));
     }
 
     @Test(expected = IllegalStateException.class)
@@ -120,15 +120,15 @@ public class SpatialTreeTest {
     }
 
     @Test
-    public void moveToAnyUnblockedEmptySlot() {
+    public void moveToAnyUnblockedContiguousSlot() {
         SpatialTree tree = SpatialTree.builder()
                 .withPlacement(SlotId.TOP_LEFT, 1)
                 .build();
 
-        tree = tree.move(SlotId.TOP_LEFT, SlotId.BOTTOM_LEFT_MIDDLE);
+        tree = tree.move(SlotId.TOP_LEFT, SlotId.BOTTOM_LEFT_INNER);
 
         assertFalse(tree.hasBallAt(SlotId.TOP_LEFT));
-        assertTrue(tree.hasBallAt(SlotId.BOTTOM_LEFT_MIDDLE));
+        assertTrue(tree.hasBallAt(SlotId.BOTTOM_LEFT_INNER));
     }
 
     @Test
@@ -164,5 +164,33 @@ public class SpatialTreeTest {
 
         assertTrue(tree.canMove(SlotId.TOP_LEFT));
         assertTrue(tree.canMove(SlotId.TOP_RIGHT));
+    }
+
+    @Test(expected = IllegalStateException.class)
+    public void samePegMoveIsRejected() {
+        SpatialTree tree = SpatialTree.builder()
+                .withPlacement(SlotId.BOTTOM_LEFT_INNER, 9)
+                .build();
+
+        tree.move(SlotId.BOTTOM_LEFT_INNER, SlotId.BOTTOM_LEFT_MIDDLE);
+    }
+
+    @Test
+    public void treeCanReportContiguousOccupancy() {
+        SpatialTree contiguous = SpatialTree.builder()
+                .withPlacement(SlotId.BOTTOM_LEFT_INNER, 9)
+                .withPlacement(SlotId.BOTTOM_LEFT_MIDDLE, 8)
+                .build();
+
+        assertTrue(contiguous.hasContiguousPegOccupancy());
+    }
+
+    @Test
+    public void treeDetectsNonContiguousOccupancy() {
+        SpatialTree nonContiguous = SpatialTree.builder()
+                .withPlacement(SlotId.BOTTOM_LEFT_OUTER, 7)
+                .build();
+
+        assertFalse(nonContiguous.hasContiguousPegOccupancy());
     }
 }

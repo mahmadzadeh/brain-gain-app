@@ -115,4 +115,12 @@ public class SpatialTreeGeneratorTest {
         }
         assertTrue("expected some balls displaced, got " + displaced, displaced > 0);
     }
+
+    @Test
+    public void generatedTreesAlwaysHaveContiguousPegOccupancy() {
+        for (int i = 0; i < 20; i++) {
+            SpatialTree tree = SpatialTreeGenerator.generate(10);
+            assertTrue("generator created non-contiguous peg occupancy", tree.hasContiguousPegOccupancy());
+        }
+    }
 }

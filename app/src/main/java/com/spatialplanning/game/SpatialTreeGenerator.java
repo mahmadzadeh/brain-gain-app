@@ -22,15 +22,53 @@ public class SpatialTreeGenerator {
     }
 
     public static SpatialTree generate(int scrambleMoves) {
-        SpatialTree tree = solvedState();
+        return generate(scrambleMoves, true);
+    }
 
-        for (int i = 0; i < scrambleMoves; i++) {
-            List<SlotId[]> moves = tree.validMoves();
-            if (moves.isEmpty()) break;
-            SlotId[] chosen = moves.get(RANDOM.nextInt(moves.size()));
-            tree = tree.move(chosen[0], chosen[1]);
+    private static SpatialTree generate(int scrambleMoves, boolean requireDisplacement) {
+        SpatialTree solved = solvedState();
+        SpatialTree bestTree = solved;
+        int bestDisplaced = 0;
+
+        // Retry to avoid trivially solved/near-solved outcomes.
+        for (int attempt = 0; attempt < 30; attempt++) {
+            SpatialTree tree = solved;
+            for (int i = 0; i < scrambleMoves; i++) {
+                List<SlotId[]> moves = tree.validMoves();
+                if (moves.isEmpty()) break;
+                SlotId[] chosen = moves.get(RANDOM.nextInt(moves.size()));
+                tree = tree.move(chosen[0], chosen[1]);
+            }
+
+            int displaced = displacedCount(tree, solved);
+            if (displaced > bestDisplaced) {
+                bestDisplaced = displaced;
+                bestTree = tree;
+            }
+            if (!requireDisplacement || displaced > 0) {
+                return tree;
+            }
         }
 
-        return tree;
+        return bestTree;
+    }
+
+    public static SpatialTree generateForComplexity(ComplexityLevel complexityLevel) {
+        int scrambleMoves = Math.max(1, complexityLevel.solveMovesTarget() * 2);
+        return generate(scrambleMoves, complexityLevel.solveMovesTarget() > 0);
+    }
+
+    private static int displacedCount(SpatialTree tree, SpatialTree solved) {
+        int displaced = 0;
+        for (SlotId slot : SlotId.values()) {
+            if (solved.hasBallAt(slot) != tree.hasBallAt(slot)) {
+                displaced++;
+                continue;
+            }
+            if (solved.hasBallAt(slot) && solved.ballAt(slot) != tree.ballAt(slot)) {
+                displaced++;
+            }
+        }
+        return displaced;
     }
 }

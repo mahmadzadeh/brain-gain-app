@@ -3,6 +3,9 @@ package com.spatialplanning.ui.mainscreen;
 import android.os.CountDownTimer;
 import android.util.Log;
 
+import com.spatialplanning.game.ComplexityLevel;
+import com.spatialplanning.game.ComplexityStrategy;
+import com.spatialplanning.game.MovesBasedComplexityStrategy;
 import com.spatialplanning.game.SlotId;
 import com.spatialplanning.game.SpatialTree;
 import com.spatialplanning.game.SpatialTreeGenerator;
@@ -12,29 +15,38 @@ import java.util.Locale;
 public class MainActivityPresenter implements MainViewContract.Presenter {
 
     private static final String TAG = "SpatialPlanningPresenter";
-    private static final long GAME_DURATION_MILLIS = 90000;
+    private static final long GAME_DURATION_MILLIS = 300000;
     private static final long COUNTDOWN_INTERVAL_MILLIS = 1000;
 
     private final MainScreenView view;
-    private final int scrambleMoves;
+    private final ComplexityStrategy complexityStrategy;
 
     private SpatialTree tree;
     private SlotId selectedSlot;
-    private int moveCount;
+    private int sessionMoveCount;
+    private int roundMoveCount;
+    private int score;
+    private int currentRound;
+    private ComplexityLevel currentComplexity;
     private CountDownTimer timer;
     private long remainingMillis = GAME_DURATION_MILLIS;
 
     public MainActivityPresenter(MainScreenView view, int scrambleMoves) {
         this.view = view;
-        this.scrambleMoves = scrambleMoves;
-        this.tree = SpatialTreeGenerator.generate(scrambleMoves);
-        this.moveCount = 0;
+        this.complexityStrategy = new MovesBasedComplexityStrategy();
+        this.currentRound = Math.max(1, scrambleMoves);
+        this.currentComplexity = complexityStrategy.forRound(currentRound);
+        this.tree = SpatialTreeGenerator.generateForComplexity(currentComplexity);
+        this.sessionMoveCount = 0;
+        this.roundMoveCount = 0;
+        this.score = 0;
     }
 
     public void displayCurrentState() {
-        view.displayTree(tree);
-        view.updateMoveCount(moveCount);
-        view.updateLevel(scrambleMoves);
+        view.animateRoundStart(tree);
+        view.updateMoveCount(sessionMoveCount);
+        view.updateLevel(currentComplexity.solveMovesTarget());
+        view.updateScore(score);
     }
 
     @Override
@@ -64,15 +76,15 @@ public class MainActivityPresenter implements MainViewContract.Presenter {
     private void tryMove(SlotId destination) {
         try {
             tree = tree.move(selectedSlot, destination);
-            moveCount++;
+            sessionMoveCount++;
+            roundMoveCount++;
             selectedSlot = null;
 
             view.displayTree(tree);
-            view.updateMoveCount(moveCount);
+            view.updateMoveCount(sessionMoveCount);
 
             if (isSolved()) {
-                Log.d(TAG, "Puzzle solved in " + moveCount + " moves");
-                onFinish();
+                onRoundSolved();
             }
         } catch (IllegalStateException e) {
             Log.d(TAG, "Invalid move: " + e.getMessage());
@@ -128,15 +140,54 @@ public class MainActivityPresenter implements MainViewContract.Presenter {
 
     @Override
     public void onFinish() {
-        Log.d(TAG, "Game finished. Moves: " + moveCount);
+        Log.d(TAG, "Game finished. Moves: " + sessionMoveCount + ", score: " + score);
         if (timer != null) {
             timer.cancel();
         }
-        view.onFinish(moveCount, moveCount);
+        view.onFinish(score, sessionMoveCount);
     }
 
-    SpatialTree currentTree() {
-        return tree;
+    int currentScore() {
+        return score;
+    }
+
+    int currentRound() {
+        return currentRound;
+    }
+
+    int currentRoundSolveMovesTarget() {
+        return currentComplexity.solveMovesTarget();
+    }
+
+    void onRoundSolved() {
+        int pointsAwarded = calculateRoundPoints(roundMoveCount, currentComplexity);
+        score += pointsAwarded;
+        view.updateScore(score);
+        view.showFeedback(true);
+        Log.d(TAG, "Round " + currentRound + " solved in " + roundMoveCount + " moves, +" + pointsAwarded + " points");
+        moveToNextRound();
+    }
+
+    private void moveToNextRound() {
+        currentRound++;
+        currentComplexity = complexityStrategy.forRound(currentRound);
+        roundMoveCount = 0;
+        selectedSlot = null;
+        tree = SpatialTreeGenerator.generateForComplexity(currentComplexity);
+
+        view.clearSelection();
+        view.animateRoundStart(tree);
+        view.updateLevel(currentComplexity.solveMovesTarget());
+    }
+
+    private int calculateRoundPoints(int movesUsed, ComplexityLevel complexityLevel) {
+        int basePoints = complexityLevel.points();
+        int targetMoves = complexityLevel.solveMovesTarget();
+        if (movesUsed <= targetMoves) {
+            return basePoints;
+        }
+        int penalty = movesUsed - targetMoves;
+        return Math.max(1, basePoints - penalty);
     }
 
     private String formatTime(long millis) {

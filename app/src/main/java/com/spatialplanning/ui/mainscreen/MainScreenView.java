@@ -7,9 +7,13 @@ public interface MainScreenView {
 
     void displayTree(SpatialTree tree);
 
+    void animateRoundStart(SpatialTree tree);
+
     void updateMoveCount(int moves);
 
     void updateLevel(int level);
+
+    void updateScore(int score);
 
     void setCountDownText(String text);
 
