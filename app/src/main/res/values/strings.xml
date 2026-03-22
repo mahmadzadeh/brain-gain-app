@@ -84,6 +84,15 @@
     <string name="stroop_game">Stroop</string>
     <string name="shape_match_title">Shape Match</string>
     <string name="spatial_planning_title">Spatial Planning</string>
+    <string name="spatial_planning_timer_default">5:00</string>
+    <string name="spatial_planning_moves_default">Moves: 0</string>
+    <string name="spatial_planning_level_default">Level: 2</string>
+    <string name="spatial_planning_score_default">Score: 0</string>
+    <string name="spatial_planning_moves_format">Moves: %1$d</string>
+    <string name="spatial_planning_level_format">Level: %1$d</string>
+    <string name="spatial_planning_score_format">Score: %1$d</string>
+    <string name="spatial_planning_feedback_correct">Correct!</string>
+    <string name="spatial_planning_feedback_try_again">Try again</string>
     <string name="sudoku_title">Sudoku</string>
     <string name="token_search_title">Token Search</string>
     <string name="token_search_level_complete">Level complete!</string>
